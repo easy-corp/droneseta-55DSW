@@ -5,8 +5,8 @@
 }
 
 #divLogin {
-    width: 55vh;
-    height: 70vh;
+    width: 500px;
+    height: 600px;
 
     position: relative;
     top: 10vh;
@@ -31,7 +31,7 @@
 }
 
 input {
-    width: 28vh;
+    width: 250px;
 
     text-align: left;
     

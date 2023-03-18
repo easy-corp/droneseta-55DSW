@@ -2,8 +2,8 @@
     background: #FF4D29;
     color: white;
 
-    width: 20vh;
-    height: 5vh;
+    width: 200px;
+    height: 40px;
 
     border: 0px;
     border-radius: 7px;
@@ -12,6 +12,6 @@
 }
 
 #icEnter {
-    margin-right: 1.5vh;
+    margin-right: 2vh;
     color: #FFFFFF;
 }
