@@ -5,6 +5,12 @@ import MyRouter from './routes/MyRouter';
 
 import "./assets/css/main.css";     // Estilo geral
 
+// FontAwesome
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faDoorOpen)
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

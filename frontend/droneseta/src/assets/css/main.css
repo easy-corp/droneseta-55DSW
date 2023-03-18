@@ -5,7 +5,10 @@
     font-family: calibri;
     position: relative;
     text-align: center;
-    color: #999999;
+}
+
+input::placeholder {
+    color: rgba(0, 0, 0, 0.4);
 }
 
 input:focus {
@@ -16,9 +19,11 @@ input:focus {
     background: #FF4D29;
     color: white;
 
-    width: 12vh;
-    height: 3vh;
+    width: 14vh;
+    height: 3.5vh;
 
     border: 0px;
-    border-radius: 8px;
+    border-radius: 7px;
+
+    font-size: 2vh;
 }
