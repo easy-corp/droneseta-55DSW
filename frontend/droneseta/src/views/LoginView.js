@@ -1,18 +1,46 @@
-import "../assets/css/loginView.css";             
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../assets/css/loginView.css";
 import logoLogin from "../assets/img/logoLogin.png";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import MyButtonIcon from "../components/MyButton";
+import { useAuthCtx } from "../utils/auth";
 
 function LoginView() {
+    const [user, setUser] = useState("");
+    const [pass, setPass] = useState("");
+    const [login, setLogin] = useState(true);
+    const navigate = useNavigate();
+
+    // Recuperando o contexto
+    const ctx = useAuthCtx();
+
+    function userHandler(event) {
+        setUser(event.target.value);
+    }
+
+    function passHandler(event) {
+        setPass(event.target.value);
+    }
+
+    function doLogin() {
+        if (ctx.logar(user, pass)) {
+            navigate("/");
+        } else {
+            setLogin(false);
+        }
+    }
+
     return (
         <div id="app">
             <div id="divLogin">
                 <img src={logoLogin} alt="logoLogin" id="imgLogo" /> <br />
-                <input type="text" placeholder="Usuário" id="inpLogin" /><br />
-                <input type="text" placeholder="Senha" id="inpPass" /><br />
-                <button className="btnPadrao" id="btnLogin"> 
-                    <FontAwesomeIcon icon="fa-solid fa-door-open" id="icEnter" />
-                    Entrar
-                </button><br />
+                <input type="text" placeholder="Usuário" id="inpLogin" value={user} onChange={userHandler} /><br />
+                <input type="password" placeholder="Senha" id="inpPass" value={pass} onChange={passHandler} /><br />
+                <MyButtonIcon
+                    text="Entrar"
+                    icon="fa-solid fa-door-open"
+                    event={doLogin}
+                /> <br />
                 <span>Novo por aqui? <a href="/cadastro">Cadastre-se</a> </span>
             </div>
         </div>

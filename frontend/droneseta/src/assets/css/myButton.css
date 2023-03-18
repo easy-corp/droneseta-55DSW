@@ -1,0 +1,17 @@
+.btnPadrao {
+    background: #FF4D29;
+    color: white;
+
+    width: 20vh;
+    height: 5vh;
+
+    border: 0px;
+    border-radius: 7px;
+
+    font-size: 2.5vh;
+}
+
+#icEnter {
+    margin-right: 1.5vh;
+    color: #FFFFFF;
+}

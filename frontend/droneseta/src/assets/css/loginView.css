@@ -5,8 +5,8 @@
 }
 
 #divLogin {
-    width: 40vh;
-    height: 50vh;
+    width: 60vh;
+    height: 70vh;
 
     position: relative;
     top: 10vh;
@@ -23,7 +23,7 @@
 }
 
 #imgLogo {
-    max-width: 30vh;
+    max-width: 35vh;
     width: auto;
     height: auto;
 
@@ -31,7 +31,7 @@
 }
 
 input {
-    width: 22vh;
+    width: 28vh;
 
     text-align: left;
     
@@ -40,21 +40,16 @@ input {
     border-radius: 5px;
 
     padding: 0.8vh;
-    margin-bottom: 1vh;
+    margin-bottom: 2vh;
 }
 
 button {
-    margin-top: 1vh;
-}
-
-#icEnter {
-    margin-right: 1vh;
-    color: #FFFFFF;
+    margin-top: 2vh;
+    margin-bottom: 10vh;
 }
 
 span {
     position: relative;
-    top: 9%;
 
     color: #999999;
 }

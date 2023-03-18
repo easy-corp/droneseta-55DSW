@@ -1,4 +1,4 @@
-import AuthProvider, { useAuth } from "../utils/auth";
+import AuthProvider, { useAuthCtx } from "../utils/auth";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import LoginView from "../views/LoginView";
 import HomeView from "../views/HomeView";
@@ -10,13 +10,13 @@ function MyRouter() {
 
     // Verificar autenticacao do usuario
     function AuthRouter({ children }) {
-        const authCtx = useAuth();
+        const authCtx = useAuthCtx();
 
         if (authCtx.auth) {
             return children;
         }
 
-        return <Navigate to="/" />;
+        return <Navigate to="/login" />;
     }
 
     return(

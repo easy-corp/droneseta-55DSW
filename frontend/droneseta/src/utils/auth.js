@@ -2,10 +2,10 @@
    componentes. Serve para espalhar infos que serao requiridas em
    muitos lugares diferentes */
 
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
-export const Auth = createContext();
-export const useAuth = () => useState(false);
+export const AuthCtx = createContext();
+export const useAuthCtx = () => useContext(AuthCtx);
 
 function AuthProvider({ children }) {
     const [auth, setAuth] = useState(false);        //Para fazer autenticacao de login
@@ -30,9 +30,9 @@ function AuthProvider({ children }) {
     }
 
     return (
-        <Auth.Provider value={{ auth, logar, sair }}>
+        <AuthCtx.Provider value={{ auth, logar, sair }}>
             { children }
-        </Auth.Provider>
+        </AuthCtx.Provider>
     );
 }
 
