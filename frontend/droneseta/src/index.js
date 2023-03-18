@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import MyRouter from './routes/MyRouter';
 
-import "./assets/css/main.css";     // Estilo geral
+// Estilo geral
+import "./assets/css/main.css";
 
 // FontAwesome
+// Todos os icons utilizados precisam ser adicionados aqui
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 
