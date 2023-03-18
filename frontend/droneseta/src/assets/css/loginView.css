@@ -5,8 +5,8 @@
 }
 
 #divLogin {
-    width: 55%;
-    height: 65%;
+    width: 60vh;
+    height: 70vh;
 
     position: relative;
     top: 10vh;
@@ -23,7 +23,7 @@
 }
 
 #imgLogo {
-    max-width: 300px;
+    max-width: 35vh;
     width: auto;
     height: auto;
 
@@ -31,7 +31,7 @@
 }
 
 input {
-    width: 250px;
+    width: 28vh;
 
     text-align: left;
     
@@ -45,12 +45,11 @@ input {
 
 button {
     margin-top: 2vh;
-    /* margin-bottom: 10vh; */
 }
 
 span {
-    position: absolute;
     bottom: 2vh;
+    position: absolute;
     transform: translateX(-50%);
 
     color: #999999;
