@@ -1,0 +1,24 @@
+* {
+    margin: 0vh;
+    padding: 0vh;
+    box-sizing: border-box;
+    font-family: calibri;
+    position: relative;
+    text-align: center;
+    color: #999999;
+}
+
+input:focus {
+    outline: none;
+}
+
+.btnPadrao {
+    background: #FF4D29;
+    color: white;
+
+    width: 12vh;
+    height: 3vh;
+
+    border: 0px;
+    border-radius: 8px;
+}

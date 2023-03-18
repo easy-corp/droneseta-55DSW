@@ -1,0 +1,50 @@
+#app {
+    background-color: #051E32;
+    width: 100%;
+    height: 100vh;
+}
+
+#divLogin {
+    width: 40vh;
+    height: 50vh;
+
+    position: relative;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);    
+
+    background-color: #FFFFFF;
+
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+
+}
+
+#imgLogo {
+    max-width: 30vh;
+    width: auto;
+    height: auto;
+
+    position: relative;
+}
+
+input {
+    margin-top: 1vh;
+}
+
+button {
+    margin-top: 2vh;
+}
+
+span {
+    position: relative;
+    top: 14%;
+}
+
+span a {
+    color: #FF4D29;
+    font-weight: bold;
+    text-decoration: none;
+}
