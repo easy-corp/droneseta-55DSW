@@ -15,3 +15,23 @@
     margin-right: 2vh;
     color: #FFFFFF;
 }
+
+.btnPadrao:hover {
+    background: #FFFFFF;
+    color: #FF4D29;
+    border: 1px solid #FF4D29;
+}
+
+.btnPadrao:hover #icEnter {
+    color: #FF4D29;
+}
+
+.btnPadrao:focus {
+    background: #FFFFFF;
+    color: #FF4D29;
+    border: 1px solid #FF4D29;
+}
+
+.btnPadrao:focus #icEnter {
+    color: #FF4D29;
+}
