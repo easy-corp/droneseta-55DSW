@@ -14,22 +14,6 @@
     animation-delay: 0s;
 }
 
-/* Para identificar o tipo do alerta */
-.erro {
-    background-color: #de5b5b;
-    border: 1px solid #ed4444;
-}
-
-.sucesso {
-    background-color: #4add63;
-    border: 1px solid #0ca532;
-}
-
-.alerta {
-    background-color: #e0a627;
-    border: 1px solid #df7117;
-}
-
 p {
     position: relative;
     top: 50%;
@@ -43,4 +27,24 @@ p {
 
 @keyframes slide {
     100% { top: 0; }
+}
+
+/* Para identificar o tipo do alerta
+   erro    => para mensagens de erro
+   sucesso => para mensagens de sucesso
+   alerta  => para mensagens de alerta
+   */
+.erro {
+    background-color: #de5b5b;
+    border: 1px solid #ed4444;
+}
+
+.sucesso {
+    background-color: #4add63;
+    border: 1px solid #0ca532;
+}
+
+.alerta {
+    background-color: #e0a627;
+    border: 1px solid #df7117;
 }

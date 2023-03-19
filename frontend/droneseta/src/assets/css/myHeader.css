@@ -1,0 +1,40 @@
+.divHeader {
+    width: 100%;
+    height: 12vh;
+    position: relative;
+    top: 0vh;
+
+    align-items: center;
+
+    background-color: #051E32;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 12vh;
+    column-gap: 8vh;
+}
+
+.imgLogo {
+    max-width: 25vh;
+    width: auto;
+    height: auto;
+
+    position: relative;
+}
+
+#colImg {
+    justify-self: end;
+}
+
+#colSearch {
+    justify-self: center;
+}
+
+#colIcons {
+    justify-self: start;
+}
+
+.IconHeader {
+    color: #FF4D29;
+    margin: 2vh;
+}

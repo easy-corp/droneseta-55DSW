@@ -1,9 +1,11 @@
 import "../assets/css/myAlert.css"
 
 // Componente para adicionar um aviso no topo da tela
-// Os diferentes tipos de mensagem são definidos pelo props.tipo
-// erro == para mensagens de erro
-// sucesso == para mensagens de sucesso
+/* Os diferentes tipos de mensagem são definidos pelo props.tipo
+   erro    => para mensagens de erro
+   sucesso => para mensagens de sucesso
+   alerta  => para mensagens de alerta
+    */
 function MyAlert(props) {
     return (
         <div className={props.tipo} id="divAlerta">

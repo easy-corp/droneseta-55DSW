@@ -2,7 +2,6 @@
 
 ## Integrantes:
 
-- Gabriel Dolzan
 - Luis Felipe da Silva
 - Murilo Antunes Goedert
 

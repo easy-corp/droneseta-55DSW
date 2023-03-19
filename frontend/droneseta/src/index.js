@@ -10,8 +10,14 @@ import "./assets/css/main.css";
 // Todos os icons utilizados precisam ser adicionados aqui
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faDoorOpen)
+library.add(faDoorOpen);
+library.add(faMagnifyingGlass);
+library.add(faCartShopping);
+library.add(faUser);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
