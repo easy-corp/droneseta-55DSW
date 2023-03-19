@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/loginView.css";
 import logoLogin from "../assets/img/logoLogin.png";
+import MyAlert from "../components/MyAlert";
 import MyButtonIcon from "../components/MyButton";
 import { useAuthCtx } from "../utils/auth";
 
@@ -32,6 +33,7 @@ function LoginView() {
 
     return (
         <div id="app">
+            {!login && <MyAlert text="Verifique as informações de login" tipo="erro" />}
             <div id="divLogin">
                 <img src={logoLogin} alt="logoLogin" id="imgLogo" /> <br />
                 <input type="text" placeholder="Usuário" id="inpLogin" value={user} onChange={userHandler} /><br />
