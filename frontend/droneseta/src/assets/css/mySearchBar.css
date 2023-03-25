@@ -1,5 +1,9 @@
 #inpSearchBar {
     width: 50vh;
+    height: 4vh;
+
+    text-align: left;
+    padding: 1vh;
     margin: 0vh;
 
     position: relative;
@@ -8,22 +12,31 @@
     border-radius: 8px;
 }
 
-#icSearch {
+#divIcSearch {
+    height: 4vh;
+
     position: absolute;
+
+    top: 0vh;
     right: 0vh;
 
-    border-radius: 0px 8px 8px 0px;
-
     padding: 1vh;
-    margin: 0vh;
 
     background-color: #FF4D29;
+
+    border: 0.5px solid #FF4D29;
+    border-radius: 0px 8px 8px 0px;    
+}
+
+#icSearch {
     color: #FFFFFF;
 }
 
-#icSearch:hover {
+#divIcSearch:hover {
     background-color: #FFFFFF;
-    color: #FF4D29;
     border: 0.5px solid #FF4D29;
-    height: 2.3vh;
+}
+
+#divIcSearch:hover #icSearch {
+    color: #FF4D29;
 }

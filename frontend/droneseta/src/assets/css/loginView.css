@@ -30,7 +30,7 @@
     position: relative;
 }
 
-input {
+#divLogin input {
     width: 28vh;
 
     text-align: left;
@@ -43,11 +43,11 @@ input {
     margin-bottom: 2vh;
 }
 
-button {
+#divLogin button {
     margin-top: 2vh;
 }
 
-span {
+#divLogin span {
     bottom: 2vh;
     position: absolute;
     transform: translateX(-50%);
@@ -55,7 +55,7 @@ span {
     color: #999999;
 }
 
-span a {
+#divLogin span a {
     color: #FF4D29;
     font-weight: bold;
     text-decoration: none;

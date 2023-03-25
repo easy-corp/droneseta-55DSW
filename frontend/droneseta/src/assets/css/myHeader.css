@@ -37,4 +37,6 @@
 .IconHeader {
     color: #FF4D29;
     margin: 2vh;
+
+    cursor: pointer;
 }

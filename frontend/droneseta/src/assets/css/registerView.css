@@ -1,0 +1,28 @@
+h1 {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    color: #051E32;
+}
+
+#divRegister {
+    position: relative;
+    width: min-content;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin-bottom: 3vh;
+
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    row-gap: 2vh;
+}
+
+.rowInpRegister {
+    width: min-content;
+    position: relative;
+
+    display: grid;
+    grid-template-columns: min-content min-content;
+    column-gap: 5vh;
+}

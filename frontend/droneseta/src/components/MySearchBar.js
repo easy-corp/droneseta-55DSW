@@ -5,7 +5,9 @@ function MySearchBar() {
     return (
         <div id="colSearch">
             <input type="text" placeholder="Busque aqui" id="inpSearchBar"/>
-            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" id="icSearch" />
+            <div id="divIcSearch">
+                <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" id="icSearch" />
+            </div>
         </div>
     );
 }
