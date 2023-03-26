@@ -54,8 +54,8 @@ function RegisterView() {
                     />
                     <MyInput 
                         type="text"
-                        holder="Colocar alguma coisa aqui"
-                        inpId="inpDtNasc"
+                        holder="CPF"
+                        inpId="inpCPF"
                         size="large"
                     />
                 </div>

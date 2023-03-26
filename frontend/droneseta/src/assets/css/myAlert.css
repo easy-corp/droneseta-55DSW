@@ -8,10 +8,21 @@
 
     border-radius: 0.5vh;
 
-    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation: alertIn 0.5s forwards;
     -webkit-animation-delay: 0s;
-    animation: slide 0.5s forwards;
+    animation: alertIn 0.5s forwards;
     animation-delay: 0s;
+}
+
+#divAlerta.alert-out {
+    /* Animacao de saida
+       Classe adicionada via script */
+    top: -1vh;
+
+    -webkit-animation: alertOut 0.5s forwards;
+    -webkit-animation-delay: 0s;
+    animation: alertOut 0.5s forwards;
+    animation-delay: 3s;
 }
 
 p {
@@ -21,12 +32,20 @@ p {
     color: white;
 }
 
-@-webkit-keyframes slide {
-    100% { top: 0; }
+@-webkit-keyframes alertIn {
+    100% { top: -1vh; }
 }
 
-@keyframes slide {
-    100% { top: 0; }
+@keyframes alertIn {
+    100% { top: -1vh; }
+}
+
+@-webkit-keyframes alertOut {
+    100% { top: -10vh; }
+}
+
+@keyframes alertOut {
+    100% { top: -10vh; }
 }
 
 /* Para identificar o tipo do alerta
