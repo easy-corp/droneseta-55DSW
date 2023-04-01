@@ -58,9 +58,9 @@ function HomeView() {
         },
     ]
 
-    // Ao clicar para comprar um produto
-    function buyProduct() {
-
+    // Ao clicar para adicionar um produto no carrinho
+    function addProductCart(index) {
+        console.log("Botei o produto " + index + " no carrinho.");
     }
 
     return (
@@ -94,7 +94,8 @@ function HomeView() {
                                 <MyButton 
                                     text="Comprar"
                                     icon="fa-solid fa-cart-shopping"
-                                    event={buyProduct}
+                                    event={ addProductCart }
+                                    eventVar={ index }
                                 />
                             </div>
                         ))}
