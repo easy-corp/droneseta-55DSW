@@ -1,6 +1,5 @@
 #inpSearchBar {
     width: 50vh;
-    height: 4vh;
 
     text-align: left;
     padding: 1vh;
@@ -12,6 +11,25 @@
     border-radius: 8px;
 }
 
+/* Diminuimos o tamanho da barra de acordo com o tamanho da tela */
+@media only screen and (max-width: 1200px) {
+    #inpSearchBar  {
+        width: 40vh;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    #inpSearchBar  {
+        width: 30vh;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    #inpSearchBar  {
+        width: 15vh;
+    }
+}
+
 #divIcSearch {
     height: 4vh;
 
@@ -20,7 +38,7 @@
     top: 0vh;
     right: 0vh;
 
-    padding: 0.5vh;
+    padding: 1vh;
 
     background-color: #FF4D29;
 

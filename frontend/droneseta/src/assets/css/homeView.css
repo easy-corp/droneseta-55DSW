@@ -1,25 +1,88 @@
-#imgTopHome {
-    max-width: 100%;
+#divTopoHome {
+    width: 100%;
+    height: 70vh;
 
+    top: 14.5vh;
     z-index: -1;
+
+    background-image: url("../img/topoHome.jpg");
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#divInfoTopoHome {
+    width: 90vh;
+    height: 40vh;
+
+    margin-bottom: 14.5vh;
+
+    padding: 4vh;
+
+    border: 5px solid #FF4D29;
+    border-radius: 10px 120px 10px 120px;
+
+    backdrop-filter: blur(10px);
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: grid;
+    grid-template-columns: min-content min-content;
+    column-gap: 10vh;
+}
+
+#divInfoTopoHome h1 {
+    width: 40vh;
+
+    color: white;
+
+    text-align: left;
+}
+
+#divInfoTopoHome p {
+    width: 40vh;
+
+    color: #C1C1C1;
+    top: 3vh;
+
+    text-align: left;
+}
+
+.imgTopoHome {
+    max-width: 30vh;
+
+    border: 1px solid #FFFF;
+    border-radius: 3px;
+}
+
+#topoHomeImg1 {
+    top: 1vh;
+    right: 5vh;
+
+    z-index: 1;
+}
+
+#topoHomeImg2 {
+    top: -2vh;
+
+    z-index: 0;
 }
 
 #divBackNossosProdutos {
+    width: 100%;
     height: 80vh;
 
-    position: relative;
-    top: -1vh;
-
     background-color: #051E32;
-
-    display: flex;
 }
 
 #divNossosProdutos {
-    width: 130vh;
+    width: min-content;
     height: 100vh;
 
-    top: 11vh;
+    top: 8vh;
     left: 50%;
     transform: translateX(-50%);
 
@@ -28,10 +91,67 @@
     background-color: #ffff;
 }
 
-#divNossosProdutos h2 {
+#titleNossosProdutos {
     color: #ffff;
     text-align: left;
 
     position: absolute;    
-    top: -8vh;
+    top: -6vh;
+}
+
+#divProdutos {
+    padding: 2vh;
+
+    display: grid;
+    grid-template-columns: min-content min-content min-content min-content min-content;
+    column-gap: 4vh;
+}
+
+/* Diminuimos as colunas de acordo com o tamanho da tela */
+@media only screen and (max-width: 1200px) {
+    #divProdutos  {
+        grid-template-columns: min-content min-content min-content min-content;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    #divProdutos  {
+        grid-template-columns: min-content min-content min-content;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    #divProdutos  {
+        grid-template-columns: min-content min-content;
+    }
+}
+
+.prodHome {
+    width: min-content;
+}
+
+.prodHome img {
+    width: 70%;
+
+    margin-bottom: 1vh;
+
+    border: 1px solid #FF4D29;
+    border-radius: 8px;
+}
+
+.prodHome h3 {
+    height: 7vh;
+    color: #13293B;
+
+    margin-bottom: 1vh;
+}
+
+.prodHome h2 {
+    color: #FF4D29;
+
+    margin-bottom: 1vh;
+}
+
+.prodHome button {
+    margin-bottom: 4vh;
 }
