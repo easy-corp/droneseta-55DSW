@@ -1,0 +1,37 @@
+#imgTopHome {
+    max-width: 100%;
+
+    z-index: -1;
+}
+
+#divBackNossosProdutos {
+    height: 80vh;
+
+    position: relative;
+    top: -1vh;
+
+    background-color: #051E32;
+
+    display: flex;
+}
+
+#divNossosProdutos {
+    width: 130vh;
+    height: 100vh;
+
+    top: 11vh;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-radius: 3vh;
+
+    background-color: #ffff;
+}
+
+#divNossosProdutos h2 {
+    color: #ffff;
+    text-align: left;
+
+    position: absolute;    
+    top: -8vh;
+}

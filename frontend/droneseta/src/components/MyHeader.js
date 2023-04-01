@@ -7,6 +7,10 @@ import MySearchBar from "./MySearchBar";
 function MyHeader() {
     const navigate = useNavigate();
 
+    function logoHandler() {
+        navigate("/");
+    }
+
     function icCartHandler() {
         navigate("/cart");
     }
@@ -17,13 +21,16 @@ function MyHeader() {
 
     return (
         <header className="divHeader">
-            <div id="colImg">
-                <a href="/home"><img src={ logoHeader } alt="Logo" className="imgLogo"></img></a>
+            <div id="colImg" onClick={logoHandler}>
+                <img src={ logoHeader } alt="Logo" className="imgLogo"></img>
             </div>
             <MySearchBar />
             <div id="colIcons">
                 <FontAwesomeIcon icon="fa-solid fa-cart-shopping" className="IconHeader" onClick={icCartHandler} />
                 <FontAwesomeIcon icon="fa-solid fa-user" className="IconHeader" onClick={icUserHandler} />
+            </div>
+            <div id="divHeaderBottom">
+
             </div>
         </header>
     );

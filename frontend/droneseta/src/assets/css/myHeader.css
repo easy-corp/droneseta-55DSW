@@ -1,7 +1,7 @@
 .divHeader {
     width: 100%;
     height: 12vh;
-    position: relative;
+    position: fixed;
     top: 0vh;
 
     align-items: center;
@@ -20,6 +20,8 @@
     height: auto;
 
     position: relative;
+
+    cursor: pointer;
 }
 
 #colImg {
@@ -39,4 +41,15 @@
     margin: 2vh;
 
     cursor: pointer;
+}
+
+#divHeaderBottom {    
+    width: 100%;
+    height: 2.5vh;
+
+    position: fixed;
+
+    top: 12vh;
+
+    background-color: #FF4D29;
 }
