@@ -20,6 +20,7 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faTicket } from '@fortawesome/free-solid-svg-icons';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faDoorOpen);
 library.add(faMagnifyingGlass);
@@ -32,6 +33,7 @@ library.add(faChevronLeft);
 library.add(faChevronRight);
 library.add(faTicket);
 library.add(faPaperPlane);
+library.add(faCircleInfo);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

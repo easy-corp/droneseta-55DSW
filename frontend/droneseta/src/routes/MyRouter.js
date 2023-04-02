@@ -1,11 +1,12 @@
-import AuthProvider, { useAuthCtx } from "../utils/auth";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import AuthProvider, { useAuthCtx } from "../utils/auth";
+import ProductProvider from "../utils/products";
 import LoginView from "../views/LoginView";
 import HomeView from "../views/HomeView";
 import ErrorView from "../views/ErrorView";
 import RegisterView from "../views/RegisterView";
 import CartView from "../views/CartView";
-import ProductProvider from "../utils/products";
+import PaymentView from "../views/PaymentView";
 
 // Esse componente sera o responsavel por direcionar as diferentes telas do projeto
 function MyRouter() {
@@ -39,6 +40,12 @@ function MyRouter() {
                             <Route path="/cart" element={
                                 <AuthRoute>
                                     <CartView />
+                                </AuthRoute>
+                            }></Route>
+                            {/* Rota para tela de finalização do pagamento */}
+                            <Route path="/payment" element={
+                                <AuthRoute>
+                                    <PaymentView />
                                 </AuthRoute>
                             }></Route>
                         </Routes>

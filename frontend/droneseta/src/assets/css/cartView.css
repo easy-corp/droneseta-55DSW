@@ -89,8 +89,6 @@
 }
 
 .divLine {
-    width: 90vh;
-
     left: 50%;
     transform: translateX(-50%);
 
@@ -100,8 +98,18 @@
     border-top: 1px solid #FF4D29;
 }
 
-#divFinalCart {
+.lineMenor {
+    width: 50vh;
+}
 
+.lineMaior {
+    width: 90vh;
+}
+
+#divFinalCart {
+    display: grid;
+    grid-template-columns: min-content min-content;
+    column-gap: 3vh;
 }
 
 #colCupomFrete {
@@ -115,4 +123,39 @@
     display: grid;
     grid-template-columns: min-content min-content;
     column-gap: 2vh;
+}
+
+.rowCupomFrete input {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.rowCupomFrete a {
+    position: absolute;
+
+    top: 7vh;
+    left: 6vh;
+
+    text-decoration: none;
+    color: #FF4D29;
+}
+
+#divTotalCart {
+    width: 35vh;
+    height: 25vh;
+
+    padding: 1vh;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    border: 1px solid #FF4D29;
+}
+
+#divTotalCart strong {
+    color: #FF4D29;
+}
+
+#divTotalCart button {
+    margin-bottom: 2vh;
 }

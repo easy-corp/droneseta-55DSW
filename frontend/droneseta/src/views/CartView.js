@@ -5,9 +5,11 @@ import MyHeader from "../components/MyHeader";
 import MyTitle from "../components/MyTitle";
 import MyInput from "../components/MyInput";
 import MyButton from "../components/MyButton";
+import { useNavigate } from "react-router-dom";
 
 function CartView() {
     const ctxProduct = useProductCtx();
+    const navigate = useNavigate();
 
     // Aumentar a quantidade daquele item
     function moreQtdProduct(index) {
@@ -27,6 +29,21 @@ function CartView() {
     // Para calcular o CEP
     function handlerCEP() {
         console.log("Você tentou calcular o CEP");
+    }
+
+    // Para exibir info sobre o frete ao pressionar o icone no input
+    function showInfoFrete() {
+
+    }
+
+    // Para continuar a adicionar itens no carrinho
+    function continuarCompra() {
+        navigate("/");
+    }
+
+    // Para finalizar a compra
+    function finalizarCompra() {
+        navigate("/payment");
     }
 
     return(
@@ -64,7 +81,7 @@ function CartView() {
                     <h2>Subtotal</h2>
                     <h2 id="hTotal">R$ { ctxProduct.getTotalCartProducts() }</h2>
                 </div>
-                <div className="divLine"></div>
+                <div className="divLine lineMaior"></div>
                 <div id="divFinalCart">
                     <div id="colCupomFrete">
                         <MyTitle
@@ -80,6 +97,7 @@ function CartView() {
                                 event={ handlerCupom }
                             />
                         </div>
+                        <div className="divLine lineMenor"></div>
                         <MyTitle
                             text="Frete"
                             icon="fa-solid fa-paper-plane"
@@ -87,7 +105,10 @@ function CartView() {
                         <div className="rowCupomFrete">
                             <MyInput 
                                 holder="Insira seu CEP"
+                                icon="fa-solid fa-circle-info"
+                                iconEvent={ showInfoFrete }
                             />
+                            <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank"><h4>Como descobrir meu CEP?</h4></a>
                             <MyButton 
                                 text="Buscar CEP"
                                 event={ handlerCEP }
@@ -95,7 +116,17 @@ function CartView() {
                         </div>
                     </div>
                     <div id="colFinalCart">
-
+                        <div id="divTotalCart">
+                            <h1>Total: <strong>R$ { ctxProduct.getTotalCartProducts() }</strong></h1>
+                            <MyButton 
+                                text="Continuar Compra"
+                                event={ continuarCompra }
+                            />
+                            <MyButton 
+                                text="Finalizar Compra"
+                                event={ finalizarCompra }
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
