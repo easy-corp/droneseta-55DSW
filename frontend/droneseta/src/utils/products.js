@@ -10,59 +10,61 @@ export const ProductCtx = createContext();
 export const useProductCtx = () => useContext(ProductCtx);
 
 function ProductProvider({ children }) {    
-    // Produtos iniciais
-    const initProducts = [
-        {
-            name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
-            price: 54.99,
-            size: "G",
-            image: camisetaSlipknot1
-        },
-        {
-            name: "Camiseta Linkin Park Meteora capa do álbum.",
-            price: 54.99,
-            size: "M",
-            image: camisetaLinkinPark1
-        },
-        {
-            name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
-            price: 54.99,
-            size: "G",
-            image: camisetaSlipknot1
-        },
-        {
-            name: "Camiseta Linkin Park Meteora capa do álbum.",
-            price: 54.99,
-            size: "M",
-            image: camisetaLinkinPark1
-        },
-        {
-            name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
-            price: 54.99,
-            size: "G",
-            image: camisetaSlipknot1
-        },
-        {
-            name: "Camiseta Linkin Park Meteora capa do álbum.",
-            price: 54.99,
-            size: "M",
-            image: camisetaLinkinPark1
-        },
-        {
-            name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
-            price: 54.99,
-            size: "G",
-            image: camisetaSlipknot1
-        },
-        {
-            name: "Camiseta Linkin Park Meteora capa do álbum.",
-            price: 54.99,
-            size: "M",
-            image: camisetaLinkinPark1
-        },
-    ];
+    // Para gerar os produtos iniciais
+    function initProducts() {
+        return [
+            {
+                name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
+                price: 54.99,
+                size: "G",
+                image: camisetaSlipknot1
+            },
+            {
+                name: "Camiseta Linkin Park Meteora capa do álbum.",
+                price: 54.99,
+                size: "M",
+                image: camisetaLinkinPark1
+            },
+            {
+                name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
+                price: 54.99,
+                size: "G",
+                image: camisetaSlipknot1
+            },
+            {
+                name: "Camiseta Linkin Park Meteora capa do álbum.",
+                price: 54.99,
+                size: "M",
+                image: camisetaLinkinPark1
+            },
+            {
+                name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
+                price: 54.99,
+                size: "G",
+                image: camisetaSlipknot1
+            },
+            {
+                name: "Camiseta Linkin Park Meteora capa do álbum.",
+                price: 54.99,
+                size: "M",
+                image: camisetaLinkinPark1
+            },
+            {
+                name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
+                price: 54.99,
+                size: "G",
+                image: camisetaSlipknot1
+            },
+            {
+                name: "Camiseta Linkin Park Meteora capa do álbum.",
+                price: 54.99,
+                size: "M",
+                image: camisetaLinkinPark1
+            },
+        ];
+    }
 
-    const [products, setProducts] = useState(initProducts);        // Produtos cadastrados
+    const [products, setProducts] = useState(initProducts());      // Produtos cadastrados
     const [cartProducts, setCartProducts] = useState([]);          // Produtos no carrinho de compras
 
     // Para cadastrar um novo produto
@@ -71,13 +73,43 @@ function ProductProvider({ children }) {
     }
 
     // Para adicionar um produto no carrinho de compras
+    // Ele é adicionado com quantidade 1
     function addCartProduct(product) {
-        setCartProducts([...cartProducts, product]);
+        var cartProduct = {...product, qtd: 1};
+
+        setCartProducts([...cartProducts, cartProduct]);
     }
 
+    // Para aumentar a quantidade comprada daquele item
+    // É necessário criar uma cópia do estado e modificá-la
+    // Só depois podemos setar como lista atual
+    function oneMoreCartProduct(index) {
+        const auxProducts = [...cartProducts];
+        
+        auxProducts[index].qtd++;
+
+        setCartProducts(auxProducts);
+    }
+
+    // Para diminuir a quantidade comprada daquele item
+    // É necessário criar uma cópia do estado e modificá-la
+    // Só depois podemos setar como lista atual
+    function oneLessCartProduct(index) {
+        const auxProducts = [...cartProducts];
+        const prod = auxProducts[index];
+        
+        prod.qtd--;
+
+        // Se chegar a 0 o produto é removido
+        if (prod.qtd === 0) {
+            auxProducts.splice(index, 1);
+        }
+
+        setCartProducts(auxProducts);
+    }
 
     return (
-        <ProductCtx.Provider value={{ products, addProduct, cartProducts, addCartProduct }}>
+        <ProductCtx.Provider value={{ products, addProduct, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct }}>
             { children }
         </ProductCtx.Provider>
     );

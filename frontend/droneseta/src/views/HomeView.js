@@ -10,8 +10,6 @@ function HomeView() {
 
     // Ao clicar para adicionar um produto no carrinho
     function addProductCart(index) {
-        console.log("Botei o produto " + index + " no carrinho.");
-
         ctxProduct.addCartProduct(ctxProduct.products[index]);
     }
 
@@ -39,7 +37,7 @@ function HomeView() {
                     <h2 id="titleNossosProdutos">Nossos Produtos</h2>
 
                     <div id="divProdutos">
-                        {ctxProduct.products.map((prod, index) => (
+                        { ctxProduct.products.map((prod, index) => (
                             <div className="prodHome" key={index} >
                                 <img src={ prod.image } alt="Imagem do Produto"></img>
                                 <h3>{ prod.name }</h3>
@@ -51,7 +49,7 @@ function HomeView() {
                                     eventVar={ index }
                                 />
                             </div>
-                        ))}
+                        )) }
                     </div>
                 </div>
             </div>
