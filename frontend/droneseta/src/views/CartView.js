@@ -1,10 +1,17 @@
+import "../assets/css/cartView.css";
 import MyHeader from "../components/MyHeader";
+import MyTitle from "../components/MyTitle";
 
 function CartView() {
     return(
         <div>
             <MyHeader />
-            <h1>Você está na tela do Carrinho de Compras</h1>
+            <div id="divProductsCart">
+                <MyTitle
+                    text="Produtos"
+                    icon="fa-solid fa-box-open"
+                />
+            </div>
         </div>
 
     );

@@ -1,6 +1,6 @@
-/* Criamos um contexto para poder compartilhar dados entre muitos
-   componentes. Serve para espalhar infos que serao requiridas em
-   muitos lugares diferentes */
+/* Contexto destinado ao login, as informações aqui colocadas
+   podem ser acessadas a partir de diferentes pontos da nossa
+   aplicação */
 
 import { createContext, useContext, useState } from "react";
 

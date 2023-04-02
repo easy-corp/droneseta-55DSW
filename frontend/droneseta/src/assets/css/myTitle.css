@@ -1,0 +1,21 @@
+#divTitle {
+    display: grid;
+    grid-template-columns: min-content min-content;
+    column-gap: 1.5vh;
+}
+
+#icTitle, #textTitle {
+    color: #FF4D29;
+}
+
+#icTitle {
+    width: 3vh;
+    height: 3vh;
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#textTitle {
+    margin: 0vh;
+}

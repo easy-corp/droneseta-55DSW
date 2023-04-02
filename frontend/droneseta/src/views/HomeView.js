@@ -1,71 +1,24 @@
 import "../assets/css/homeView.css"
 import topoHomeImg1 from "../assets/img/topoHomeImg1.png";
 import topoHomeImg2 from "../assets/img/topoHomeImg2.png";
-import camisetaSlipknot1 from "../assets/img/camisetas/Slipknot1.png";
-import camisetaLinkinPark1 from "../assets/img/camisetas/LinkinPark1.jpeg";
 import MyHeader from "../components/MyHeader";
 import MyButton from "../components/MyButton";
+import { useProductCtx } from "../utils/products";
 
 function HomeView() {
-    const products = [
-        {
-            name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
-            price: 54.99,
-            size: "G",
-            image: camisetaSlipknot1
-        },
-        {
-            name: "Camiseta Linkin Park Meteora capa do álbum.",
-            price: 54.99,
-            size: "M",
-            image: camisetaLinkinPark1
-        },
-        {
-            name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
-            price: 54.99,
-            size: "G",
-            image: camisetaSlipknot1
-        },
-        {
-            name: "Camiseta Linkin Park Meteora capa do álbum.",
-            price: 54.99,
-            size: "M",
-            image: camisetaLinkinPark1
-        },
-        {
-            name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
-            price: 54.99,
-            size: "G",
-            image: camisetaSlipknot1
-        },
-        {
-            name: "Camiseta Linkin Park Meteora capa do álbum.",
-            price: 54.99,
-            size: "M",
-            image: camisetaLinkinPark1
-        },
-        {
-            name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
-            price: 54.99,
-            size: "G",
-            image: camisetaSlipknot1
-        },
-        {
-            name: "Camiseta Linkin Park Meteora capa do álbum.",
-            price: 54.99,
-            size: "M",
-            image: camisetaLinkinPark1
-        },
-    ]
+    const ctxProduct = useProductCtx();
 
     // Ao clicar para adicionar um produto no carrinho
     function addProductCart(index) {
         console.log("Botei o produto " + index + " no carrinho.");
+
+        ctxProduct.addCartProduct(ctxProduct.products[index]);
     }
 
     return (
         <div>
             <MyHeader />
+            { ctxProduct.cartProducts.length > 0 && <div id="cartItens"> { ctxProduct.cartProducts.length } </div> }
             <div id="divTopoHome">
                 <div id="divInfoTopoHome">
                     <div>
@@ -86,7 +39,7 @@ function HomeView() {
                     <h2 id="titleNossosProdutos">Nossos Produtos</h2>
 
                     <div id="divProdutos">
-                        {products.map((prod, index) => (
+                        {ctxProduct.products.map((prod, index) => (
                             <div className="prodHome" key={index} >
                                 <img src={ prod.image } alt="Imagem do Produto"></img>
                                 <h3>{ prod.name }</h3>

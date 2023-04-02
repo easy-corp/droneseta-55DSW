@@ -15,6 +15,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faCalendarDay } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faBoxOpen } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faDoorOpen);
 library.add(faMagnifyingGlass);
@@ -22,6 +23,7 @@ library.add(faCartShopping);
 library.add(faUser);
 library.add(faCalendarDay);
 library.add(faEyeSlash);
+library.add(faBoxOpen);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

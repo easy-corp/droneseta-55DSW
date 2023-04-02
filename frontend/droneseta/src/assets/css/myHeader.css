@@ -3,6 +3,8 @@
     height: 12vh;
     position: fixed;
 
+    z-index: 2;
+
     align-items: center;
 
     background-color: #051E32;
