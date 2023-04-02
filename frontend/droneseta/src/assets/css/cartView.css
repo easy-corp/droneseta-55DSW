@@ -74,3 +74,45 @@
     top: 0.5vh;
     color: #FF4D29;
 }
+
+#divCartTotal {
+    left: 69%;
+
+    display: grid;
+    grid-template-columns: min-content min-content;
+    column-gap: 5vh;
+}
+
+#divCartTotal #hTotal {
+    width: 15vh;
+    color: #FF4D29;
+}
+
+.divLine {
+    width: 90vh;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+
+    border-top: 1px solid #FF4D29;
+}
+
+#divFinalCart {
+
+}
+
+#colCupomFrete {
+    display: grid;
+    grid-template-rows: min-content min-content;
+}
+
+.rowCupomFrete {
+    padding: 2vh;
+
+    display: grid;
+    grid-template-columns: min-content min-content;
+    column-gap: 2vh;
+}

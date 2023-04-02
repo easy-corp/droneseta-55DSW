@@ -108,8 +108,19 @@ function ProductProvider({ children }) {
         setCartProducts(auxProducts);
     }
 
+    // Para recuperar o valor total dos produtos
+    function getTotalCartProducts() {
+        let value = 0;
+
+        for (let prod of cartProducts) {
+            value += prod.price * prod.qtd;
+        }
+
+        return value;
+    }
+
     return (
-        <ProductCtx.Provider value={{ products, addProduct, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct }}>
+        <ProductCtx.Provider value={{ products, addProduct, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct, getTotalCartProducts }}>
             { children }
         </ProductCtx.Provider>
     );

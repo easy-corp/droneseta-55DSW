@@ -17,5 +17,6 @@
 }
 
 #textTitle {
+    width: max-content;
     margin: 0vh;
 }

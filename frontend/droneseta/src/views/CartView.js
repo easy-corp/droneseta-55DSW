@@ -1,8 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../assets/css/cartView.css";
+import { useProductCtx } from "../utils/products";
 import MyHeader from "../components/MyHeader";
 import MyTitle from "../components/MyTitle";
-import { useProductCtx } from "../utils/products";
+import MyInput from "../components/MyInput";
+import MyButton from "../components/MyButton";
 
 function CartView() {
     const ctxProduct = useProductCtx();
@@ -17,6 +19,16 @@ function CartView() {
         ctxProduct.oneLessCartProduct(index);
     }
 
+    // Para aplicar cupom
+    function handlerCupom() {
+        console.log("Você tentou aplicar um cupom");
+    }
+
+    // Para calcular o CEP
+    function handlerCEP() {
+        console.log("Você tentou calcular o CEP");
+    }
+
     return(
         <div>
             <MyHeader />
@@ -25,7 +37,6 @@ function CartView() {
                     text="Produtos"
                     icon="fa-solid fa-box-open"
                 />
-
                 { ctxProduct.cartProducts.map((prod, index) => (
                     <div className="prodCart" key={ index } >
                         <div id="divProdInfo">
@@ -49,6 +60,44 @@ function CartView() {
                         </div>
                     </div>
                 )) }
+                <div id="divCartTotal">
+                    <h2>Subtotal</h2>
+                    <h2 id="hTotal">R$ { ctxProduct.getTotalCartProducts() }</h2>
+                </div>
+                <div className="divLine"></div>
+                <div id="divFinalCart">
+                    <div id="colCupomFrete">
+                        <MyTitle
+                            text="Cupom de Desconto"
+                            icon="fa-solid fa-ticket"
+                        />
+                        <div className="rowCupomFrete">
+                            <MyInput 
+                                holder="Insira o cupom"
+                            />
+                            <MyButton 
+                                text="Aplicar Cupom"
+                                event={ handlerCupom }
+                            />
+                        </div>
+                        <MyTitle
+                            text="Frete"
+                            icon="fa-solid fa-paper-plane"
+                        />
+                        <div className="rowCupomFrete">
+                            <MyInput 
+                                holder="Insira seu CEP"
+                            />
+                            <MyButton 
+                                text="Buscar CEP"
+                                event={ handlerCEP }
+                            />
+                        </div>
+                    </div>
+                    <div id="colFinalCart">
+
+                    </div>
+                </div>
             </div>
         </div>
 
