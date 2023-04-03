@@ -31,81 +31,83 @@ function RegisterView() {
     return(
         <div>
             <MyHeader />
-            <h1>Criar Conta</h1>
-            <div id="divRegister">
-                <div className="rowInpRegister">
-                    <MyInput 
-                        type="text"
-                        holder="Nome"
-                        inpId="inpNome"
-                    />
-                    <MyInput 
-                        type="text"
-                        holder="Sobrenome"
-                        inpId="inpSobrenome"
-                    />
+            <div id="divMainRegister">
+                <h1>Criar Conta</h1>
+                <div id="divRegister">
+                    <div className="rowInpRegister">
+                        <MyInput 
+                            type="text"
+                            holder="Nome"
+                            inpId="inpNome"
+                        />
+                        <MyInput 
+                            type="text"
+                            holder="Sobrenome"
+                            inpId="inpSobrenome"
+                        />
+                    </div>
+                    <div className="rowInpRegister">
+                        <MyInput 
+                            type="date"
+                            holder="Data de Nascimento"
+                            inpId="inpDtNasc"
+                            size="small"
+                        />
+                        <MyInput 
+                            type="text"
+                            holder="CPF"
+                            inpId="inpCPF"
+                            size="large"
+                        />
+                    </div>
+                    <div className="rowInpRegister">
+                        <MyInput 
+                            type="text"
+                            holder="Telefone"
+                            inpId="inpTelefone"
+                        />
+                        <MyInput 
+                            type="text"
+                            holder="Celular"
+                            inpId="inpCelular"
+                        />
+                    </div>
+                    <div className="rowInpRegister">
+                        <MyInput 
+                            type="email"
+                            holder="Email"
+                            inpId="inpEmail"
+                            size="large"
+                        />
+                        <MyInput 
+                            type="text"
+                            holder="Login"
+                            inpId="inpLogin"
+                            size="small"
+                        />
+                    </div>
+                    <div className="rowInpRegister">
+                        <MyInput 
+                            type="password"
+                            holder="Senha"
+                            inpId="inpSenha"
+                            icon="fa-eye-slash"
+                            iconEvent={showSenha}
+                        />
+                        <MyInput 
+                            type="password"
+                            holder="Confirme a Senha"
+                            inpId="inpConfSenha"
+                            icon="fa-eye-slash"
+                            iconEvent={showSenha}
+                        />
+                    </div>
                 </div>
-                <div className="rowInpRegister">
-                    <MyInput 
-                        type="date"
-                        holder="Data de Nascimento"
-                        inpId="inpDtNasc"
-                        size="small"
-                    />
-                    <MyInput 
-                        type="text"
-                        holder="CPF"
-                        inpId="inpCPF"
-                        size="large"
-                    />
-                </div>
-                <div className="rowInpRegister">
-                    <MyInput 
-                        type="text"
-                        holder="Telefone"
-                        inpId="inpTelefone"
-                    />
-                    <MyInput 
-                        type="text"
-                        holder="Celular"
-                        inpId="inpCelular"
-                    />
-                </div>
-                <div className="rowInpRegister">
-                    <MyInput 
-                        type="email"
-                        holder="Email"
-                        inpId="inpEmail"
-                        size="large"
-                    />
-                    <MyInput 
-                        type="text"
-                        holder="Login"
-                        inpId="inpLogin"
-                        size="small"
-                    />
-                </div>
-                <div className="rowInpRegister">
-                    <MyInput 
-                        type="password"
-                        holder="Senha"
-                        inpId="inpSenha"
-                        icon="fa-eye-slash"
-                        iconEvent={showSenha}
-                    />
-                    <MyInput 
-                        type="password"
-                        holder="Confirme a Senha"
-                        inpId="inpConfSenha"
-                        icon="fa-eye-slash"
-                        iconEvent={showSenha}
-                    />
-                </div>
+                < MyButton 
+                    text="Realizar Cadastro"
+                    event={cadastrarUsuario}
+                />
             </div>
-            < MyButton 
-                text="Realizar Cadastro"
-                event={cadastrarUsuario}
-            />
         </div>
     );
 }

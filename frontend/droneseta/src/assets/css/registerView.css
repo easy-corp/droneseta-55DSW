@@ -1,11 +1,18 @@
-h1 {
+#divMainRegister {
+    top: 14.5vh;
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h1 { 
     margin-top: 2vh;
     margin-bottom: 2vh;
     color: #051E32;
 }
 
 #divRegister {
-    position: relative;
     width: min-content;
 
     left: 50%;

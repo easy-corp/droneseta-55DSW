@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 function CartView() {
     const ctxProduct = useProductCtx();
     const navigate = useNavigate();
+    var displayRecadoEntrega = false;
 
     // Aumentar a quantidade daquele item
     function moreQtdProduct(index) {
@@ -33,7 +34,15 @@ function CartView() {
 
     // Para exibir info sobre o frete ao pressionar o icone no input
     function showInfoFrete() {
+        var divRecadoEntrega = document.getElementById("divRecadoEntrega");
 
+        if (displayRecadoEntrega) {
+            divRecadoEntrega.style.display = "none";
+        } else {
+            divRecadoEntrega.style.display = "inline";
+        }
+
+        displayRecadoEntrega = !displayRecadoEntrega;
     }
 
     // Para continuar a adicionar itens no carrinho
@@ -54,6 +63,7 @@ function CartView() {
                     text="Produtos"
                     icon="fa-solid fa-box-open"
                 />
+                { ctxProduct.cartProducts.length == 0 && <h2>Ainda não há produtos no seu carrinho de compras</h2> }
                 { ctxProduct.cartProducts.map((prod, index) => (
                     <div className="prodCart" key={ index } >
                         <div id="divProdInfo">
@@ -73,7 +83,7 @@ function CartView() {
                         </div>
                         <div id="divProdValor">
                             <h3>Valor</h3>
-                            <h3 id="hValor">R$ { prod.price }</h3>
+                            <h3 id="hValor">R$ { (prod.price * prod.qtd) }</h3>
                         </div>
                     </div>
                 )) }
@@ -103,6 +113,16 @@ function CartView() {
                             icon="fa-solid fa-paper-plane"
                         />
                         <div className="rowCupomFrete">
+                            <div id="divRecadoEntrega">
+                                <p>
+                                Somos inovadores na entrega por drones,
+                                seus pedidos serão entregues muito
+                                rapidamente, mediante disponibilidade.
+                                </p>
+                                <div id="divTrianguloRecadoEntrega">
+
+                                </div>
+                            </div>
                             <MyInput 
                                 holder="Insira seu CEP"
                                 icon="fa-solid fa-circle-info"

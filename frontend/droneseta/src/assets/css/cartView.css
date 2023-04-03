@@ -76,6 +76,7 @@
 }
 
 #divCartTotal {
+    width: min-content;
     left: 69%;
 
     display: grid;
@@ -138,6 +139,38 @@
 
     text-decoration: none;
     color: #FF4D29;
+}
+
+#divRecadoEntrega {
+    width: 28vh;
+    height: 9vh;
+
+    position: absolute;
+    top: -8vh;
+    left: 21.5vh;
+
+    padding: 0.5vh;
+
+    z-index: 2;
+
+    background-color: #FF4D29;
+
+    display: none;
+}
+
+#divTrianguloRecadoEntrega {
+    width: 0; 
+    height: 0;
+
+    left: 4vh;
+
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid #FF4D29;
+}
+
+#divRecadoEntrega p {
+    text-align: justify;
 }
 
 #divTotalCart {
