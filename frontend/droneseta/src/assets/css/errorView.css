@@ -1,0 +1,36 @@
+#div404 {
+    position: absolute;
+
+    top: 20vh;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: grid;
+    grid-template-rows: min-content min-content;
+}
+
+#divImg404 {
+    display: grid;
+    grid-template-columns: min-content min-content;
+}
+
+#divImg404 img {
+    max-width: 40vh;
+}
+
+#divImg404 h1 {
+    width: 50vh;
+
+    top: 12vh;
+
+    text-align: left;
+    color: #FF4D29;
+}
+
+#div404 p {
+    width: 100%;
+
+    font-size: x-large;
+    text-align: left;
+    color: #142A3B;
+}

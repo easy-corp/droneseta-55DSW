@@ -63,7 +63,7 @@ function CartView() {
                     text="Produtos"
                     icon="fa-solid fa-box-open"
                 />
-                { ctxProduct.cartProducts.length == 0 && <h2>Ainda não há produtos no seu carrinho de compras</h2> }
+                { ctxProduct.cartProducts.length == 0 && <h2 id="hEmptyCart">Ainda não há produtos no seu carrinho de compras</h2> }
                 { ctxProduct.cartProducts.map((prod, index) => (
                     <div className="prodCart" key={ index } >
                         <div id="divProdInfo">

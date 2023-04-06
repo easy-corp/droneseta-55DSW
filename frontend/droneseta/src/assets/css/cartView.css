@@ -192,3 +192,8 @@
 #divTotalCart button {
     margin-bottom: 2vh;
 }
+
+#hEmptyCart {
+    margin-top: 3vh;
+    margin-bottom: 4vh;
+}
