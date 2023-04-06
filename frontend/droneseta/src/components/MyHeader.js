@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "../assets/css/myHeader.css";
 import logoHeader from "../assets/img/logoHeader.png";
 import MySearchBar from "./MySearchBar";
+import { useProductCtx } from '../utils/products';
 
 function MyHeader() {
+    const ctxProduct = useProductCtx();
     const navigate = useNavigate();
 
     function logoHandler() {
@@ -26,12 +28,11 @@ function MyHeader() {
             </div>
             <MySearchBar />
             <div id="colIcons">
+                { ctxProduct.cartProducts.length > 0 && <div id="cartItens"> { ctxProduct.cartProducts.length } </div> }
                 <FontAwesomeIcon icon="fa-solid fa-cart-shopping" className="IconHeader" onClick={icCartHandler} />
                 <FontAwesomeIcon icon="fa-solid fa-user" className="IconHeader" onClick={icUserHandler} />
             </div>
-            <div id="divHeaderBottom">
-
-            </div>
+            <div id="divHeaderBottom"></div>
         </header>
     );
 }

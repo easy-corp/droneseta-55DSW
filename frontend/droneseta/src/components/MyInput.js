@@ -2,11 +2,12 @@ import "../assets/css/myInput.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 // Componente de input padrao
+// props.size == tamanho do input [small ou large]
 // props.type == tipo do input
 // props.holder == placeholder do input
 // props.inpId == id do input
-// props.icon == icone no botao (opcional)
-// props.iconEvent == evento de click icone no botao (opcional)
+// props.icon == icone no input (opcional)
+// props.iconEvent == evento de click icone no input (opcional)
 function MyInput(props) {
     const class1 = "input";
 

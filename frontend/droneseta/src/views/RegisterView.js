@@ -62,18 +62,6 @@ function RegisterView() {
                     </div>
                     <div className="rowInpRegister">
                         <MyInput 
-                            type="text"
-                            holder="Telefone"
-                            inpId="inpTelefone"
-                        />
-                        <MyInput 
-                            type="text"
-                            holder="Celular"
-                            inpId="inpCelular"
-                        />
-                    </div>
-                    <div className="rowInpRegister">
-                        <MyInput 
                             type="email"
                             holder="Email"
                             inpId="inpEmail"

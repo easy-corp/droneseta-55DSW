@@ -16,49 +16,105 @@ function ProductProvider({ children }) {
             {
                 name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
                 price: 54.99,
-                size: "G",
+                size: [
+                    {tamanho: "PP", qtd: 1},
+                    {tamanho: "P", qtd: 1},
+                    {tamanho: "M", qtd: 1},
+                    {tamanho: "G", qtd: 1},
+                    {tamanho: "GG", qtd: 1},
+                    {tamanho: "XGG", qtd: 1},
+                ],
                 image: camisetaSlipknot1
             },
             {
                 name: "Camiseta Linkin Park Meteora capa do álbum.",
                 price: 54.99,
-                size: "M",
+                size: [
+                    {tamanho: "PP", qtd: 1},
+                    {tamanho: "P", qtd: 1},
+                    {tamanho: "M", qtd: 1},
+                    {tamanho: "G", qtd: 1},
+                    {tamanho: "GG", qtd: 1},
+                    {tamanho: "XGG", qtd: 1},
+                ],
                 image: camisetaLinkinPark1
             },
             {
                 name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
                 price: 54.99,
-                size: "G",
+                size: [
+                    {tamanho: "PP", qtd: 1},
+                    {tamanho: "P", qtd: 1},
+                    {tamanho: "M", qtd: 1},
+                    {tamanho: "G", qtd: 1},
+                    {tamanho: "GG", qtd: 1},
+                    {tamanho: "XGG", qtd: 1},
+                ],
                 image: camisetaSlipknot1
             },
             {
                 name: "Camiseta Linkin Park Meteora capa do álbum.",
                 price: 54.99,
-                size: "M",
+                size: [
+                    {tamanho: "PP", qtd: 1},
+                    {tamanho: "P", qtd: 1},
+                    {tamanho: "M", qtd: 1},
+                    {tamanho: "G", qtd: 1},
+                    {tamanho: "GG", qtd: 1},
+                    {tamanho: "XGG", qtd: 1},
+                ],
                 image: camisetaLinkinPark1
             },
             {
                 name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
                 price: 54.99,
-                size: "G",
+                size: [
+                    {tamanho: "PP", qtd: 1},
+                    {tamanho: "P", qtd: 1},
+                    {tamanho: "M", qtd: 1},
+                    {tamanho: "G", qtd: 1},
+                    {tamanho: "GG", qtd: 1},
+                    {tamanho: "XGG", qtd: 1},
+                ],
                 image: camisetaSlipknot1
             },
             {
                 name: "Camiseta Linkin Park Meteora capa do álbum.",
                 price: 54.99,
-                size: "M",
+                size: [
+                    {tamanho: "PP", qtd: 1},
+                    {tamanho: "P", qtd: 1},
+                    {tamanho: "M", qtd: 1},
+                    {tamanho: "G", qtd: 1},
+                    {tamanho: "GG", qtd: 1},
+                    {tamanho: "XGG", qtd: 1},
+                ],
                 image: camisetaLinkinPark1
             },
             {
                 name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
                 price: 54.99,
-                size: "G",
+                size: [
+                    {tamanho: "PP", qtd: 1},
+                    {tamanho: "P", qtd: 1},
+                    {tamanho: "M", qtd: 1},
+                    {tamanho: "G", qtd: 1},
+                    {tamanho: "GG", qtd: 1},
+                    {tamanho: "XGG", qtd: 1},
+                ],
                 image: camisetaSlipknot1
             },
             {
                 name: "Camiseta Linkin Park Meteora capa do álbum.",
                 price: 54.99,
-                size: "M",
+                size: [
+                    {tamanho: "PP", qtd: 1},
+                    {tamanho: "P", qtd: 1},
+                    {tamanho: "M", qtd: 1},
+                    {tamanho: "G", qtd: 1},
+                    {tamanho: "GG", qtd: 1},
+                    {tamanho: "XGG", qtd: 1},
+                ],
                 image: camisetaLinkinPark1
             },
         ];
@@ -73,9 +129,9 @@ function ProductProvider({ children }) {
     }
 
     // Para adicionar um produto no carrinho de compras
-    // Ele é adicionado com quantidade 1
-    function addCartProduct(product) {
-        var cartProduct = {...product, qtd: 1};
+    // Ele é adicionado com quantidade e tamanho
+    function addCartProduct(product, quantidade, tamanho) {
+        var cartProduct = {...product, qtd: quantidade, sizeChoosed:tamanho };
 
         setCartProducts([...cartProducts, cartProduct]);
     }

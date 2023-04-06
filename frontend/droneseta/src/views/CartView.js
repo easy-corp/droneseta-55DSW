@@ -70,7 +70,7 @@ function CartView() {
                             <img src={ prod.image } alt="Foto Camisa" ></img>
                             <div>
                                 <h3>{ prod.name }</h3>
-                                <h4>Tamanho: { prod.size }</h4>
+                                <h4>Tamanho: { prod.sizeChoosed }</h4>
                             </div>
                         </div>
                         <div id="divProdQtd">

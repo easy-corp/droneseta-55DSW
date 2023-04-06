@@ -1,0 +1,70 @@
+#divProdutoView {
+    position: absolute;
+    top: 14.5vh;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding: 2vh;
+
+    display: grid;
+    grid-template-columns: min-content min-content;
+    column-gap: 3svh;
+}
+
+#divProdutoView img {
+    max-width: 40vh;
+
+    border: 1px solid #FF4D29;
+    border-radius: 7px;
+}
+
+#divProdutoViewInfos {
+    display: grid;
+    grid-template-rows: min-content min-content min-content min-content;
+    row-gap: 1vh;
+}
+
+#ProdutoViewNome {
+    width: 60vh;
+
+    margin-bottom: 0vh;
+
+    text-align: left;
+}
+
+#ProdutoViewPreco {
+    width: max-content;
+
+    margin: 0vh;
+
+    color: #FF4D29;
+}
+
+#divProdutoComprar {
+    margin-top: 1vh;
+
+    display: grid;
+    grid-template-columns: min-content min-content;
+    column-gap: 4vh;
+}
+
+#divProdutoComprar select {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#divProdutoAdjustQtd {
+    top: 50%;
+    transform: translateY(-50%);
+
+    justify-content: center;
+
+    display: grid;
+    grid-template-columns: min-content min-content min-content;
+    column-gap: 0.5vh;
+}
+
+#divProdutoView button {
+    margin-top: 3vh;
+}

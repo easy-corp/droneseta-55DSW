@@ -4,19 +4,20 @@ import topoHomeImg2 from "../assets/img/topoHomeImg2.png";
 import MyHeader from "../components/MyHeader";
 import MyButton from "../components/MyButton";
 import { useProductCtx } from "../utils/products";
+import { useNavigate } from "react-router-dom";
 
 function HomeView() {
     const ctxProduct = useProductCtx();
+    const navigate = useNavigate();
 
-    // Ao clicar para adicionar um produto no carrinho
-    function addProductCart(index) {
-        ctxProduct.addCartProduct(ctxProduct.products[index]);
+    // Ao clicar para comprar um produto
+    function buyProduct(index) {
+        navigate("/produto/" + index);
     }
 
     return (
         <div>
             <MyHeader />
-            { ctxProduct.cartProducts.length > 0 && <div id="cartItens"> { ctxProduct.cartProducts.length } </div> }
             <div id="divTopoHome">
                 <div id="divInfoTopoHome">
                     <div>
@@ -45,7 +46,7 @@ function HomeView() {
                                 <MyButton 
                                     text="Comprar"
                                     icon="fa-solid fa-cart-shopping"
-                                    event={ addProductCart }
+                                    event={ buyProduct }
                                     eventVar={ index }
                                 />
                             </div>
