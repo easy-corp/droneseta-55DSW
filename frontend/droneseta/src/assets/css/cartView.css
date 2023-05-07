@@ -148,8 +148,8 @@
     height: min-content;
 
     position: absolute;
-    top: -21vh;
-    left: 19.5vh;
+    top: -12vh;
+    left: 20vh;
 
     padding: 2vh;
 
@@ -164,7 +164,7 @@
     width: 0; 
     height: 0;
 
-    top: 4vh;
+    top: 3.5vh;
     left: 4vh;
 
     border-left: 15px solid transparent;
@@ -174,7 +174,7 @@
 
 #divRecadoEntrega p {
     width: 30vh;
-    height: 14vh;
+    height: min-content;
 
     text-align: justify;
     
@@ -182,10 +182,10 @@
 }
 
 #divTotalCart {
-    width: 40vh;
-    height: 30vh;
+    width: min-content;
+    height: min-content;
 
-    padding: 2vh;
+    padding: 5vh;
 
     top: 50%;
     transform: translateY(-50%);
