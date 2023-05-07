@@ -8,6 +8,7 @@ import RegisterView from "../views/RegisterView";
 import CartView from "../views/CartView";
 import PaymentView from "../views/PaymentView";
 import ProductView from "../views/ProductView";
+import PanelView from "../views/panelView";
 
 // Esse componente sera o responsavel por direcionar as diferentes telas do projeto
 function MyRouter() {
@@ -49,6 +50,12 @@ function MyRouter() {
                             <Route path="/payment" element={
                                 <AuthRoute>
                                     <PaymentView />
+                                </AuthRoute>
+                            }></Route>
+                            {/* Rota para o painel do administrador */}
+                            <Route path="/panel" element={
+                                <AuthRoute>
+                                    <PanelView />
                                 </AuthRoute>
                             }></Route>
                         </Routes>

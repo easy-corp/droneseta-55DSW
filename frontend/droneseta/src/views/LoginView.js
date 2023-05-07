@@ -25,7 +25,12 @@ function LoginView() {
 
     function doLogin() {
         if (ctx.logar(user, pass)) {
-            navigate("/");
+            // Se for admin
+            if (ctx.getUserTipo() == 1) {
+                navigate("/panel");
+            } else {
+                navigate("/");
+            }
         } else {
             setLogin(false);
         }
