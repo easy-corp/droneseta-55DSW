@@ -25,7 +25,7 @@
     animation-delay: 3s;
 }
 
-p {
+#divAlerta p {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
