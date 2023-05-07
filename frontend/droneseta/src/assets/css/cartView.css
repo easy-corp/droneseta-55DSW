@@ -193,6 +193,10 @@
     border: 1px solid #FF4D29;
 }
 
+#divTotalCart h1 {
+    width: max-content;
+}
+
 #divTotalCart strong {
     color: #FF4D29;
 }

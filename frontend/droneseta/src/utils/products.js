@@ -175,8 +175,34 @@ function ProductProvider({ children }) {
         return value;
     }
 
+    // Para recuperar o valor de desconto
+    function getDescProducts() {
+        let value = 0;
+
+        // Por enquanto está retornando 0
+
+        return value;
+    }
+
+    // Para recuperar o valor de frete
+    function getTotalFrete() {
+        let value = 0;
+
+        // Por enquanto está retornando 0
+
+        return value;
+    }
+
+    // Para recuperar o valor final do pedido
+    // O valor final é determinado pelo valor dos produtos + frete - desconto
+    function getFinalValue() {
+        let value = this.getTotalCartProducts() + this.getTotalFrete() - this.getDescProducts();
+
+        return value;
+    }
+
     return (
-        <ProductCtx.Provider value={{ products, addProduct, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct, getTotalCartProducts }}>
+        <ProductCtx.Provider value={{ products, addProduct, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct, getTotalCartProducts, getDescProducts, getTotalFrete, getFinalValue }}>
             { children }
         </ProductCtx.Provider>
     );

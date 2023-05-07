@@ -83,13 +83,13 @@ function CartView() {
                         </div>
                         <div id="divProdValor">
                             <h3>Valor</h3>
-                            <h3 id="hValor">R$ { (prod.price * prod.qtd) }</h3>
+                            <h3 id="hValor">{ (prod.price * prod.qtd).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h3>
                         </div>
                     </div>
                 )) }
                 <div id="divCartTotal">
                     <h2>Subtotal</h2>
-                    <h2 id="hTotal">R$ { ctxProduct.getTotalCartProducts() }</h2>
+                    <h2 id="hTotal">{ ctxProduct.getTotalCartProducts().toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h2>
                 </div>
                 <div className="divLine lineMaior"></div>
                 <div id="divFinalCart">
@@ -137,7 +137,7 @@ function CartView() {
                     </div>
                     <div id="colFinalCart">
                         <div id="divTotalCart">
-                            <h1>Total: <strong>R$ { ctxProduct.getTotalCartProducts() }</strong></h1>
+                            <h1>Total: <strong>{ ctxProduct.getTotalCartProducts().toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</strong></h1>
                             <MyButton 
                                 text="Continuar Compra"
                                 event={ continuarCompra }

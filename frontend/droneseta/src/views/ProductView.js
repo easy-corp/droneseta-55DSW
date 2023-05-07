@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../assets/css/productView.css";
 import { useProductCtx } from "../utils/products";
 import MyHeader from "../components/MyHeader";
-import MySizeSelect from "../components/MySizeSelect";
 import MyButton from "../components/MyButton";
 import { useState } from "react";
+import MySelect from "../components/MySizeSelect";
 
 function ProductView() {
     // A quantidade de itens que serão colocados no carrinho
@@ -36,9 +36,8 @@ function ProductView() {
                     <div id="divProdutoComprar">
                         <div id="divProdutoViewSize">
                             <h3>Tamanho</h3>
-                            <MySizeSelect 
+                            <MySelect 
                                 selId="selSize"
-                                size="small"
                                 options={ produto.size }
                             />
                         </div>

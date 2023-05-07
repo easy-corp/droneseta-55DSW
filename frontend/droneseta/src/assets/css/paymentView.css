@@ -1,0 +1,75 @@
+#divPayment {
+    position: absolute;
+    top: 14.5vh;
+
+    padding: 2vh;
+
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#divTotalPayment {
+    padding: 3vh;
+    
+    display: grid;
+    grid-template-columns: min-content min-content;
+    column-gap: 1vh;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#divInfosTotalPayment {
+    display: grid;
+    grid-template-rows: min-content min-content min-content min-content;
+    row-gap: 1.5vh;
+}
+
+.itemInfosTotalPayment {
+    width: 50vh;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.txtInfosTotalPayment {
+    text-align: left;
+}
+
+.valInfosTotalPayment {
+    text-align: center;
+
+    color: #FF4D29;
+}
+
+#divFormaTotalPayment {
+    width: min-content;
+    height: min-content;
+
+    padding: 3vh;
+
+    border: 1px solid #FF4D29;
+}
+
+#divFormaTotalPayment h2 {
+    width: max-content;
+}
+
+#divFormaTotalPayment select {
+    width: 20vh;
+
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+#divEntrega {
+    padding: 2vh;
+}
+
+#divEntrega h3 {
+    text-align: left;
+}
+
+#divEntrega strong {
+    color: #FF4D29;
+}

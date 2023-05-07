@@ -42,7 +42,7 @@ function HomeView() {
                             <div className="prodHome" key={index} >
                                 <img src={ prod.image } alt="Imagem do Produto"></img>
                                 <h3>{ prod.name }</h3>
-                                <h2>R$ { prod.price }</h2>
+                                <h2>{ prod.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h2>
                                 <MyButton 
                                     text="Comprar"
                                     icon="fa-solid fa-cart-shopping"
