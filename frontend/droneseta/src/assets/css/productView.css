@@ -1,7 +1,7 @@
 #divProdutoView {
-    position: absolute;
-    top: 14.5vh;
-
+    width: min-content;
+    
+    top: 16vh;
     left: 50%;
     transform: translateX(-50%);
 
@@ -13,7 +13,10 @@
 }
 
 #divProdutoView img {
-    max-width: 40vh;
+    max-width: 50vh;
+
+    top: 50%;
+    transform: translateY(-50%);
 
     border: 1px solid #FF4D29;
     border-radius: 7px;
@@ -26,7 +29,7 @@
 }
 
 #ProdutoViewNome {
-    width: 60vh;
+    width: 200%;
 
     margin-bottom: 0vh;
 
@@ -59,6 +62,7 @@
     transform: translateY(-50%);
 
     justify-content: center;
+    align-items: center;
 
     display: grid;
     grid-template-columns: min-content min-content min-content;
@@ -67,4 +71,15 @@
 
 #divProdutoView button {
     margin-top: 3vh;
+}
+
+/* Diminuimos o tamanho do quadro de acordo com o tamanho da tela */
+@media only screen and (max-width: 750px) {
+    #divProdutoView  {
+        width: 100vh;
+    }
+
+    #ProdutoViewNome  {
+        width: 145%;
+    }
 }
