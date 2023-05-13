@@ -1,0 +1,59 @@
+#divMainCadProduto {
+    position: absolute;
+    top: 14.5vh;
+
+    padding: 2vh;
+
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#divCadProduto {
+    margin-top: 2vh;
+
+    display: grid;
+    grid-template-rows: repeat(2, min-content);
+    row-gap: 3vh;
+}
+
+.rowCadProduto {
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    column-gap: 7vh;
+}
+
+#icProdImg {
+    width: 8vh;
+    height: 8vh;
+
+    padding: 6vh;
+
+    margin-top: 3vh;
+
+    color: #FF4D29;
+    background-color: #ECECEC;
+
+    border: 1px solid #FF4D29;
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+#divCadSizes {
+    display: grid;
+    grid-template-rows: repeat(6, min-content);
+    row-gap: 1vh;
+}
+
+.divSize {
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    column-gap: 2vh;
+
+    align-items: center;
+    justify-content: right;
+}
+
+#divMainCadProduto button {
+    margin-top: 3vh;
+}

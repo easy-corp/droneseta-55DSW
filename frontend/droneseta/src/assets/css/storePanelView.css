@@ -1,0 +1,53 @@
+#divMainPanel {
+    position: absolute;
+    top: 14.5vh;
+
+    padding: 2vh;
+
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#divMenus {
+    margin-top: 2vh;
+
+    display: grid;
+    grid-template-columns: min-content min-content;
+    column-gap: 5vh;
+}
+
+.menuControle {
+    width: min-content;
+    height: 100%;
+
+    padding: 5vh;
+
+    border: 1px solid #FF4D29;
+    border-radius: 6px;
+}
+
+.menuControle button {
+    margin-top: 2vh;
+}
+
+.menuControle h2 {
+    position: absolute;
+    top: 0.5vh;
+    right: 1vh;
+}
+
+.menuControle .icMenu {
+    width: 3vh;
+    height: 3vh;
+
+    position: absolute;
+    top: 0vh;
+    left: 0vh;
+
+    padding: 1vh;
+
+    color: #FFFF;
+    background-color: #FF4D29;    
+
+    border-radius: 6px;    
+}

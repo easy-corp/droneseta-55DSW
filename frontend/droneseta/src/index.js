@@ -23,6 +23,9 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { faCashRegister } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { faShirt } from '@fortawesome/free-solid-svg-icons';
+import { faChartPie } from '@fortawesome/free-solid-svg-icons';
+import { faImages } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faDoorOpen);
 library.add(faMagnifyingGlass);
@@ -38,6 +41,9 @@ library.add(faPaperPlane);
 library.add(faCircleInfo);
 library.add(faCashRegister);
 library.add(faClock);
+library.add(faShirt);
+library.add(faChartPie);
+library.add(faImages);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

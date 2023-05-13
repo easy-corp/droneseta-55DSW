@@ -14,12 +14,20 @@
     padding: 0.8vh;
 }
 
+.micro {
+    width: 8vh;
+}
+
 .small {
     width: 20vh;
 }
 
 .large {
     width: 36vh;
+}
+
+.extraLarge {
+    width: 45vh;
 }
 
 #icInput {
