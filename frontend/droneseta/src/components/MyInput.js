@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // props.type == tipo do input
 // props.holder == placeholder do input
 // props.inpId == id do input
+// props.handler == handler para recuperar o valor do input
 // props.icon == icone no input (opcional)
 // props.iconEvent == evento de click icone no input (opcional)
 function MyInput(props) {
@@ -13,7 +14,7 @@ function MyInput(props) {
 
     return (
         <div id="divInput">
-            <input type={ props.type } placeholder={ props.holder } id={ props.inpId } className={`${class1} ${props.size}`} />
+            <input type={ props.type } placeholder={ props.holder } id={ props.inpId } className={`${class1} ${props.size}`} onChange={ props.handler } />
             { props.icon && <FontAwesomeIcon icon={ props.icon } onClick={(event) => props.iconEvent(event) } id="icInput" /> }
         </div>
     );

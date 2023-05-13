@@ -3,12 +3,50 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import MyHeader from "../components/MyHeader";
 import MyInput from "../components/MyInput";
 import MyButton from "../components/MyButton";
+import { useState } from "react";
 
 function CadProductView() {
+    // Os dados do formulario
+    const [desc, setDesc] = useState("");
+    const [value, setValue] = useState("");
+    const [img, setImg] = useState("");
+    const [qtd, setQtd] = useState([]);
+
+    function descHandler(event) {
+        setDesc(event.target.value);
+    }
+
+    function valueHandler(event) {
+        setValue(event.target.value);
+    }
+
+    function imgHandler(event) {
+        setImg(event.target.value);
+    }
+
+    function qtdHandler(event) {
+        // Buscamos pelo tamanho em questão no array
+        let tamanhoIndex = qtd.findIndex((value) => value.tamanho === event.target.id);
+
+        // Se esse tamanho nao estiver no array, adiciona ele
+        // Caso contrario, devemos atualizar o array
+        if (tamanhoIndex < 0) {
+            setQtd(() => [...qtd, { tamanho: event.target.id, qtd: event.target.value }]);
+        } else {
+            setQtd(() => [...qtd.slice(0, tamanhoIndex), { tamanho: event.target.id, qtd: event.target.value }, ...qtd.slice(tamanhoIndex + 1)]);
+        }
+    }
 
     // Para cadastrar um novo produto
     function handlerCadProd() {
-
+        const produto = {
+            name: desc,
+            price: value,
+            size: qtd,
+            image: img
+        }
+        
+        console.log(produto);
     }
 
     return (
@@ -23,6 +61,7 @@ function CadProductView() {
                             holder="Descrição"
                             inpId="inpProdDesc"
                             size="extraLarge"
+                            handler={descHandler}
                         />
                     </div>
                     <div className="rowCadProduto">
@@ -32,6 +71,7 @@ function CadProductView() {
                                 holder="Preço"
                                 inpId="inpProdPreco"
                                 size="small"
+                                handler={valueHandler}
                             />
                             <FontAwesomeIcon icon="fa-solid fa-images" id="icProdImg" />
                         </div>
@@ -41,8 +81,9 @@ function CadProductView() {
                                 <MyInput
                                     type="number"
                                     holder="PP"
-                                    inpId="inpSize"
+                                    inpId="PP"
                                     size="micro"
+                                    handler={qtdHandler}
                                 />
                             </div>
                             <div className="divSize">
@@ -50,8 +91,9 @@ function CadProductView() {
                                 <MyInput
                                     type="number"
                                     holder="P"
-                                    inpId="inpSize"
+                                    inpId="P"
                                     size="micro"
+                                    handler={qtdHandler}
                                 />
                             </div>
                             <div className="divSize">
@@ -59,8 +101,9 @@ function CadProductView() {
                                 <MyInput
                                     type="number"
                                     holder="M"
-                                    inpId="inpSize"
+                                    inpId="M"
                                     size="micro"
+                                    handler={qtdHandler}
                                 />
                             </div>
                             <div className="divSize">
@@ -68,8 +111,9 @@ function CadProductView() {
                                 <MyInput
                                     type="number"
                                     holder="G"
-                                    inpId="inpSize"
+                                    inpId="G"
                                     size="micro"
+                                    handler={qtdHandler}
                                 />
                             </div>
                             <div className="divSize">
@@ -77,8 +121,9 @@ function CadProductView() {
                                 <MyInput
                                     type="number"
                                     holder="GG"
-                                    inpId="inpSize"
+                                    inpId="GG"
                                     size="micro"
+                                    handler={qtdHandler}
                                 />
                             </div>
                             <div className="divSize">
@@ -86,8 +131,9 @@ function CadProductView() {
                                 <MyInput
                                     type="number"
                                     holder="XGG"
-                                    inpId="inpSize"
+                                    inpId="XGG"
                                     size="micro"
+                                    handler={qtdHandler}
                                 />
                             </div>
                         </div>

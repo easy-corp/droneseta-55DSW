@@ -3,9 +3,54 @@ import MyHeader from "../components/MyHeader";
 import MyInput from "../components/MyInput";
 import MyButton from "../components/MyButton";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import MyAlert from "../components/MyAlert";
 
 function RegisterView() {
+    // Os dados do formulario
+    const [name, setName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [date, setDate] = useState("");
+    const [cpf, setCpf] = useState("");
+    const [email, setEmail] = useState("");
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
+    const [confPass, setConfPass] = useState("");
+
+    const [correctPass, setCorrectPass] = useState(true);     // Para validar se as senhas coincidem
     const navigate = useNavigate();
+
+    function nameHandler(event) {
+        setName(event.target.value);
+    }
+    
+    function lastNameHandler(event) {
+        setLastName(event.target.value);
+    }
+
+    function dateHandler(event) {
+        setDate(event.target.value);
+    }
+
+    function cpfHandler(event) {
+        setCpf(event.target.value);
+    }
+
+    function emailHandler(event) {
+        setEmail(event.target.value);
+    }
+
+    function loginHandler(event) {
+        setLogin(event.target.value);
+    }
+
+    function passwordHandler(event) {
+        setPassword(event.target.value);
+    }
+
+    function confPassHandler(event) {
+        setConfPass(event.target.value);
+    }
 
     // Esconder ou mostrar a senha
     function showSenha(event) {
@@ -24,14 +69,38 @@ function RegisterView() {
 
     // Realiza o cadastro do usuário
     function cadastrarUsuario() {
-        // Por enquanto está só redirecionando o usuario de volta ao login
-        navigate("/login");
+        if (confirmaSenha()) {
+            const usuario = {
+                name: name + " " + lastName,
+                dtNasc: date,
+                cpf: cpf,
+                email: email,
+                login: login,
+                password: password
+            }
+    
+            console.log(usuario);
+    
+            // Retorna a tela de login
+            // navigate("/login");
+        }
+    }
+
+    // Para verificar se as senhas estão iguais 
+    function confirmaSenha() {
+        if (password != confPass || password === "" || confPass === "") {
+            setCorrectPass(false);
+            return false;
+        }
+
+        return true
     }
 
     return(
         <div>
             <MyHeader />
             <div id="divMainRegister">
+                {!correctPass && <MyAlert text="Verifique as senhas fornecida" tipo="erro" /> }
                 <h1>Criar Conta</h1>
                 <div id="divRegister">
                     <div className="rowInpRegister">
@@ -39,11 +108,13 @@ function RegisterView() {
                             type="text"
                             holder="Nome"
                             inpId="inpNome"
+                            handler={ nameHandler }
                         />
                         <MyInput 
                             type="text"
                             holder="Sobrenome"
                             inpId="inpSobrenome"
+                            handler={ lastNameHandler }
                         />
                     </div>
                     <div className="rowInpRegister">
@@ -52,12 +123,14 @@ function RegisterView() {
                             holder="Data de Nascimento"
                             inpId="inpDtNasc"
                             size="small"
+                            handler={ dateHandler }
                         />
                         <MyInput 
                             type="text"
                             holder="CPF"
                             inpId="inpCPF"
                             size="large"
+                            handler={ cpfHandler }
                         />
                     </div>
                     <div className="rowInpRegister">
@@ -66,12 +139,14 @@ function RegisterView() {
                             holder="Email"
                             inpId="inpEmail"
                             size="large"
+                            handler={ emailHandler }
                         />
                         <MyInput 
                             type="text"
                             holder="Login"
                             inpId="inpLogin"
                             size="small"
+                            handler={ loginHandler }
                         />
                     </div>
                     <div className="rowInpRegister">
@@ -81,6 +156,7 @@ function RegisterView() {
                             inpId="inpSenha"
                             icon="fa-eye-slash"
                             iconEvent={showSenha}
+                            handler={ passwordHandler }
                         />
                         <MyInput 
                             type="password"
@@ -88,6 +164,7 @@ function RegisterView() {
                             inpId="inpConfSenha"
                             icon="fa-eye-slash"
                             iconEvent={showSenha}
+                            handler={ confPassHandler }
                         />
                     </div>
                 </div>

@@ -34,7 +34,9 @@ function AuthProvider({ children }) {
             }
         });
 
-        if (this.pessoaLogada === null) {
+        console.log(this.pessoaLogada);
+
+        if (!this.pessoaLogada) {
             setAuth(false);
 
             return false;
