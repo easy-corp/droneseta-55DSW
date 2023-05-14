@@ -19,24 +19,41 @@
 .rowCadProduto {
     display: grid;
     grid-template-columns: repeat(2, min-content);
-    column-gap: 7vh;
+    column-gap: 9vh;
+}
+
+.colCadProduto {
+    text-align: start;
+}
+
+#divProdImg input {
+    width: 100%;
+
+    margin-top: 1vh;
 }
 
 #icProdImg {
     width: 8vh;
     height: 8vh;
 
-    padding: 6vh;
-
-    margin-top: 3vh;
+    padding-left: 7vh;
+    padding-right: 7vh;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
 
     color: #FF4D29;
     background-color: #ECECEC;
+}
+
+#prodImg {
+    max-width: 20vh;
+}
+
+#prodImg, #icProdImg {
+    margin-top: 3vh;
 
     border: 1px solid #FF4D29;
     border-radius: 6px;
-
-    cursor: pointer;
 }
 
 #divCadSizes {

@@ -34,8 +34,6 @@ function AuthProvider({ children }) {
             }
         });
 
-        console.log(this.pessoaLogada);
-
         if (!this.pessoaLogada) {
             setAuth(false);
 
