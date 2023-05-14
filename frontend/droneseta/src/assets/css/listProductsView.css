@@ -13,13 +13,15 @@
 }
 
 .listProducts {
+    padding: 1vh;
+
+    border-bottom: 1px solid #FF4D29;
+
     display: grid;
     grid-template-columns: repeat(2, max-content);
     column-gap: 2vh;
 
-    padding: 1vh;
-
-    border-bottom: 1px solid #FF4D29;
+    align-items: center;
 }
 
 .listProducts img {
@@ -34,6 +36,7 @@
 }
 
 .listProdInfo h3 {
+    width: 92%;
     text-align: left;
 }
 
