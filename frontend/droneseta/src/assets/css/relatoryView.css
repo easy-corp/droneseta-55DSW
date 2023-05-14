@@ -8,3 +8,50 @@
     transform: translateX(-50%);
 }
 
+#divRelatory {
+    margin-top: 3vh;
+}
+
+#divCabecalho {
+    width: 90vh;
+    height: min-content;
+
+    padding: 1vh;
+
+    font-weight: 600;
+
+    color: #697386;
+    background-color: rgba(235, 239, 242, 0.5);
+
+    border: 1px solid #DADADA;
+    border-radius: 6px 6px 0px 0px;
+
+    display: grid;
+    /* Colunas definidas por script */
+    align-items: center;
+}
+
+#divCabecalho div {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#divDados {
+    border: 1px solid #DADADA;
+    border-radius: 0px 0px 6px 6px;
+}
+
+.divRowDado {
+    padding: 0.5vh;
+
+    border-bottom: 1px solid #DADADA;
+
+    display: grid;
+    /* Colunas definidas por script */
+    align-items: center;
+}
+
+.divRowDado div {
+    left: 50%;
+    transform: translateX(-50%);
+}
