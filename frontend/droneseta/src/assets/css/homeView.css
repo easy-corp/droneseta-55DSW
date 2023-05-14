@@ -1,10 +1,11 @@
 /* Top Section */
 #divTopoHome {
     width: 100%;
-    height: 70vh;
+    
+    z-index: -1;
 
     top: 14.5vh;
-    z-index: -1;
+    padding: 2vh;
 
     background-image: url("../img/topoHome.jpg");
     background-size: cover;
@@ -16,8 +17,8 @@
 }
 
 #divInfoTopoHome {
-    width: 90vh;
-    height: 50vh;
+    width: 100vh;
+    height: 100%;
 
     margin-bottom: 14.5vh;
 
@@ -50,6 +51,8 @@
 
 #divInfoTopoHome p {
     width: 42vh;
+
+    margin-bottom: 4vh;
 
     color: #C1C1C1;
 
@@ -127,7 +130,7 @@
 
 .prodHome h3 {
     width: 100%;
-    height: 5vh;
+    height: 7vh;
     color: #13293B;
 
     margin-bottom: 1vh;
