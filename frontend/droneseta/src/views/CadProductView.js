@@ -83,7 +83,7 @@ function CadProductView() {
                                 handler={valueHandler}
                             />
                             <div id="divProdImg">
-                                { img && <img src={ img } id="prodImg" /> }
+                                { img && <img src={ img } alt="Imagem do Produto" id="prodImg" /> }
                                 { !img && <FontAwesomeIcon icon="fa-solid fa-images" id="icProdImg" /> }
                                 <input type="file" accept="image/**" onChange={ imgHandler } />
                             </div>

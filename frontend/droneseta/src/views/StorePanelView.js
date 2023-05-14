@@ -14,7 +14,7 @@ function StorePanelView() {
 
     // Para consultar produtos
     function handlerConsProd() {
-
+        navigate("/listProducts");
     }
 
     // Para abrir os relatórios

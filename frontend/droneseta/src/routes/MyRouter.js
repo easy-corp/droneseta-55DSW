@@ -10,6 +10,7 @@ import PaymentView from "../views/PaymentView";
 import ProductView from "../views/ProductView";
 import PanelView from "../views/StorePanelView";
 import CadProductView from "../views/CadProductView";
+import ListProductsView from "../views/ListProductsView";
 
 // Esse componente sera o responsavel por direcionar as diferentes telas do projeto
 function MyRouter() {
@@ -63,6 +64,12 @@ function MyRouter() {
                             <Route path="/cadProduct" element={
                                 <AuthRoute>
                                     <CadProductView />
+                                </AuthRoute>
+                            }></Route>
+                            {/* Rota para consultar produtos cadastrads */}
+                            <Route path="/listProducts" element={
+                                <AuthRoute>
+                                    <ListProductsView />
                                 </AuthRoute>
                             }></Route>
                         </Routes>
