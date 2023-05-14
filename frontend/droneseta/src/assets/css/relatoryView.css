@@ -1,0 +1,10 @@
+#mainRelatory {
+    position: absolute;
+    top: 14.5vh;
+
+    padding: 2vh;
+
+    left: 50%;
+    transform: translateX(-50%);
+}
+
