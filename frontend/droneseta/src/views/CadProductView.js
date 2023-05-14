@@ -9,7 +9,7 @@ function CadProductView() {
     // Os dados do formulario
     const [desc, setDesc] = useState("");
     const [value, setValue] = useState("");
-    const [img, setImg] = useState("");
+    const [img, setImg] = useState(null);
     const [qtd, setQtd] = useState([]);
 
     function descHandler(event) {
@@ -21,7 +21,16 @@ function CadProductView() {
     }
 
     function imgHandler(event) {
-        setImg(event.target.value);
+        if (event.target.files.length > 0 ) {
+            let file = event.target.files[0];
+            let fileReader = new FileReader();
+
+            fileReader.onload = function (e) {
+                setImg(e.target.result);
+            }
+
+            fileReader.readAsDataURL(file);
+        }
     }
 
     function qtdHandler(event) {
@@ -65,7 +74,7 @@ function CadProductView() {
                         />
                     </div>
                     <div className="rowCadProduto">
-                        <div>
+                        <div className="colCadProduto">
                             <MyInput
                                 type="number"
                                 holder="Preço"
@@ -73,7 +82,11 @@ function CadProductView() {
                                 size="small"
                                 handler={valueHandler}
                             />
-                            <FontAwesomeIcon icon="fa-solid fa-images" id="icProdImg" />
+                            <div id="divProdImg">
+                                { img && <img src={ img } alt="Imagem do Produto" id="prodImg" /> }
+                                { !img && <FontAwesomeIcon icon="fa-solid fa-images" id="icProdImg" /> }
+                                <input type="file" accept="image/**" onChange={ imgHandler } />
+                            </div>
                         </div>
                         <div id="divCadSizes">
                             <div className="divSize">

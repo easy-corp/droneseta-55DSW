@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../assets/css/cartView.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useProductCtx } from "../utils/products";
 import MyHeader from "../components/MyHeader";
 import MyTitle from "../components/MyTitle";
@@ -63,7 +63,7 @@ function CartView() {
                     text="Produtos"
                     icon="fa-solid fa-box-open"
                 />
-                { ctxProduct.cartProducts.length == 0 && <h2 id="hEmptyCart">Ainda não há produtos no seu carrinho de compras</h2> }
+                { ctxProduct.cartProducts.length === 0 && <h2 id="hEmptyCart">Ainda não há produtos no seu carrinho de compras</h2> }
                 { ctxProduct.cartProducts.map((prod, index) => (
                     <div className="prodCart" key={ index } >
                         <div id="divProdInfo">

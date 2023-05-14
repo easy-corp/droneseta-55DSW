@@ -14,12 +14,13 @@ function StorePanelView() {
 
     // Para consultar produtos
     function handlerConsProd() {
-
+        navigate("/listProducts");
     }
 
-    // Para abrir os relatórios
-    function handlerOpenRel() {
-
+    // Para abrir os relatorios
+    // Recebe o tipo de relatorio
+    function handlerOpenRel(tipo) {
+        navigate("/relatory/" + tipo);
     }
 
     return(
@@ -45,19 +46,19 @@ function StorePanelView() {
                         <h2>Relatórios</h2>
                         <MyButton 
                             text="Clientes Cadastrados"
-                            event={ handlerOpenRel }
+                            event={ () => handlerOpenRel(1) }
                         />
                         <MyButton 
                             text="Mais Vendidos"
-                            event={ handlerOpenRel }
+                            event={ () => handlerOpenRel(2) }
                         />
                         <MyButton 
                             text="Pedidos Pendentes"
-                            event={ handlerOpenRel }
+                            event={ () => handlerOpenRel(3) }
                         />
                         <MyButton 
                             text="Pedidos Finalizados"
-                            event={ handlerOpenRel }
+                            event={ () => handlerOpenRel(4) }
                         />
                     </div>
                 </div>

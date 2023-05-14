@@ -1,4 +1,4 @@
-/* Contexto destinado aos produtos, as informações aqui colocadas
+/* Contexto destinado aos produtos, as informacoes aqui colocadas
    podem ser acessadas a partir de diferentes pontos da nossa
    aplicação */
 
@@ -11,6 +11,7 @@ export const useProductCtx = () => useContext(ProductCtx);
 
 function ProductProvider({ children }) {    
     // Para gerar os produtos iniciais
+    // Futuramente vira do backend
     function initProducts() {
         return [
             {
