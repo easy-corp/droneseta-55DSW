@@ -69,6 +69,7 @@ public class UsuarioController {
         return repository.findById(id)
                 .map(usuario -> {
                     usuario.setCartaoCredito(novoUsuario.getCartaoCredito());
+                    usuario.setNome(novoUsuario.getNome());
                     usuario.setDataNascimento(novoUsuario.getDataNascimento());
                     try {
                         usuario.setPassword(authService.criptocrafaSenhaUsuario(novoUsuario.getPassword()));

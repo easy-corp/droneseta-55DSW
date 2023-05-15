@@ -12,6 +12,7 @@ public class Usuario {
     @GeneratedValue
     private int id;
     private Role tipo;
+    private String nome;
     private Date dataNascimento;
     private String cpf;
     private String email;
@@ -22,9 +23,10 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Role tipo, Date dataNascimento, String cpf, String email, String cartaoCredito, String username,
+    public Usuario(Role tipo, String nome, Date dataNascimento, String cpf, String email, String cartaoCredito, String username,
             String password) {
         this.tipo = tipo;
+        this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
         this.email = email;
@@ -47,6 +49,14 @@ public class Usuario {
 
     public void setTipo(Role tipo) {
         this.tipo = tipo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Date getDataNascimento() {
@@ -103,6 +113,7 @@ public class Usuario {
         int result = 1;
         result = prime * result + id;
         result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
         result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
         result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
         result = prime * result + ((email == null) ? 0 : email.hashCode());
@@ -155,7 +166,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario [id=" + id + ", tipo=" + tipo + ", dataNascimento=" + dataNascimento + ", CPF=" + cpf + ", email=" + email
+        return "Usuario [id=" + id + ", tipo=" + tipo + ", nome=" + nome +", dataNascimento=" + dataNascimento + ", CPF=" + cpf + ", email=" + email
                 + ", cartaoCredito=" + cartaoCredito + ", username=" + username + ", password=" + password + "]";
     }
 
