@@ -75,6 +75,7 @@ public class UsuarioController {
                     } catch (NoSuchAlgorithmException e) {
                         e.printStackTrace();
                     }
+                    usuario.setCpf(novoUsuario.getCpf());
                     usuario.setEmail(novoUsuario.getEmail());
                     usuario.setTipo(novoUsuario.getTipo());
                     usuario.setUsername(novoUsuario.getUsername());

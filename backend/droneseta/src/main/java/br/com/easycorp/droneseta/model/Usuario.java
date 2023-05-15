@@ -13,6 +13,7 @@ public class Usuario {
     private int id;
     private Role tipo;
     private Date dataNascimento;
+    private String cpf;
     private String email;
     private String cartaoCredito;
     private String username;
@@ -21,10 +22,11 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Role tipo, Date dataNascimento, String email, String cartaoCredito, String username,
+    public Usuario(Role tipo, Date dataNascimento, String cpf, String email, String cartaoCredito, String username,
             String password) {
         this.tipo = tipo;
         this.dataNascimento = dataNascimento;
+        this.cpf = cpf;
         this.email = email;
         this.cartaoCredito = cartaoCredito;
         this.username = username;
@@ -53,6 +55,14 @@ public class Usuario {
 
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getEmail() {
@@ -94,6 +104,7 @@ public class Usuario {
         result = prime * result + id;
         result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
         result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
+        result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
         result = prime * result + ((email == null) ? 0 : email.hashCode());
         result = prime * result + ((cartaoCredito == null) ? 0 : cartaoCredito.hashCode());
         result = prime * result + ((username == null) ? 0 : username.hashCode());
@@ -144,7 +155,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario [id=" + id + ", tipo=" + tipo + ", dataNascimento=" + dataNascimento + ", email=" + email
+        return "Usuario [id=" + id + ", tipo=" + tipo + ", dataNascimento=" + dataNascimento + ", CPF=" + cpf + ", email=" + email
                 + ", cartaoCredito=" + cartaoCredito + ", username=" + username + ", password=" + password + "]";
     }
 
