@@ -5,6 +5,8 @@ import MyButton from "../components/MyButton";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import MyAlert from "../components/MyAlert";
+import axios from "axios";
+import api from "../utils/api";
 
 function RegisterView() {
     // Os dados do formulario
@@ -73,11 +75,11 @@ function RegisterView() {
     }
 
     // Realiza o cadastro do usuário
-    function cadastrarUsuario() {
+    async function cadastrarUsuario() {
         if (confirmaSenha()) {
             const usuario = {
                 tipo: "USER",
-                name: name + " " + lastName,
+                nome: name + " " + lastName,
                 dataNascimento: new Date(date).toISOString(),
                 email: email,
                 cpf: cpf,
@@ -87,9 +89,15 @@ function RegisterView() {
             }
     
             console.log(usuario);
-    
-            // Retorna a tela de login
-            // navigate("/login");
+
+            await axios.post(api + "/usuarios", usuario)
+                .then(response => {
+                    // Retorna a tela de login
+                    // navigate("/login");
+                })
+                .catch(error => {
+                    console.log(error);
+                })
         }
     }
 
