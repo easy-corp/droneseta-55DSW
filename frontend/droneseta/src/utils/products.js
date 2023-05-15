@@ -5,6 +5,7 @@
 import { createContext, useContext, useState } from "react";
 import camisetaSlipknot1 from "../assets/img/camisetas/Slipknot1.png";
 import camisetaLinkinPark1 from "../assets/img/camisetas/LinkinPark1.jpeg";
+import axios from "axios";
  
 export const ProductCtx = createContext();
 export const useProductCtx = () => useContext(ProductCtx);
@@ -13,6 +14,14 @@ function ProductProvider({ children }) {
     // Para gerar os produtos iniciais
     // Futuramente vira do backend
     function initProducts() {
+        // axios.get("http://localhost:3500/camisetas")
+        // .then(response => {
+        //     console.log(response);
+        // })
+        // .catch(error => {
+        //     console.log(error);
+        // })
+
         return [
             {
                 name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
@@ -118,7 +127,7 @@ function ProductProvider({ children }) {
                 ],
                 image: camisetaLinkinPark1
             },
-        ];
+        ];        
     }
 
     const [products, setProducts] = useState(initProducts());      // Produtos cadastrados

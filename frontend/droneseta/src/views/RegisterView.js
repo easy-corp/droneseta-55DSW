@@ -12,6 +12,7 @@ function RegisterView() {
     const [lastName, setLastName] = useState("");
     const [date, setDate] = useState("");
     const [cpf, setCpf] = useState("");
+    const [cartao, setCartao] = useState("");
     const [email, setEmail] = useState("");
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
@@ -52,6 +53,10 @@ function RegisterView() {
         setConfPass(event.target.value);
     }
 
+    function cardHandler(event) {
+        setCartao(event.target.value);
+    }
+
     // Esconder ou mostrar a senha
     function showSenha(event) {
         // Recupera o input relativo ao icon clicado
@@ -71,11 +76,13 @@ function RegisterView() {
     function cadastrarUsuario() {
         if (confirmaSenha()) {
             const usuario = {
+                tipo: "USER",
                 name: name + " " + lastName,
-                dtNasc: date,
-                cpf: cpf,
+                dataNascimento: new Date(date).toISOString(),
                 email: email,
-                login: login,
+                cpf: cpf,
+                cartaoCredito: cartao,
+                username: login,
                 password: password
             }
     
@@ -131,6 +138,15 @@ function RegisterView() {
                             inpId="inpCPF"
                             size="large"
                             handler={ cpfHandler }
+                        />
+                    </div>
+                    <div className="rowInpRegister">
+                        <MyInput 
+                            type="text"
+                            holder="Cartão de Crédito"
+                            inpId="inpCartao"
+                            size="large"
+                            handler={ cardHandler }
                         />
                     </div>
                     <div className="rowInpRegister">

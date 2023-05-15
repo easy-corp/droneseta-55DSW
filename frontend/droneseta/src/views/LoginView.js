@@ -23,10 +23,12 @@ function LoginView() {
         setPass(event.target.value);
     }
 
-    function doLogin() {
-        if (ctx.logar(user, pass)) {
+    async function doLogin() {
+        await ctx.logar(user, pass);
+
+        if (ctx.getUser()) {
             // Se for admin
-            if (ctx.getUserTipo() === 1) {
+            if (ctx.getUserTipo() === "ADMIN") {
                 navigate("/panel");
             } else {
                 navigate("/");
