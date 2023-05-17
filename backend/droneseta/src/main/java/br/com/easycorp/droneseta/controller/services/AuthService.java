@@ -17,8 +17,9 @@ public class AuthService {
     private UsuarioRepository usuarioRepository;
 
     public Usuario autenticar(String nomeUsuario, String senha) throws NoSuchAlgorithmException {
-        Usuario user = usuarioRepository.findByUsername(nomeUsuario).get(0);
-        if (user != null) {
+        if (usuarioRepository.findByUsername(nomeUsuario).size() > 0) {
+            Usuario user = usuarioRepository.findByUsername(nomeUsuario).get(0);
+
             if (user.getPassword().equals(criptocrafaSenhaUsuario(senha))) {
                 return user;
             }
