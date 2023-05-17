@@ -3,10 +3,12 @@ package br.com.easycorp.droneseta.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -17,10 +19,12 @@ public class Camiseta {
     private int id;
 
     private String descricao;
+    @Lob
     private String foto;
     private double preco;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "camiseta")
+    @JsonIgnoreProperties("camiseta")
     private List<Estoque> estoque = new ArrayList<>();
 
     public Camiseta() {

@@ -1,15 +1,21 @@
 package br.com.easycorp.droneseta.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Usuario {
     @Id
     @GeneratedValue
+    @Column(unique = true)
     private int id;
     private Role tipo;
     private String nome;
@@ -20,10 +26,33 @@ public class Usuario {
     private String username;
     private String password;
 
+    @OneToMany(mappedBy = "usuario")
+    private List<Endereco> enderecos = new ArrayList<>();
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Pedido> pedidos = new ArrayList<>();
+
     public Usuario() {
     }
 
-    public Usuario(Role tipo, String nome, Date dataNascimento, String cpf, String email, String cartaoCredito, String username,
+    public Usuario(Role tipo, String nome, Date dataNascimento, String cpf, String email, String cartaoCredito,
+            String username,
+            String password,
+            Endereco endereco, List<Pedido> pedidos, List<Endereco> enderecos) {
+        this.tipo = tipo;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.cpf = cpf;
+        this.email = email;
+        this.cartaoCredito = cartaoCredito;
+        this.username = username;
+        this.password = password;
+        this.enderecos = enderecos;
+        this.pedidos = pedidos;
+    }
+
+    public Usuario(Role tipo, String nome, Date dataNascimento, String cpf, String email, String cartaoCredito,
+            String username,
             String password) {
         this.tipo = tipo;
         this.nome = nome;
@@ -107,6 +136,22 @@ public class Usuario {
         this.password = password;
     }
 
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -120,6 +165,8 @@ public class Usuario {
         result = prime * result + ((cartaoCredito == null) ? 0 : cartaoCredito.hashCode());
         result = prime * result + ((username == null) ? 0 : username.hashCode());
         result = prime * result + ((password == null) ? 0 : password.hashCode());
+        result = prime * result + ((enderecos == null) ? 0 : enderecos.hashCode());
+        result = prime * result + ((pedidos == null) ? 0 : pedidos.hashCode());
         return result;
     }
 
@@ -136,10 +183,20 @@ public class Usuario {
             return false;
         if (tipo != other.tipo)
             return false;
+        if (nome == null) {
+            if (other.nome != null)
+                return false;
+        } else if (!nome.equals(other.nome))
+            return false;
         if (dataNascimento == null) {
             if (other.dataNascimento != null)
                 return false;
         } else if (!dataNascimento.equals(other.dataNascimento))
+            return false;
+        if (cpf == null) {
+            if (other.cpf != null)
+                return false;
+        } else if (!cpf.equals(other.cpf))
             return false;
         if (email == null) {
             if (other.email != null)
@@ -161,13 +218,24 @@ public class Usuario {
                 return false;
         } else if (!password.equals(other.password))
             return false;
+        if (enderecos == null) {
+            if (other.enderecos != null)
+                return false;
+        } else if (!enderecos.equals(other.enderecos))
+            return false;
+        if (pedidos == null) {
+            if (other.pedidos != null)
+                return false;
+        } else if (!pedidos.equals(other.pedidos))
+            return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "Usuario [id=" + id + ", tipo=" + tipo + ", nome=" + nome +", dataNascimento=" + dataNascimento + ", CPF=" + cpf + ", email=" + email
-                + ", cartaoCredito=" + cartaoCredito + ", username=" + username + ", password=" + password + "]";
+        return "Usuario [id=" + id + ", tipo=" + tipo + ", nome=" + nome + ", dataNascimento=" + dataNascimento
+                + ", cpf=" + cpf + ", email=" + email + ", cartaoCredito=" + cartaoCredito + ", username=" + username
+                + ", password=" + password + ", enderecos=" + enderecos + ", pedidos=" + pedidos + "]";
     }
 
 }
