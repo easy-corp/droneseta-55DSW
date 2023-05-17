@@ -9,26 +9,26 @@ import api from "./api";
 export const AuthCtx = createContext();
 export const useAuthCtx = () => useContext(AuthCtx);
 
-
 function AuthProvider({ children }) {
     const [auth, setAuth] = useState(false);        
     const [pessoaLogada, setPessoaLogada] = useState(null);
 
+    useEffect(() => {
+        if (!pessoaLogada) {
+            setAuth(false);
+        } else {
+            setAuth(true);
+        }
+    }, [pessoaLogada]);
+
     // Metodo de login
     async function logar(usuario, senha) {
-        await axios.post(api + "/usuarios/login",
-            {
-                "username": usuario,
-                "password": senha
-            })
+        await axios.post(api + "/usuarios/login", {
+            "username": usuario,
+            "password": senha
+        })
         .then(response => {
             setPessoaLogada(response.data);
-
-            if (!pessoaLogada) {
-                setAuth(false);
-            } else {
-                setAuth(true);
-            }
         })
         .catch(error => {
             console.log(error);
@@ -37,6 +37,7 @@ function AuthProvider({ children }) {
 
     // Metodo de logout
     function sair() {
+        this.pessoaLogada = null;
         setAuth(false);
     }
 
@@ -50,8 +51,13 @@ function AuthProvider({ children }) {
         return pessoaLogada;
     }
 
+    // Para recuperar se foi logada
+    function getAuth() {
+        return auth;
+    }
+
     return (
-        <AuthCtx.Provider value={{ auth, logar, sair, getUser, getUserTipo }}>
+        <AuthCtx.Provider value={{ getAuth, logar, sair, getUser, getUserTipo}}>
             { children }
         </AuthCtx.Provider>
     );

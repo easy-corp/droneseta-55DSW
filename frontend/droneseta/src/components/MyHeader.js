@@ -4,9 +4,11 @@ import "../assets/css/myHeader.css";
 import logoHeader from "../assets/img/logoHeader.png";
 import MySearchBar from "./MySearchBar";
 import { useProductCtx } from '../utils/products';
+import { useAuthCtx } from '../utils/auth';
 
 function MyHeader() {
     const ctxProduct = useProductCtx();
+    const auth = useAuthCtx();
     const navigate = useNavigate();
 
     function logoHandler() {
@@ -18,6 +20,7 @@ function MyHeader() {
     }
 
     function icUserHandler() {
+        auth.sair();
         navigate("/login");
     }
 

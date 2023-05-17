@@ -21,7 +21,7 @@ function MyRouter() {
     function AuthRoute({ children }) {
         const authCtx = useAuthCtx();
 
-        if (authCtx.auth) {
+        if (authCtx.getAuth()) {
             return children;
         }
 

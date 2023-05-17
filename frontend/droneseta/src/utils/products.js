@@ -11,16 +11,15 @@ export const ProductCtx = createContext();
 export const useProductCtx = () => useContext(ProductCtx);
 
 function ProductProvider({ children }) {    
-    // Para gerar os produtos iniciais
-    // Futuramente vira do backend
-    function initProducts() {
-        // axios.get("http://localhost:3500/camisetas")
-        // .then(response => {
-        //     console.log(response);
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // })
+    // Para recuperar os produtos
+    function getProducts() {
+        axios.get("http://localhost:3500/camisetas")
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error);
+        })
 
         return [
             {
@@ -130,12 +129,17 @@ function ProductProvider({ children }) {
         ];        
     }
 
-    const [products, setProducts] = useState(initProducts());      // Produtos cadastrados
+    // const [products, setProducts] = useState(getProducts());       // Produtos cadastrados
     const [cartProducts, setCartProducts] = useState([]);          // Produtos no carrinho de compras
 
     // Para cadastrar um novo produto
-    function addProduct(product) {
-        setProducts([...products, product]);
+    async function addProduct(product) {
+        // Enviar produto probackend
+        console.log(product);
+
+        // await axios.post(api + "/usuarios/camisetas"), product
+        
+        // .then
     }
 
     // Para adicionar um produto no carrinho de compras
@@ -212,7 +216,7 @@ function ProductProvider({ children }) {
     }
 
     return (
-        <ProductCtx.Provider value={{ products, addProduct, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct, getTotalCartProducts, getDescProducts, getTotalFrete, getFinalValue }}>
+        <ProductCtx.Provider value={{getProducts, addProduct, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct, getTotalCartProducts, getDescProducts, getTotalFrete, getFinalValue }}>
             { children }
         </ProductCtx.Provider>
     );

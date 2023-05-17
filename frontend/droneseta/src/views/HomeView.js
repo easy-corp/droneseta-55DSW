@@ -38,7 +38,7 @@ function HomeView() {
                     <h2 id="titleNossosProdutos">Nossos Produtos</h2>
 
                     <div id="divProdutos">
-                        { ctxProduct.products.map((prod, index) => (
+                        { ctxProduct.getProducts().map((prod, index) => (
                             <div className="prodHome" key={index} >
                                 <img src={ prod.image } alt="Imagem do Produto"></img>
                                 <h3>{ prod.name }</h3>

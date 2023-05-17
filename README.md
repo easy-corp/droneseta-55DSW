@@ -7,4 +7,4 @@
 
 ## Resumo
 
-O trabalho consiste em uma plataforma para venda de camisetas com entregas feitas por drone, o nome dado a plataforma é DronSeta
+O trabalho consiste em uma plataforma para venda de camisetas com entregas feitas por drone, o nome dado a plataforma é DroneSeta

@@ -93,7 +93,7 @@ function RegisterView() {
             await axios.post(api + "/usuarios", usuario)
                 .then(response => {
                     // Retorna a tela de login
-                    // navigate("/login");
+                    navigate("/login");
                 })
                 .catch(error => {
                     console.log(error);

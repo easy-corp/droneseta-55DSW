@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/loginView.css";
 import logoLogin from "../assets/img/logoLogin.png";
@@ -23,19 +23,22 @@ function LoginView() {
         setPass(event.target.value);
     }
 
-    async function doLogin() {
-        await ctx.logar(user, pass);
-
-        if (ctx.getUser()) {
-            // Se for admin
+    useEffect(() => {
+        if (ctx.getAuth()) {
             if (ctx.getUserTipo() === "ADMIN") {
+                console.log("admin");
                 navigate("/panel");
             } else {
+                console.log("não");
                 navigate("/");
             }
-        } else {
+        } else if (ctx.getAuth()) {
             setLogin(false);
         }
+    }, [ctx.getAuth()]);
+
+    async function doLogin() {
+        await ctx.logar(user, pass);
     }
 
     return (
