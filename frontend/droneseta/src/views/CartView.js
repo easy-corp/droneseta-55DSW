@@ -25,6 +25,8 @@ function CartView() {
     // Para aplicar cupom
     function handlerCupom() {
         console.log("Você tentou aplicar um cupom");
+
+        console.log(ctxProduct.cartProducts);
     }
 
     // Para calcular o CEP
@@ -67,9 +69,9 @@ function CartView() {
                 { ctxProduct.cartProducts.map((prod, index) => (
                     <div className="prodCart" key={ index } >
                         <div id="divProdInfo">
-                            <img src={ prod.image } alt="Foto Camisa" ></img>
+                            <img src={ prod.foto } alt="Foto Camisa" ></img>
                             <div>
-                                <h3>{ prod.name }</h3>
+                                <h3>{ prod.descricao }</h3>
                                 <h4>Tamanho: { prod.sizeChoosed }</h4>
                             </div>
                         </div>
@@ -83,7 +85,7 @@ function CartView() {
                         </div>
                         <div id="divProdValor">
                             <h3>Valor</h3>
-                            <h3 id="hValor">{ (prod.price * prod.qtd).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h3>
+                            <h3 id="hValor">{ (prod.preco * prod.qtd).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h3>
                         </div>
                     </div>
                 )) }

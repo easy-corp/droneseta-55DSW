@@ -1,6 +1,6 @@
+import "../assets/css/productView.css";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../assets/css/productView.css";
 import { useProductCtx } from "../utils/products";
 import MyHeader from "../components/MyHeader";
 import MyButton from "../components/MyButton";
@@ -17,8 +17,6 @@ function ProductView() {
 
     useEffect(() => {
         ctxProduct.getProduct(indexProduct);
-
-        console.log(ctxProduct.product);
     }, []);
 
     // Ao clicar para adicionar um produto no carrinho
@@ -27,7 +25,7 @@ function ProductView() {
         var selSize = document.getElementById("selSize");
         var selValue = selSize.options[selSize.selectedIndex].value;
 
-        ctxProduct.addCartProduct(ctxProduct.products[indexProduct], qtd, selValue);
+        ctxProduct.addCartProduct(ctxProduct.product, qtd, selValue);
     }
 
     return(

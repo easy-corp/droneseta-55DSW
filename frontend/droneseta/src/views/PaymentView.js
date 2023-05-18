@@ -12,6 +12,7 @@ function PaymentView() {
 
     // Para Controlar o clique no botão de finalizar
     function handlerFinalizar() {
+        ctxProduct.clearCart();
         navigate("/");
     }
 
