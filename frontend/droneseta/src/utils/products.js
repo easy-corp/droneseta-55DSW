@@ -6,6 +6,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import camisetaSlipknot1 from "../assets/img/camisetas/Slipknot1.png";
 import camisetaLinkinPark1 from "../assets/img/camisetas/LinkinPark1.jpeg";
 import axios from "axios";
+import api from "./api";
  
 export const ProductCtx = createContext();
 export const useProductCtx = () => useContext(ProductCtx);
@@ -16,7 +17,7 @@ function ProductProvider({ children }) {
 
     // Para recuperar os produtos
     async function getProducts() {
-        axios.get("http://localhost:3500/camisetas")
+        axios.get(api + "/camisetas")
         .then(response => {
             setProducts(response.data);
         })
@@ -27,12 +28,14 @@ function ProductProvider({ children }) {
 
     // Para cadastrar um novo produto
     async function addProduct(product) {
-        // Enviar produto probackend
-        console.log(product);
-
-        // await axios.post(api + "/usuarios/camisetas"), product
-        
-        // .then
+        // Enviar produto pro backend
+        axios.post(api + "/camisetas", product)
+            .then(response => {
+                // console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            })    
     }
 
     // Para adicionar um produto no carrinho de compras

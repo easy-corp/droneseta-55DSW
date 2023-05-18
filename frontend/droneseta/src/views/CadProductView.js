@@ -4,6 +4,7 @@ import MyHeader from "../components/MyHeader";
 import MyInput from "../components/MyInput";
 import MyButton from "../components/MyButton";
 import { useState } from "react";
+import { useProductCtx } from "../utils/products";
 
 function CadProductView() {
     // Os dados do formulario
@@ -11,6 +12,7 @@ function CadProductView() {
     const [value, setValue] = useState("");
     const [img, setImg] = useState(null);
     const [qtd, setQtd] = useState([]);
+    const ctxProduct = useProductCtx();
 
     function descHandler(event) {
         setDesc(event.target.value);
@@ -34,28 +36,19 @@ function CadProductView() {
     }
 
     function qtdHandler(event) {
-        // Buscamos pelo tamanho em questão no array
-        let tamanhoIndex = qtd.findIndex((value) => value.tamanho === event.target.id);
-
-        // Se esse tamanho nao estiver no array, adiciona ele
-        // Caso contrario, devemos atualizar o array
-        if (tamanhoIndex < 0) {
-            setQtd(() => [...qtd, { tamanho: event.target.id, qtd: event.target.value }]);
-        } else {
-            setQtd(() => [...qtd.slice(0, tamanhoIndex), { tamanho: event.target.id, qtd: event.target.value }, ...qtd.slice(tamanhoIndex + 1)]);
-        }
+        setQtd(() => [...qtd, { tamanho: event.target.id}]);
     }
 
     // Para cadastrar um novo produto
     function handlerCadProd() {
         const produto = {
-            name: desc,
-            price: value,
-            size: qtd,
-            image: img
+            descricao: desc,
+            preco: value,
+            estoque: qtd,
+            foto: img
         }
         
-        console.log(produto);
+        ctxProduct.addProduct(produto);
     }
 
     return (
