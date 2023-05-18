@@ -12,6 +12,7 @@ export const useAuthCtx = () => useContext(AuthCtx);
 function AuthProvider({ children }) {
     const [auth, setAuth] = useState(false);        
     const [pessoaLogada, setPessoaLogada] = useState(null);
+    const [alert, setAlert] = useState("");
 
     useEffect(() => {
         if (!pessoaLogada) {
@@ -32,6 +33,7 @@ function AuthProvider({ children }) {
         })
         .catch(error => {
             console.log(error);
+            setAlert(error.response.data);
         })
     }
 
@@ -57,7 +59,7 @@ function AuthProvider({ children }) {
     }
 
     return (
-        <AuthCtx.Provider value={{ getAuth, logar, sair, getUser, getUserTipo}}>
+        <AuthCtx.Provider value={{ getAuth, alert, logar, sair, getUser, getUserTipo}}>
             { children }
         </AuthCtx.Provider>
     );

@@ -2,9 +2,7 @@
    podem ser acessadas a partir de diferentes pontos da nossa
    aplicação */
 
-import { createContext, useContext, useEffect, useState } from "react";
-import camisetaSlipknot1 from "../assets/img/camisetas/Slipknot1.png";
-import camisetaLinkinPark1 from "../assets/img/camisetas/LinkinPark1.jpeg";
+import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import api from "./api";
  
@@ -13,6 +11,7 @@ export const useProductCtx = () => useContext(ProductCtx);
 
 function ProductProvider({ children }) {    
     const [products, setProducts] = useState([]);                  // Produtos cadastrados
+    const [product, setProduct] = useState([]);                    // Produto buscado
     const [cartProducts, setCartProducts] = useState([]);          // Produtos no carrinho de compras
 
     // Para recuperar os produtos
@@ -26,16 +25,29 @@ function ProductProvider({ children }) {
         })        
     }
 
+    // Para recupera um produto especifico
+    async function getProduct(id) {
+        axios.get(api + "/camisetas/" + id)
+        .then(response => {
+            setProduct(response.data);
+        })
+        .catch(error => {
+            console.log(error);
+        })   
+    }
+
     // Para cadastrar um novo produto
     async function addProduct(product) {
-        // Enviar produto pro backend
-        axios.post(api + "/camisetas", product)
-            .then(response => {
-                // console.log(response);
-            })
-            .catch(error => {
-                console.log(error);
-            })    
+        console.log(product);
+
+        // // Enviar produto pro backend
+        // axios.post(api + "/camisetas", product)
+        //     .then(response => {
+        //         // console.log(response);
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     })    
     }
 
     // Para adicionar um produto no carrinho de compras
@@ -112,7 +124,7 @@ function ProductProvider({ children }) {
     }
 
     return (
-        <ProductCtx.Provider value={{ products, getProducts, addProduct, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct, getTotalCartProducts, getDescProducts, getTotalFrete, getFinalValue }}>
+        <ProductCtx.Provider value={{ product, getProduct, products, getProducts, addProduct, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct, getTotalCartProducts, getDescProducts, getTotalFrete, getFinalValue }}>
             { children }
         </ProductCtx.Provider>
     );

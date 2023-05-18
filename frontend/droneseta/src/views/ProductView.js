@@ -4,7 +4,7 @@ import "../assets/css/productView.css";
 import { useProductCtx } from "../utils/products";
 import MyHeader from "../components/MyHeader";
 import MyButton from "../components/MyButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MySelect from "../components/MySizeSelect";
 
 function ProductView() {
@@ -14,7 +14,12 @@ function ProductView() {
 
     // O produto vem via parametro na rota
     const { indexProduct } = useParams();
-    const produto = ctxProduct.products[indexProduct];
+
+    useEffect(() => {
+        ctxProduct.getProduct(indexProduct);
+
+        console.log(ctxProduct.product);
+    }, []);
 
     // Ao clicar para adicionar um produto no carrinho
     // Precisamos indicar o produto, tamanho e quantidade
@@ -28,17 +33,17 @@ function ProductView() {
     return(
         <div>
             <MyHeader />
-            <div id="divProdutoView">
-                <img src={ produto.image } alt="Imagem do Produto"></img>
+            { ctxProduct.product.id && <div id="divProdutoView">
+                <img src={ ctxProduct.product.foto } alt="Imagem do Produto"></img>
                 <div id="divProdutoViewInfos">
-                    <h1 id="ProdutoViewNome">{ produto.name }</h1>
-                    <h1 id="ProdutoViewPreco">R$ { produto.price }</h1>
+                    <h1 id="ProdutoViewNome">{ ctxProduct.product.descricao }</h1>
+                    <h1 id="ProdutoViewPreco">{ ctxProduct.product.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h1>
                     <div id="divProdutoComprar">
                         <div id="divProdutoViewSize">
                             <h3>Tamanho</h3>
                             <MySelect 
                                 selId="selSize"
-                                options={ produto.size }
+                                options={ ctxProduct.product.estoque }
                             />
                         </div>
                         <div id="divProdutoViewQtd">
@@ -56,7 +61,7 @@ function ProductView() {
                         event={ addProductCart }
                     />  
                 </div>
-            </div>
+            </div> }
         </div>
     );
 }

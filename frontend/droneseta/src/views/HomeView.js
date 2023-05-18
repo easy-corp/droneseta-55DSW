@@ -18,8 +18,6 @@ function HomeView() {
 
     useEffect(() => {
         ctxProduct.getProducts();
-
-        console.log(ctxProduct.products);
     }, []);
 
     return (
@@ -46,7 +44,7 @@ function HomeView() {
 
                     <div id="divProdutos">
                         { ctxProduct.products.map((prod, index) => (
-                            <div className="prodHome" key={index} >
+                            <div className="prodHome" key={prod.id} >
                                 <img src={ prod.foto } alt="Imagem do Produto"></img>
                                 <h3>{ prod.descricao }</h3>
                                 <h2>{ prod.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h2>
@@ -54,7 +52,7 @@ function HomeView() {
                                      text="Comprar"
                                      icon="fa-solid fa-cart-shopping"
                                      event={ buyProduct }
-                                     eventVar={ index }
+                                     eventVar={ prod.id }
                                 />
                             </div>
                         )) }

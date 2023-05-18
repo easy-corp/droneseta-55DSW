@@ -12,6 +12,7 @@ function CadProductView() {
     const [value, setValue] = useState("");
     const [img, setImg] = useState(null);
     const [qtd, setQtd] = useState([]);
+    
     const ctxProduct = useProductCtx();
 
     function descHandler(event) {
