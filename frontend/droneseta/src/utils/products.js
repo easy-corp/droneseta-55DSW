@@ -38,7 +38,6 @@ function ProductProvider({ children }) {
 
     // Para cadastrar um novo produto
     async function addProduct(product) {
-        // Enviar produto pro backend
         axios.post(api + "/camisetas", product)
             .then(response => {
                 // console.log(response);
@@ -46,6 +45,41 @@ function ProductProvider({ children }) {
             .catch(error => {
                 console.log(error);
             })    
+    }
+
+    // Para alterarum produto
+    async function updateProduto(id, product) {
+        axios.put(api + "/camisetas/" + id, product)
+            .then(response => {
+                // console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            })  
+    }
+
+    // Para recuperar a quantidade total de peças de um produto
+    function getProductQtd(produto) {
+        let qtd = 0;
+
+        produto.estoque.forEach(element => {
+            qtd++;
+        });
+
+        return qtd;
+    }
+
+    // Para recuperar a quantidade de peças de um tamanho especifico de um produto
+    function getProductSizeQtd(produto, tamanho) {
+        let qtd = 0;
+
+        produto.estoque.forEach(element => {
+            if (element.tamanho === tamanho) {
+                qtd++;
+            }            
+        });
+
+        return qtd;
     }
 
     // Para adicionar um produto no carrinho de compras
@@ -129,7 +163,7 @@ function ProductProvider({ children }) {
     }
 
     return (
-        <ProductCtx.Provider value={{ product, getProduct, products, getProducts, addProduct, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct, getTotalCartProducts, clearCart, getDescProducts, getTotalFrete, getFinalValue }}>
+        <ProductCtx.Provider value={{ product, getProduct, products, getProducts, addProduct, updateProduto, getProductQtd, getProductSizeQtd, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct, getTotalCartProducts, clearCart, getDescProducts, getTotalFrete, getFinalValue }}>
             { children }
         </ProductCtx.Provider>
     );

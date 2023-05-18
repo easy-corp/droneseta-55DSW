@@ -2,17 +2,23 @@ import "../assets/css/listProductsView.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useProductCtx } from "../utils/products";
 import MyHeader from "../components/MyHeader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MyInput from "../components/MyInput";
 import MyButton from "../components/MyButton";
 
 function ListProductsView() {
     const [editMenu, setEditMenu] = useState(false);
+    const [editId, setEditId] = useState(0);
     const [editDesc, setEditDesc] = useState("");
+    const [editImg, setEditImg] = useState("");
     const [editValor, setEditValor] = useState("");
     const [editQtd, setEditQtd] = useState([]);
     
     const ctxProduct = useProductCtx();
+
+    useEffect(() => {
+        ctxProduct.getProducts();
+    }, [ctxProduct.products]);
 
     function handlerEditDesc(event) {
         setEditDesc(event.target.value);
@@ -35,24 +41,17 @@ function ListProductsView() {
         }
     }
 
-    // Para recuperar a quantidade total de peças de um produto
-    function getProductQtd(produto) {
-        let size = 0;
-
-        produto.size.forEach(element => {
-           size += element.qtd;
-        });
-
-        return size;
-    }
 
     // Para abrir o menu de edição
     function openEditMenu(produto) {
         setEditMenu(true);
         
-        setEditDesc(produto.name);
-        setEditValor(produto.price);
-        setEditQtd(produto.size);
+        // ID e Foto nao podem ser alterados
+        setEditId(produto.id);
+        setEditImg(produto.foto);
+        setEditDesc(produto.descricao);
+        setEditValor(produto.preco);
+        setEditQtd(produto.estoque);
 
         // Preenche os campos na tela com os dados atuais do produto
         // Apos pequeno atraso para garantir que o componente ja esteja na tela
@@ -60,12 +59,13 @@ function ListProductsView() {
             let inpEditDesc = document.getElementById("inpEditDesc");
             let inpEditValor = document.getElementById("inpEditValor");
 
-            inpEditDesc.value = produto.name;
-            inpEditValor.value = produto.price;
+            inpEditDesc.value = produto.descricao;
+            inpEditValor.value = produto.preco;
 
-            produto.size.forEach(element => {
+            produto.estoque.forEach(element => {
                 let inpEditQtd = document.getElementById(element.tamanho);            
-                inpEditQtd.value = element.qtd;
+
+                inpEditQtd.value = ctxProduct.getProductSizeQtd(produto, element.tamanho);
             });
         }, 10);        
     }
@@ -78,12 +78,16 @@ function ListProductsView() {
     // Para editar o produto
     function editProduct() {
         const produto = {
-            name: editDesc,
-            price: editValor,
-            size: editQtd,
+            descricao: editDesc,
+            foto: editImg,
+            preco: editValor,
+            tamanho: editQtd,
         }
-        
-        console.log(produto);
+
+        ctxProduct.updateProduto(editId, produto);
+
+        // Atualiza os itens
+        ctxProduct.getProducts();
 
         // Fecha a tela de edicao
         setEditMenu(false);
@@ -179,11 +183,11 @@ function ListProductsView() {
             <div id="listProductsMain">
             { ctxProduct.products.map((prod, index) => (
                 <div className="listProducts" key={index} >
-                    <img src={ prod.image } alt="Imagem do Produto"></img>
+                    <img src={ prod.foto } alt="Imagem do Produto"></img>
                     <div className="listProdInfo">
-                        <h3>{ prod.name }</h3>
-                        <h3>{ prod.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h3>
-                        <h3>Peças em estoque: { getProductQtd(prod) }</h3>
+                        <h3>{ prod.descricao }</h3>
+                        <h3>{ prod.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h3>
+                        <h3>Peças em estoque: { ctxProduct.getProductQtd(prod) }</h3>
                         <FontAwesomeIcon icon="fa-solid fa-pen-to-square" id="icEditProd" onClick={ () => openEditMenu(prod) } />
                     </div>
                 </div>
