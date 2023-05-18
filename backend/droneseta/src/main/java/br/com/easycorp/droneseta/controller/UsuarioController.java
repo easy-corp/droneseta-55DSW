@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.easycorp.droneseta.controller.exceptions.UsuarioInvalidoException;
 import br.com.easycorp.droneseta.controller.exceptions.UsuarioNotFoundException;
 import br.com.easycorp.droneseta.controller.services.AuthService;
 import br.com.easycorp.droneseta.model.Usuario;
@@ -31,21 +32,19 @@ public class UsuarioController {
         this.repository = repository;
     }
 
-    // Aggregate root
-    // tag::get-aggregate-root[]
     @GetMapping("/usuarios")
     List<Usuario> all() {
         return repository.findAll();
     }
 
     @PostMapping("/usuarios/login")
-    Usuario login(@RequestBody Map<String, String> params, HttpSession session) throws NoSuchAlgorithmException {
+    Usuario login(@RequestBody Map<String, String> params, HttpSession session) throws Exception {
         Usuario user = authService.autenticar(params.get("username"), params.get("password"));
         if (user != null) {
             session.setAttribute("usuario", user);
             return user;
         }
-        return null;
+        throw new UsuarioInvalidoException(params.get("username"));
     }
 
     @GetMapping("/usuarios/view_session_user")

@@ -9,12 +9,12 @@ import org.springframework.http.HttpStatus;
 import br.com.easycorp.droneseta.controller.exceptions.PedidoNotFoundException;
 
 @ControllerAdvice
-public class CamisetaAdvice {
+public class PedidoAdvice {
 
     @ResponseBody
     @ExceptionHandler(PedidoNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String camisetaNotFoundHandler(PedidoNotFoundException ex){
+    String pedidoNotFoundHandler(PedidoNotFoundException ex){
         return ex.getMessage();
     }
     

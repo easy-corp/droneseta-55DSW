@@ -1,15 +1,16 @@
 package br.com.easycorp.droneseta.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -23,8 +24,8 @@ public class Pedido {
     @JsonIgnore
     private Usuario usuario;
 
-    @ElementCollection
-    private List<Estoque> itens;
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.DETACH)
+    private List<Estoque> itens = new ArrayList<>();
 
     private SituacaoPedido situacao;
 
@@ -40,6 +41,16 @@ public class Pedido {
         this.itens = itens;
         this.situacao = situacao;
         this.endereco = endereco;
+
+        for (Estoque estoque : itens) {
+            estoque.setPedido(this);
+        }
+    }
+
+    public Pedido(Usuario usuario, SituacaoPedido situacao, Endereco endereco) {
+        this.usuario = usuario;
+        this.situacao = situacao;
+        this.endereco = endereco;
     }
 
     public Pedido(Usuario usuario, List<Estoque> itens, SituacaoPedido situacao, Endereco endereco) {
@@ -47,6 +58,10 @@ public class Pedido {
         this.itens = itens;
         this.situacao = situacao;
         this.endereco = endereco;
+
+        for (Estoque estoque : itens) {
+            estoque.setPedido(this);
+        }
     }
 
     public int getId() {
@@ -134,7 +149,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido [id=" + id + ", usuario=" + usuario + ", itens=" + itens + ", situacao=" + situacao
+        return "Pedido [id=" + id + ", usuario=" + usuario + ",  " + "situacao=" + situacao
                 + ", endereco=" + endereco + "]";
     }
 

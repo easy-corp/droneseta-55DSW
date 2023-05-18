@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.easycorp.droneseta.controller.exceptions.CamisetaNotFoudException;
+import br.com.easycorp.droneseta.controller.exceptions.PedidoNotFoundException;
 import br.com.easycorp.droneseta.model.Camiseta;
 import br.com.easycorp.droneseta.repositories.CamisetaRepository;
 
@@ -23,8 +23,6 @@ public class CamisetaController {
         this.repository = repository;
     }
 
-    // Aggregate root
-    // tag::get-aggregate-root[]
     @GetMapping("/camisetas")
     List<Camiseta> all() {
         return repository.findAll();
@@ -37,7 +35,7 @@ public class CamisetaController {
 
     @GetMapping("/camisetas/{id}")
     Camiseta one(@PathVariable int id) {
-        return repository.findById(id).orElseThrow(() -> new CamisetaNotFoudException(id));
+        return repository.findById(id).orElseThrow(() -> new PedidoNotFoundException(id));
     }
 
     @PutMapping("/camisetas/{id}")

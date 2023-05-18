@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -233,10 +234,10 @@ public class DataBaseSeeder {
     @Bean
     @Order(value = 3)
     @Transactional
-    CommandLineRunner doSeedEstoque(EstoqueRepository estoqueRepo) {
+    CommandLineRunner doSeedEstoque(EstoqueRepository estoqueRepo, CamisetaRepository camisetaRepo) {
         return args -> {
             log.info("Inicializando Seeding da tabela de Estoques...");
-            for (Camiseta c : camisetas) {
+            for (Camiseta c : camisetaRepo.findAll()) {
                 estoques.add(new Estoque(c, "P", "#ffffff", false));
                 estoques.add(new Estoque(c, "M", "#cccccc", false));
                 estoques.add(new Estoque(c, "G", "#999999", false));
@@ -252,35 +253,38 @@ public class DataBaseSeeder {
     @Bean
     @Order(value = 4)
     @Transactional
-    CommandLineRunner doSeedPedido(PedidoRepository pedidoRepo) {
+    CommandLineRunner doSeedPedido(PedidoRepository pedidoRepo, EstoqueRepository estoqueRepo) {
         return args -> {
-            log.info("Inicializando Seeding da tabela de Ordens de Entrega...");
+            log.info("Inicializando Seeding da tabela de Pedidos...");
             for (Usuario user : createdUsers) {
 
-                List<Estoque> estoquesPedido = new ArrayList<>();
+                Pedido p1 = new Pedido(user, SituacaoPedido.ENTREGUE,
+                        createdEnderecos.get(user)
+                                .get((int) Math.floor(Math.random() * createdEnderecos.get(user).size())));
+                Pedido p2 = new Pedido(user, SituacaoPedido.ENTREGUE,
+                        createdEnderecos.get(user)
+                                .get((int) Math.floor(Math.random() * createdEnderecos.get(user).size())));
+                Pedido p3 = new Pedido(user, SituacaoPedido.ENTREGUE,
+                        createdEnderecos.get(user)
+                                .get((int) Math.floor(Math.random() * createdEnderecos.get(user).size())));
+
                 Collections.shuffle(estoques);
-                Estoque estoque = estoques.get(0);
-                int count = 0;
-                while (count < 3 && estoquesPedido.contains(estoque)) {
-                    estoquesPedido.add(estoque);
-                    Collections.shuffle(estoques);
-                    estoque = estoques.get(0);
-                    count++;
-                }
-
-                Pedido p1 = new Pedido(user, estoquesPedido, SituacaoPedido.ENTREGUE,
-                        createdEnderecos.get(user)
-                                .get((int) Math.floor(Math.random() * createdEnderecos.get(user).size())));
-                Pedido p2 = new Pedido(user, estoquesPedido, SituacaoPedido.ENTREGUE,
-                        createdEnderecos.get(user)
-                                .get((int) Math.floor(Math.random() * createdEnderecos.get(user).size())));
-                Pedido p3 = new Pedido(user, estoquesPedido, SituacaoPedido.ENTREGUE,
-                        createdEnderecos.get(user)
-                                .get((int) Math.floor(Math.random() * createdEnderecos.get(user).size())));
-
+                p1.getItens().add(estoques.get(0));
                 pedidos.add(pedidoRepo.save(p1));
+                estoques.get(0).setPedido(p1);
+                estoqueRepo.save(estoques.get(0));
+                
+                Collections.shuffle(estoques);
+                p2.getItens().add(estoques.get(0));
                 pedidos.add(pedidoRepo.save(p2));
+                estoques.get(0).setPedido(p2);
+                estoqueRepo.save(estoques.get(0));
+                
+                Collections.shuffle(estoques);
+                p3.getItens().add(estoques.get(0));
                 pedidos.add(pedidoRepo.save(p3));
+                estoques.get(0).setPedido(p3);
+                estoqueRepo.save(estoques.get(0));
 
             }
 
@@ -292,6 +296,7 @@ public class DataBaseSeeder {
     @Transactional
     CommandLineRunner doSeedOrdemEntrega(OrdemEntregaRepository ordemRepo) {
         return args -> {
+            log.info("Inicializando Seeding da tabela de Ordens de Entrega...");
             for (int i = 0; i < pedidos.size(); i += 3) {
                 OrdemEntrega ordem = new OrdemEntrega();
                 ordem.getPedidos().add(pedidos.get(i));
