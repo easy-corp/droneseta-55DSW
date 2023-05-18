@@ -2,7 +2,7 @@
    podem ser acessadas a partir de diferentes pontos da nossa
    aplicação */
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import camisetaSlipknot1 from "../assets/img/camisetas/Slipknot1.png";
 import camisetaLinkinPark1 from "../assets/img/camisetas/LinkinPark1.jpeg";
 import axios from "axios";
@@ -11,126 +11,19 @@ export const ProductCtx = createContext();
 export const useProductCtx = () => useContext(ProductCtx);
 
 function ProductProvider({ children }) {    
+    const [products, setProducts] = useState([]);                  // Produtos cadastrados
+    const [cartProducts, setCartProducts] = useState([]);          // Produtos no carrinho de compras
+
     // Para recuperar os produtos
-    function getProducts() {
+    async function getProducts() {
         axios.get("http://localhost:3500/camisetas")
         .then(response => {
-            console.log(response);
+            setProducts(response.data);
         })
         .catch(error => {
             console.log(error);
-        })
-
-        return [
-            {
-                name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
-                price: 54.99,
-                size: [
-                    {tamanho: "PP", qtd: 1},
-                    {tamanho: "P", qtd: 1},
-                    {tamanho: "M", qtd: 1},
-                    {tamanho: "G", qtd: 1},
-                    {tamanho: "GG", qtd: 1},
-                    {tamanho: "XGG", qtd: 1},
-                ],
-                image: camisetaSlipknot1
-            },
-            {
-                name: "Camiseta Linkin Park Meteora capa do álbum.",
-                price: 54.99,
-                size: [
-                    {tamanho: "PP", qtd: 1},
-                    {tamanho: "P", qtd: 1},
-                    {tamanho: "M", qtd: 1},
-                    {tamanho: "G", qtd: 1},
-                    {tamanho: "GG", qtd: 1},
-                    {tamanho: "XGG", qtd: 1},
-                ],
-                image: camisetaLinkinPark1
-            },
-            {
-                name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
-                price: 54.99,
-                size: [
-                    {tamanho: "PP", qtd: 1},
-                    {tamanho: "P", qtd: 1},
-                    {tamanho: "M", qtd: 1},
-                    {tamanho: "G", qtd: 1},
-                    {tamanho: "GG", qtd: 1},
-                    {tamanho: "XGG", qtd: 1},
-                ],
-                image: camisetaSlipknot1
-            },
-            {
-                name: "Camiseta Linkin Park Meteora capa do álbum.",
-                price: 54.99,
-                size: [
-                    {tamanho: "PP", qtd: 1},
-                    {tamanho: "P", qtd: 1},
-                    {tamanho: "M", qtd: 1},
-                    {tamanho: "G", qtd: 1},
-                    {tamanho: "GG", qtd: 1},
-                    {tamanho: "XGG", qtd: 1},
-                ],
-                image: camisetaLinkinPark1
-            },
-            {
-                name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
-                price: 54.99,
-                size: [
-                    {tamanho: "PP", qtd: 1},
-                    {tamanho: "P", qtd: 1},
-                    {tamanho: "M", qtd: 1},
-                    {tamanho: "G", qtd: 1},
-                    {tamanho: "GG", qtd: 1},
-                    {tamanho: "XGG", qtd: 1},
-                ],
-                image: camisetaSlipknot1
-            },
-            {
-                name: "Camiseta Linkin Park Meteora capa do álbum.",
-                price: 54.99,
-                size: [
-                    {tamanho: "PP", qtd: 1},
-                    {tamanho: "P", qtd: 1},
-                    {tamanho: "M", qtd: 1},
-                    {tamanho: "G", qtd: 1},
-                    {tamanho: "GG", qtd: 1},
-                    {tamanho: "XGG", qtd: 1},
-                ],
-                image: camisetaLinkinPark1
-            },
-            {
-                name: "Camiseta Slipknot Os Nove Intregrantes em xadrez (formação 2017).",
-                price: 54.99,
-                size: [
-                    {tamanho: "PP", qtd: 1},
-                    {tamanho: "P", qtd: 1},
-                    {tamanho: "M", qtd: 1},
-                    {tamanho: "G", qtd: 1},
-                    {tamanho: "GG", qtd: 1},
-                    {tamanho: "XGG", qtd: 1},
-                ],
-                image: camisetaSlipknot1
-            },
-            {
-                name: "Camiseta Linkin Park Meteora capa do álbum.",
-                price: 54.99,
-                size: [
-                    {tamanho: "PP", qtd: 1},
-                    {tamanho: "P", qtd: 1},
-                    {tamanho: "M", qtd: 1},
-                    {tamanho: "G", qtd: 1},
-                    {tamanho: "GG", qtd: 1},
-                    {tamanho: "XGG", qtd: 1},
-                ],
-                image: camisetaLinkinPark1
-            },
-        ];        
+        })        
     }
-
-    // const [products, setProducts] = useState(getProducts());       // Produtos cadastrados
-    const [cartProducts, setCartProducts] = useState([]);          // Produtos no carrinho de compras
 
     // Para cadastrar um novo produto
     async function addProduct(product) {
@@ -216,7 +109,7 @@ function ProductProvider({ children }) {
     }
 
     return (
-        <ProductCtx.Provider value={{getProducts, addProduct, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct, getTotalCartProducts, getDescProducts, getTotalFrete, getFinalValue }}>
+        <ProductCtx.Provider value={{ products, getProducts, addProduct, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct, getTotalCartProducts, getDescProducts, getTotalFrete, getFinalValue }}>
             { children }
         </ProductCtx.Provider>
     );
