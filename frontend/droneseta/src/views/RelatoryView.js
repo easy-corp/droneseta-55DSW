@@ -4,10 +4,8 @@ import MyHeader from "../components/MyHeader";
 import { useRelatoryCtx } from "../utils/relatory";
 
 /* Recebe como prop o tipo do relatorio
-   1 == clientes cadastrados
-   2 == produtos mais vendidos
-   3 == pedidos pendentes
-   4 == pedidos finalizados */
+   1 == produtos mais vendidos
+   2 == pedidos realizados */
 function RelatoryView() {
     const ctxRelatory = useRelatoryCtx();
     const params = useParams();

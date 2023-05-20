@@ -28,6 +28,23 @@ function ProductView() {
         ctxProduct.addCartProduct(ctxProduct.product, qtd, selValue);
     }
 
+    // Para exibir somente os tamanhos disponiveis
+    function verificarEstoquePositivo() {
+        let tamanhos = [];
+
+        for (let i = 0; i < ctxProduct.product.estoque.length; i++) {
+            let tam = ctxProduct.product.estoque[i];
+
+            if (!tamanhos.includes(tam.tamanho)) {
+                tamanhos.push(tam.tamanho);
+            }
+        }
+
+        console.log(tamanhos);
+
+        return tamanhos;
+    }
+
     return(
         <div>
             <MyHeader />
@@ -36,28 +53,29 @@ function ProductView() {
                 <div id="divProdutoViewInfos">
                     <h1 id="ProdutoViewNome">{ ctxProduct.product.descricao }</h1>
                     <h1 id="ProdutoViewPreco">{ ctxProduct.product.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h1>
-                    <div id="divProdutoComprar">
+                    { ctxProduct.getProductQtd(ctxProduct.product) <= 0 && <h2>Produto sem estoque no momento</h2> }
+                    { ctxProduct.getProductQtd(ctxProduct.product) > 0 && <div id="divProdutoComprar">
                         <div id="divProdutoViewSize">
                             <h3>Tamanho</h3>
                             <MySelect 
                                 selId="selSize"
-                                options={ ctxProduct.product.estoque }
+                                options={ verificarEstoquePositivo() }
                             />
                         </div>
-                        <div id="divProdutoViewQtd">
+                         <div id="divProdutoViewQtd">
                             <h3>Quantidade</h3>
                             <div id="divProdutoAdjustQtd">
                                 <FontAwesomeIcon icon="fa-solid fa-chevron-left" className="icAdjustQtd" onClick={ () => setQtd(qtd - 1) } />
                                 <h3>{ qtd }</h3>
                                 <FontAwesomeIcon icon="fa-solid fa-chevron-right" className="icAdjustQtd" onClick={ () => setQtd(qtd + 1) } />
                             </div>
-                        </div>                    
-                    </div>
-                    <MyButton 
+                        </div>
+                    </div> }
+                    { ctxProduct.getProductQtd(ctxProduct.product) > 0 && <MyButton 
                         text="Comprar"
                         icon="fa-solid fa-cart-shopping"
                         event={ addProductCart }
-                    />  
+                    /> }
                 </div>
             </div> }
         </div>

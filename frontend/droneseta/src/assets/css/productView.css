@@ -22,6 +22,10 @@
     border-radius: 7px;
 }
 
+#divProdutoView h2 {
+    width: 200%;
+}
+
 #divProdutoViewInfos {
     display: grid;
     grid-template-rows: min-content min-content min-content min-content;

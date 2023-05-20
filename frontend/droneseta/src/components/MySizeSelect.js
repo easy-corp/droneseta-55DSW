@@ -8,8 +8,7 @@ function MySizeSelect(props) {
         <div id="divSelect">
             <select id={ props.selId } className="select">
                 { props.options.map((opt, index) => (
-                    // opt.qtd > 0 && <option value={ opt.tamanho } key={ index } >{ opt.tamanho }</option>
-                    <option value={ opt.tamanho } key={ index } >{ opt.tamanho }</option>
+                    <option value={ opt } key={ index } >{ opt }</option>
                 )) }
             </select>
         </div>

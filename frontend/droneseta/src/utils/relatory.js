@@ -14,27 +14,6 @@ function RelatoryProvider({ children }) {
         return [
             {
                 id: 1,
-                title: "Clientes Cadastrados",
-                relCabecalho: [
-                    {
-                        titulo: "Código",
-                        formato: "Integer"
-                    },
-                    {
-                        titulo: "Cliente",
-                        formato: "String"
-                    },
-                ],
-                relDados: [
-                    [1, "Luis Felipe da Silva"],
-                    [2, "Murilo Goedert"],
-                    [3, "Gabriel Dolzan"],
-                    [4, "Lucas Dolsan"],
-                    [5, "Angelina Dolzan"],
-                ]
-            },
-            {
-                id: 2,
                 title: "Produtos mais vendidos",
                 relCabecalho: [
                     {
@@ -59,33 +38,8 @@ function RelatoryProvider({ children }) {
                 ]
             },
             {
-                id: 3,
-                title: "Pedidos Pendentes",
-                relCabecalho: [
-                    {
-                        titulo: "Pedido",
-                        formato: "Integer"
-                    },
-                    {
-                        titulo: "Cliente",
-                        formato: "String"
-                    },
-                    {
-                        titulo: "R$ Pedido",
-                        formato: "Double"
-                    },
-                ],
-                relDados: [
-                    [1, "Luis Felipe da Silva", 49.99],
-                    [2, "Murilo Goedert", 90.00],
-                    [3, "Gabriel Dolzan", 25.50],
-                    [4, "Lucas Dolsan", 127.99],
-                    [5, "Angelina Dolzan", 317.00],
-                ]
-            },
-            {
-                id: 4,
-                title: "Pedidos Finalizados",
+                id: 2,
+                title: "Pedidos Realizados",
                 relCabecalho: [
                     {
                         titulo: "Pedido",

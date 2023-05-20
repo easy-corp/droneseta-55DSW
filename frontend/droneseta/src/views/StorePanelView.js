@@ -58,12 +58,8 @@ function StorePanelView() {
                             event={ () => handlerOpenRel(1) }
                         />
                         <MyButton 
-                            text="Pedidos Pendentes"
+                            text="Pedidos Realizados"
                             event={ () => handlerOpenRel(2) }
-                        />
-                        <MyButton 
-                            text="Pedidos Finalizados"
-                            event={ () => handlerOpenRel(3) }
                         />
                     </div>
                 </div>
