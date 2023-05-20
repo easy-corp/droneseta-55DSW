@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Transient;
 
 @Entity
 public class OrdemEntrega {
@@ -15,10 +17,12 @@ public class OrdemEntrega {
       @Id
       @GeneratedValue
       private int id;
-      @ElementCollection
+      @ManyToMany(fetch = FetchType.EAGER)
       private List<Pedido> pedidos = new ArrayList<>();
       private Date dataSaida;
       private Date dataEntrega;
+      @Transient
+      private int previsaoDeEntrega;
 
       public OrdemEntrega(int id, List<Pedido> pedidos, Date dataSaida, Date dataEntrega) {
             this.id = id;
@@ -73,6 +77,8 @@ public class OrdemEntrega {
             this.dataEntrega = dataEntrega;
       }
 
+      
+
       @Override
       public int hashCode() {
             final int prime = 31;
@@ -117,6 +123,14 @@ public class OrdemEntrega {
       public String toString() {
             return "OrdemEntrega [id=" + id + ", pedidos=" + pedidos + ", dataSaida=" + dataSaida + ", dataEntrega="
                         + dataEntrega + "]";
+      }
+
+      public int getPrevisaoDeEntrega() {
+            return previsaoDeEntrega;
+      }
+
+      public void setPrevisaoDeEntrega(int previsaoDeEntrega) {
+            this.previsaoDeEntrega = previsaoDeEntrega;
       }
 
 }

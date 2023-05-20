@@ -16,7 +16,7 @@ public class Estoque {
     @GeneratedValue
     private int sequencia;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = "foto")
     private Camiseta camiseta;
 

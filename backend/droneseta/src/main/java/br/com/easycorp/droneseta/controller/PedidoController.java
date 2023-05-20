@@ -1,5 +1,7 @@
 package br.com.easycorp.droneseta.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,8 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.easycorp.droneseta.controller.exceptions.EstoqueNotFoundException;
 import br.com.easycorp.droneseta.controller.exceptions.PedidoNotFoundException;
 import br.com.easycorp.droneseta.model.Estoque;
+import br.com.easycorp.droneseta.model.OrdemEntrega;
 import br.com.easycorp.droneseta.model.Pedido;
 import br.com.easycorp.droneseta.repositories.EstoqueRepository;
+import br.com.easycorp.droneseta.repositories.OrdemEntregaRepository;
 import br.com.easycorp.droneseta.repositories.PedidoRepository;
 
 @RestController
@@ -22,10 +26,12 @@ public class PedidoController {
 
     private final PedidoRepository repository;
     private final EstoqueRepository estoqueRepo;
+    private final OrdemEntregaRepository ordemRepo;
 
-    PedidoController(PedidoRepository repository, EstoqueRepository estoqueRepo) {
+    PedidoController(PedidoRepository repository, EstoqueRepository estoqueRepo, OrdemEntregaRepository ordemRepo) {
         this.repository = repository;
         this.estoqueRepo = estoqueRepo;
+        this.ordemRepo = ordemRepo;
     }
 
     @GetMapping("/pedidos")
@@ -34,14 +40,42 @@ public class PedidoController {
     }
 
     @PostMapping("/pedidos")
-    Pedido newPedido(@RequestBody Pedido novoPedido) {
+    List<OrdemEntrega> newPedido(@RequestBody Pedido novoPedido) {
         Pedido pedido = repository.save(novoPedido);
-        for(Estoque e : novoPedido.getItens()){
-            Estoque estoque = estoqueRepo.findById(e.getSequencia()).orElseThrow(() -> new EstoqueNotFoundException(e.getSequencia()));
+        for (Estoque e : novoPedido.getItens()) {
+            Estoque estoque = estoqueRepo.findById(e.getSequencia())
+                    .orElseThrow(() -> new EstoqueNotFoundException(e.getSequencia()));
             estoque.setPedido(pedido);
+            estoque.setVendido(true);
             this.estoqueRepo.save(estoque);
         }
-        return pedido;
+
+        int qtdEntregasAtual = 0;
+        for (OrdemEntrega o : ordemRepo.findAll()) {
+            if (o.getDataEntrega() == null) {
+                qtdEntregasAtual++;
+            }
+        }
+
+        List<OrdemEntrega> ordens = new ArrayList<>();
+
+        if (pedido.getItens().size() <= 10) {
+            OrdemEntrega ordem = new OrdemEntrega();
+            ordem.getPedidos().add(pedido);
+            ordem.setDataSaida(new Date());
+            ordem.setPrevisaoDeEntrega(qtdEntregasAtual + 1);
+            ordens.add(ordemRepo.save(ordem));
+        } else {
+            for (int i = 0; i < pedido.getItens().size(); i += 10) {
+                qtdEntregasAtual++;
+                OrdemEntrega ordemEntrega = new OrdemEntrega();
+                ordemEntrega.getPedidos().add(pedido);
+                ordemEntrega.setDataSaida(new Date());
+                ordemEntrega.setPrevisaoDeEntrega(qtdEntregasAtual);
+                ordens.add(ordemRepo.save(ordemEntrega));
+            }
+        }
+        return ordens;
     }
 
     @GetMapping("/pedidos/{id}")
