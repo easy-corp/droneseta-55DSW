@@ -70,7 +70,7 @@ public class UsuarioController {
                     usuario.setCartaoCredito(novoUsuario.getCartaoCredito());
                     usuario.setNome(novoUsuario.getNome());
                     usuario.setDataNascimento(novoUsuario.getDataNascimento());
-                    if(!usuario.getPassword().equals("")){
+                    if(!novoUsuario.getPassword().equals("")){
                         try {
                             usuario.setPassword(authService.criptocrafaSenhaUsuario(novoUsuario.getPassword()));
                         } catch (NoSuchAlgorithmException e) {
