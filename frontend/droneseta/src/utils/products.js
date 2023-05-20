@@ -163,7 +163,7 @@ function ProductProvider({ children }) {
     }
 
     // Para realizar um pedido
-    function createOrder(usuario) {
+    function createOrder(user) {
         let itensPedido = [];
 
         // Formata os dados de itens para envio da requisicao
@@ -182,7 +182,9 @@ function ProductProvider({ children }) {
         const pedido = {
             ...order,
             itens: itensPedido,
-            usuario: usuario,
+            usuario: {
+                id: user
+            },
         }
 
         console.log(pedido);
