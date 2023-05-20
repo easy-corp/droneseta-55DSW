@@ -17,6 +17,11 @@ function StorePanelView() {
         navigate("/listProducts");
     }
 
+    // Para consultar clientes
+    function handlerConsCustomer() {
+        navigate("/listCustomers");
+    }
+
     // Para abrir os relatorios
     // Recebe o tipo de relatorio
     function handlerOpenRel(tipo) {
@@ -40,25 +45,25 @@ function StorePanelView() {
                             text="Consultar Produtos"
                             event={ handlerConsProd }
                         />
+                        <MyButton 
+                            text="Consultar Clientes"
+                            event={ handlerConsCustomer }
+                        />
                     </div>
                     <div className="menuControle">
                         <FontAwesomeIcon icon="fa-solid fa-chart-pie" className="icMenu" />
                         <h2>Relatórios</h2>
                         <MyButton 
-                            text="Clientes Cadastrados"
+                            text="Mais Vendidos"
                             event={ () => handlerOpenRel(1) }
                         />
                         <MyButton 
-                            text="Mais Vendidos"
+                            text="Pedidos Pendentes"
                             event={ () => handlerOpenRel(2) }
                         />
                         <MyButton 
-                            text="Pedidos Pendentes"
-                            event={ () => handlerOpenRel(3) }
-                        />
-                        <MyButton 
                             text="Pedidos Finalizados"
-                            event={ () => handlerOpenRel(4) }
+                            event={ () => handlerOpenRel(3) }
                         />
                     </div>
                 </div>
