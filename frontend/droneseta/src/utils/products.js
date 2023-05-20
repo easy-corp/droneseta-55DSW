@@ -88,8 +88,6 @@ function ProductProvider({ children }) {
     function addCartProduct(product, quantidade, tamanho) {
         var cartProduct = {...product, qtd: quantidade, sizeChoosed:tamanho };
 
-        console.log(cartProduct);
-
         setCartProducts([...cartProducts, cartProduct]);
     }
 
@@ -163,7 +161,7 @@ function ProductProvider({ children }) {
     }
 
     // Para realizar um pedido
-    function createOrder(user) {
+    async function createOrder(user) {
         let itensPedido = [];
 
         // Formata os dados de itens para envio da requisicao
@@ -187,7 +185,18 @@ function ProductProvider({ children }) {
             },
         }
 
-        console.log(pedido);
+        await axios.post(api + "/pedidos", pedido)
+            .then(response => {
+                // console.log(response.data);
+
+                setOrder({
+                    ...order,
+                    previsaoEntrega: response.data[0].previsaoDeEntrega
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     // Para recuperar o valor final do pedido

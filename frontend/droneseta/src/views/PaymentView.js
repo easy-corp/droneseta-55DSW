@@ -29,7 +29,7 @@ function PaymentView() {
 
     // Para recuperar o tempo estimado de entrega
     function getTempoEntrega() {
-        return 3;
+        return ctxProduct.order.previsaoEntrega;
     }
 
     return (
