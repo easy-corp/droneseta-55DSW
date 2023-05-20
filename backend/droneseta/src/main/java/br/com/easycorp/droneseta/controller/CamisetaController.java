@@ -12,15 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.easycorp.droneseta.controller.exceptions.PedidoNotFoundException;
 import br.com.easycorp.droneseta.model.Camiseta;
+import br.com.easycorp.droneseta.model.Estoque;
 import br.com.easycorp.droneseta.repositories.CamisetaRepository;
+import br.com.easycorp.droneseta.repositories.EstoqueRepository;
 
 @RestController
 public class CamisetaController {
 
     private final CamisetaRepository repository;
+    private final EstoqueRepository estoqueRepo;
 
-    CamisetaController(CamisetaRepository repository) {
+    CamisetaController(CamisetaRepository repository, EstoqueRepository estoqueRepo) {
         this.repository = repository;
+        this.estoqueRepo = estoqueRepo;
     }
 
     @GetMapping("/camisetas")
@@ -30,7 +34,14 @@ public class CamisetaController {
 
     @PostMapping("/camisetas")
     Camiseta newCamiseta(@RequestBody Camiseta novaCamiseta) {
-        return repository.save(novaCamiseta);
+        Camiseta camiseta = repository.save(novaCamiseta);
+
+        for (Estoque estoque : camiseta.getEstoque()) {
+            estoque.setCamiseta(camiseta);
+            estoqueRepo.save(estoque);
+        }
+
+        return camiseta;
     }
 
     @GetMapping("/camisetas/{id}")
@@ -43,21 +54,22 @@ public class CamisetaController {
         return repository.findById(id)
                 .map(camiseta -> {
                     camiseta.setDescricao(novaCamiseta.getDescricao());
-                    camiseta.setFoto(novaCamiseta.getFoto());
-                    camiseta.setPreco(novaCamiseta.getPreco());
 
-                    if (novaCamiseta.getEstoque().isEmpty()) {
-                        camiseta.getEstoque().clear();
-                    } else {
-                        novaCamiseta.getEstoque().forEach(estoque -> {
-                            if (!camiseta.getEstoque().contains(estoque)) {
-                                camiseta.getEstoque().add(estoque);
-                            }
-                        });
+                    if (!novaCamiseta.getFoto().equals("")) {
+                        camiseta.setFoto(novaCamiseta.getFoto());
                     }
 
+                    camiseta.setPreco(novaCamiseta.getPreco());
                     camiseta.setEstoque(novaCamiseta.getEstoque());
-                    return repository.save(camiseta);
+
+                    Camiseta cam = repository.save(novaCamiseta);
+
+                    for (Estoque estoque : camiseta.getEstoque()) {
+                        estoque.setCamiseta(camiseta);
+                        estoqueRepo.save(estoque);
+                    }
+
+                    return cam;
                 })
                 .orElseGet(() -> {
                     novaCamiseta.setId(id);

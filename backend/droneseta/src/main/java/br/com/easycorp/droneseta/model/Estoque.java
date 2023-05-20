@@ -147,7 +147,7 @@ public class Estoque {
 
     @Override
     public String toString() {
-        return "Estoque [sequencia=" + sequencia + ", camiseta=" + camiseta + ", tamanho=" + tamanho + ", vendido="
+        return "Estoque [sequencia=" + sequencia + ", tamanho=" + tamanho + ", vendido="
                 + vendido + ", cor=" + cor + ", pedido=" + pedido + "]";
     }
 

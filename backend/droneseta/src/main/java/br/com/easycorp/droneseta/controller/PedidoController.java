@@ -10,17 +10,22 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.easycorp.droneseta.controller.exceptions.EstoqueNotFoundException;
 import br.com.easycorp.droneseta.controller.exceptions.PedidoNotFoundException;
+import br.com.easycorp.droneseta.model.Estoque;
 import br.com.easycorp.droneseta.model.Pedido;
+import br.com.easycorp.droneseta.repositories.EstoqueRepository;
 import br.com.easycorp.droneseta.repositories.PedidoRepository;
 
 @RestController
 public class PedidoController {
 
     private final PedidoRepository repository;
+    private final EstoqueRepository estoqueRepo;
 
-    PedidoController(PedidoRepository repository) {
+    PedidoController(PedidoRepository repository, EstoqueRepository estoqueRepo) {
         this.repository = repository;
+        this.estoqueRepo = estoqueRepo;
     }
 
     @GetMapping("/pedidos")
@@ -30,7 +35,13 @@ public class PedidoController {
 
     @PostMapping("/pedidos")
     Pedido newPedido(@RequestBody Pedido novoPedido) {
-        return repository.save(novoPedido);
+        Pedido pedido = repository.save(novoPedido);
+        for(Estoque e : novoPedido.getItens()){
+            Estoque estoque = estoqueRepo.findById(e.getSequencia()).orElseThrow(() -> new EstoqueNotFoundException(e.getSequencia()));
+            estoque.setPedido(pedido);
+            this.estoqueRepo.save(estoque);
+        }
+        return pedido;
     }
 
     @GetMapping("/pedidos/{id}")
