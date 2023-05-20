@@ -173,20 +173,20 @@ public class DataBaseSeeder {
             camisetas.add(new Camiseta("Camiseta Marvel gola Polo, simples", IMG_1, 25.50));
             camisetas.add(new Camiseta("Camiseta Marvel gola Polo, simples", IMG_1, 25.50));
             camisetas.add(new Camiseta("Camiseta Linkin Park gola V", IMG_2, 49.99));
-            camisetas.add(new Camiseta("Camiseta Slipknot Manga Longa", IMG_3, 35.75));
+            camisetas.add(new Camiseta("Camiseta Slipknot manga longa", IMG_3, 35.75));
             camisetas.add(new Camiseta("Camiseta Marvel regata", IMG_1, 19.99));
             camisetas.add(new Camiseta("Camiseta Linkin Park gola Polo", IMG_2, 54.90));
             camisetas.add(new Camiseta("Camiseta Slipknot manga curta", IMG_3, 29.99));
             camisetas.add(new Camiseta("Camiseta Marvel DryFit", IMG_1, 39.99));
             camisetas.add(new Camiseta("Camiseta Linkin Park estampada", IMG_2, 44.50));
             camisetas.add(new Camiseta("Camiseta Slipknot gola Polo", IMG_3, 31.80));
-            camisetas.add(new Camiseta("Camiseta Camiseta Marvel Manga Longa", IMG_1, 47.50));
-            camisetas.add(new Camiseta("Camiseta Linkin Park básica, Manga Curta", IMG_2, 25.99));
+            camisetas.add(new Camiseta("Camiseta Camiseta Marvel manga Longa", IMG_1, 47.50));
+            camisetas.add(new Camiseta("Camiseta Linkin Park básica, manga curta", IMG_2, 25.99));
             camisetas.add(new Camiseta("Camiseta Slipknot gola Polo, Slim Fit", IMG_3, 59.90));
             camisetas.add(new Camiseta("Camiseta Marvel decote V", IMG_1, 22.75));
             camisetas.add(new Camiseta("Camiseta Linkin Park Regata, Estampada", IMG_2, 27.50));
             camisetas.add(new Camiseta("Camiseta Slipknot gola V, Degradê", IMG_3, 41.25));
-            camisetas.add(new Camiseta("Camiseta Marvel Manga Longa", IMG_1, 56.80));
+            camisetas.add(new Camiseta("Camiseta Marvel manga Longa", IMG_1, 56.80));
             camisetas.add(new Camiseta("Camiseta Linkin Park básica, gola redonda", IMG_2, 18.99));
             camisetas.add(new Camiseta("Camiseta Slipknot estampada", IMG_3,
                     38.50));
@@ -202,14 +202,14 @@ public class DataBaseSeeder {
             camisetas.add(new Camiseta("Camiseta Marvel alternativa", IMG_1,
                     39.90));
             camisetas.add(new Camiseta("Camiseta Linkin Park gola Polo", IMG_2, 26.50));
-            camisetas.add(new Camiseta("Camiseta Slipknot Manga Longa", IMG_3, 43.99));
+            camisetas.add(new Camiseta("Camiseta Slipknot manga Longa", IMG_3, 43.99));
             camisetas.add(new Camiseta("Camiseta Marvel, DryFit", IMG_1, 35.90));
             camisetas.add(new Camiseta("Camiseta Linkin Park estampada", IMG_2, 28.50));
             camisetas.add(new Camiseta("Camiseta Slipknot Polo, Slim Fit", IMG_3, 49.90));
             camisetas.add(new Camiseta("Camiseta Marvel, decote V", IMG_1, 23.75));
             camisetas.add(new Camiseta("Camiseta Linkin Park regata", IMG_2, 26.50));
             camisetas.add(new Camiseta("Camiseta Slipknot gola V", IMG_3, 38.25));
-            camisetas.add(new Camiseta("Camiseta Marvel Manga Longa", IMG_1, 49.80));
+            camisetas.add(new Camiseta("Camiseta Marvel manga Longa", IMG_1, 49.80));
             camisetas.add(new Camiseta("Camiseta Linkin Park básica, gola redonda", IMG_2, 20.99));
             camisetas.add(new Camiseta("Camiseta Slipknot estampada", IMG_3,
                     36.50));
