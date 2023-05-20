@@ -5,13 +5,24 @@ import MyButton from "../components/MyButton";
 import MyPaymentSelect from "../components/MyPaymentSelect";
 import { useProductCtx } from "../utils/products";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useAuthCtx } from "../utils/auth";
 
 function PaymentView() {
     const ctxProduct = useProductCtx();
+    const auth = useAuthCtx();
     const navigate = useNavigate();
+    const [entrega, setEntrega] = useState(false);
 
     // Para Controlar o clique no botão de finalizar
     function handlerFinalizar() {
+        ctxProduct.createOrder(auth.getUser().id);
+
+        setEntrega(true);
+    }
+
+    // Para confirmar a entrega
+    function handlerConfEntrega() {
         ctxProduct.clearCart();
         navigate("/");
     }
@@ -24,6 +35,22 @@ function PaymentView() {
     return (
         <div>
             <MyHeader />
+            { entrega && <div>
+                <div id="divBackground"> </div>
+                <div id="divEntregaMenu">
+                    <MyTitle
+                        text="Prazo de Entrega"
+                        icon="fa-solid fa-clock"
+                    />
+                    <div id="divEntrega">
+                        <h3>O seu pedido será entregue em <strong>{ getTempoEntrega() } horas</strong>.</h3>
+                    </div>
+                    <MyButton 
+                        text="Confirmar Entrega"
+                        event={ handlerConfEntrega }
+                    />
+                </div>                
+            </div>}
             <div id="divPayment">
                 <MyTitle 
                     text="Pagamento"
@@ -53,9 +80,9 @@ function PaymentView() {
                         <MyPaymentSelect
                             selId="selPayment"
                             options={[
-                                {payment: "Boleto"},
+                                // {payment: "Boleto"},
                                 {payment: "Cartão"},
-                                {payment: "Pix"},
+                                // {payment: "Pix"},
                             ]}
                         />
                         <MyButton 
@@ -69,7 +96,7 @@ function PaymentView() {
                     icon="fa-solid fa-clock"
                 />
                 <div id="divEntrega">
-                    <h3>Após confirmado o pagamento, seu pedido será entregue em <strong>{ getTempoEntrega() } horas</strong>.</h3>
+                    <h3>Após confirmado o pagamento, o prazo de entrega será informado.</h3>
                 </div>
             </div>
         </div>

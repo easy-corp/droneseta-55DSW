@@ -13,6 +13,7 @@ function ProductProvider({ children }) {
     const [products, setProducts] = useState([]);                  // Produtos cadastrados
     const [product, setProduct] = useState([]);                    // Produto buscado
     const [cartProducts, setCartProducts] = useState([]);          // Produtos no carrinho de compras
+    const [order, setOrder] = useState([]);
 
     // Para recuperar os produtos
     async function getProducts() {
@@ -154,6 +155,39 @@ function ProductProvider({ children }) {
         return value;
     }
 
+    // Para adicionar o endereço ao pedido
+    function addAddress(address) {
+        setOrder({
+            endereco: address
+        });
+    }
+
+    // Para realizar um pedido
+    function createOrder(usuario) {
+        let itensPedido = [];
+
+        // Formata os dados de itens para envio da requisicao
+        for (let i = 0; i < cartProducts.length; i++) {
+            let produto = cartProducts[i];
+            
+            let itemProduto = produto.estoque.find(prod => { 
+                return prod.tamanho === produto.sizeChoosed;
+            });
+
+            itensPedido.push({
+                sequencia: itemProduto.sequencia
+            });
+        }
+
+        const pedido = {
+            ...order,
+            itens: itensPedido,
+            usuario: usuario,
+        }
+
+        console.log(pedido);
+    }
+
     // Para recuperar o valor final do pedido
     // O valor final é determinado pelo valor dos produtos + frete - desconto
     function getFinalValue() {
@@ -163,7 +197,7 @@ function ProductProvider({ children }) {
     }
 
     return (
-        <ProductCtx.Provider value={{ product, getProduct, products, getProducts, addProduct, updateProduto, getProductQtd, getProductSizeQtd, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct, getTotalCartProducts, clearCart, getDescProducts, getTotalFrete, getFinalValue }}>
+        <ProductCtx.Provider value={{ product, getProduct, products, getProducts, addProduct, updateProduto, getProductQtd, getProductSizeQtd, cartProducts, addCartProduct, oneMoreCartProduct, oneLessCartProduct, getTotalCartProducts, clearCart, getDescProducts, getTotalFrete, getFinalValue, order, addAddress, createOrder }}>
             { children }
         </ProductCtx.Provider>
     );

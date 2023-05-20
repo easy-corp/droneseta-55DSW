@@ -112,12 +112,17 @@
 #divFinalCart {
     display: grid;
     grid-template-columns: min-content min-content;
-    column-gap: 3vh;
+    column-gap: 18vh;
 }
 
 #colCupomFrete {
     display: grid;
     grid-template-rows: min-content min-content;
+    row-gap: 3vh;
+}
+
+#colCupomFrete select {
+    width: 40vh;
 }
 
 .rowCupomFrete {
@@ -143,13 +148,27 @@
     color: #FF4D29;
 }
 
+#icInfoFrete {
+    position: absolute;
+
+    width: 2vh;
+    height: 2vh;
+
+    top: 8vh;
+    left: 42vh;
+
+    color: #FF4D29;
+
+    cursor: pointer;
+}
+
 #divRecadoEntrega {
     width: min-content;
     height: min-content;
 
     position: absolute;
-    top: -12vh;
-    left: 20vh;
+    top: -6vh;
+    left: 35.5vh;
 
     padding: 2vh;
 
@@ -186,9 +205,6 @@
     height: min-content;
 
     padding: 5vh;
-
-    top: 50%;
-    transform: translateY(-50%);
 
     border: 1px solid #FF4D29;
 }

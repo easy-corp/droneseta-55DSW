@@ -6,9 +6,12 @@ import MyTitle from "../components/MyTitle";
 import MyInput from "../components/MyInput";
 import MyButton from "../components/MyButton";
 import { useNavigate } from "react-router-dom";
+import MyAddressSelect from "../components/MyAddressSelect";
+import { useAuthCtx } from "../utils/auth";
 
 function CartView() {
     const ctxProduct = useProductCtx();
+    const auth = useAuthCtx();
     const navigate = useNavigate();
     var displayRecadoEntrega = false;
 
@@ -54,6 +57,13 @@ function CartView() {
 
     // Para finalizar a compra
     function finalizarCompra() {
+        // Recupera o endereço selecionado
+        var selAddress = document.getElementById("selAddress");
+        let selSelected = selAddress.selectedIndex;
+        let address = auth.getUser().enderecos[selSelected];
+
+        ctxProduct.addAddress(address);
+
         navigate("/payment");
     }
 
@@ -96,7 +106,8 @@ function CartView() {
                 <div className="divLine lineMaior"></div>
                 <div id="divFinalCart">
                     <div id="colCupomFrete">
-                        <MyTitle
+                        {/* OPCOES DE CUPOM E CALCULO DE FRETE FORAM RETIRADAS DESSA VERSAO */}
+                        {/* <MyTitle
                             text="Cupom de Desconto"
                             icon="fa-solid fa-ticket"
                         />
@@ -113,18 +124,8 @@ function CartView() {
                         <MyTitle
                             text="Frete"
                             icon="fa-solid fa-paper-plane"
-                        />
-                        <div className="rowCupomFrete">
-                            <div id="divRecadoEntrega">
-                                <p>
-                                Somos inovadores na entrega por drones,
-                                seus pedidos serão entregues muito
-                                rapidamente, mediante disponibilidade.
-                                </p>
-                                <div id="divTrianguloRecadoEntrega">
-
-                                </div>
-                            </div>
+                        /> */}
+                        {/* <div className="rowCupomFrete">
                             <MyInput 
                                 holder="Insira seu CEP"
                                 icon="fa-solid fa-circle-info"
@@ -135,7 +136,27 @@ function CartView() {
                                 text="Buscar CEP"
                                 event={ handlerCEP }
                             />
+                        </div> */}
+                        {/* OPCOES DE CUPOM E CALCULO DE FRETE FORAM RETIRADAS DESSA VERSAO */}
+                        <div id="divRecadoEntrega">
+                            <p>
+                            Somos inovadores na entrega por drones,
+                            seus pedidos serão entregues muito
+                            rapidamente, mediante disponibilidade.
+                            </p>
+                            <div id="divTrianguloRecadoEntrega">
+
+                            </div>                            
                         </div>
+                        <MyTitle
+                            text="Frete"
+                            icon="fa-solid fa-paper-plane"
+                        />
+                        <MyAddressSelect 
+                            selId="selAddress"
+                            options={ auth.getUser().enderecos }
+                        />
+                        <FontAwesomeIcon icon="fa-solid fa-circle-info" onClick={ showInfoFrete } id="icInfoFrete" />
                     </div>
                     <div id="colFinalCart">
                         <div id="divTotalCart">

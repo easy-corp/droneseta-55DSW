@@ -170,61 +170,61 @@ public class DataBaseSeeder {
     CommandLineRunner doSeedCamiseta(CamisetaRepository camisetaRepo) {
         return args -> {
             log.info("Inicializando Seeding da tabela de Camisetas...");
-            camisetas.add(new Camiseta("Gola Polo, Simples", IMG_1, 25.50));
-            camisetas.add(new Camiseta("Gola Polo, Básica", IMG_1, 25.50));
-            camisetas.add(new Camiseta("Gola V, Listrada", IMG_2, 49.99));
-            camisetas.add(new Camiseta("Manga Longa, Estampada", IMG_3, 35.75));
-            camisetas.add(new Camiseta("Regata, Lisa", IMG_1, 19.99));
-            camisetas.add(new Camiseta("Gola Polo, Xadrez", IMG_2, 54.90));
-            camisetas.add(new Camiseta("Camiseta Manga Curta, Lisa", IMG_3, 29.99));
-            camisetas.add(new Camiseta("Camiseta Esportiva, DryFit", IMG_1, 39.99));
-            camisetas.add(new Camiseta("Camiseta Estampada, Floral", IMG_2, 44.50));
-            camisetas.add(new Camiseta("Gola Polo, Listrada", IMG_3, 31.80));
-            camisetas.add(new Camiseta("Camiseta Manga Longa, Estampada", IMG_1, 47.50));
-            camisetas.add(new Camiseta("Camiseta Básica, Manga Curta", IMG_2, 25.99));
-            camisetas.add(new Camiseta("Camiseta Polo, Slim Fit", IMG_3, 59.90));
-            camisetas.add(new Camiseta("Camiseta Lisa, Decote V", IMG_1, 22.75));
-            camisetas.add(new Camiseta("Regata, Estampada", IMG_2, 27.50));
-            camisetas.add(new Camiseta("Camiseta Gola V, Degradê", IMG_3, 41.25));
-            camisetas.add(new Camiseta("Camiseta Manga Longa, Xadrez", IMG_1, 56.80));
-            camisetas.add(new Camiseta("Camiseta Básica, Gola Redonda", IMG_2, 18.99));
-            camisetas.add(new Camiseta("Camiseta Estampada, Animal Print", IMG_3,
+            camisetas.add(new Camiseta("Camiseta Marvel gola Polo, simples", IMG_1, 25.50));
+            camisetas.add(new Camiseta("Camiseta Marvel gola Polo, simples", IMG_1, 25.50));
+            camisetas.add(new Camiseta("Camiseta Linkin Park gola V", IMG_2, 49.99));
+            camisetas.add(new Camiseta("Camiseta Slipknot Manga Longa", IMG_3, 35.75));
+            camisetas.add(new Camiseta("Camiseta Marvel regata", IMG_1, 19.99));
+            camisetas.add(new Camiseta("Camiseta Linkin Park gola Polo", IMG_2, 54.90));
+            camisetas.add(new Camiseta("Camiseta Slipknot manga curta", IMG_3, 29.99));
+            camisetas.add(new Camiseta("Camiseta Marvel DryFit", IMG_1, 39.99));
+            camisetas.add(new Camiseta("Camiseta Linkin Park estampada", IMG_2, 44.50));
+            camisetas.add(new Camiseta("Camiseta Slipknot gola Polo", IMG_3, 31.80));
+            camisetas.add(new Camiseta("Camiseta Camiseta Marvel Manga Longa", IMG_1, 47.50));
+            camisetas.add(new Camiseta("Camiseta Linkin Park básica, Manga Curta", IMG_2, 25.99));
+            camisetas.add(new Camiseta("Camiseta Slipknot gola Polo, Slim Fit", IMG_3, 59.90));
+            camisetas.add(new Camiseta("Camiseta Marvel decote V", IMG_1, 22.75));
+            camisetas.add(new Camiseta("Camiseta Linkin Park Regata, Estampada", IMG_2, 27.50));
+            camisetas.add(new Camiseta("Camiseta Slipknot gola V, Degradê", IMG_3, 41.25));
+            camisetas.add(new Camiseta("Camiseta Marvel Manga Longa", IMG_1, 56.80));
+            camisetas.add(new Camiseta("Camiseta Linkin Park básica, gola redonda", IMG_2, 18.99));
+            camisetas.add(new Camiseta("Camiseta Slipknot estampada", IMG_3,
                     38.50));
-            camisetas.add(new Camiseta("Gola Polo, Listrada Colorida", IMG_1, 45.90));
-            camisetas.add(new Camiseta("Camiseta Manga Curta, Lisa", IMG_2, 24.75));
-            camisetas.add(new Camiseta("Camiseta Esportiva, DryFit", IMG_3, 33.99));
-            camisetas.add(new Camiseta("Camiseta Estampada, Geométrica", IMG_1, 29.50));
-            camisetas.add(new Camiseta("Camiseta Polo, Regular Fit", IMG_2, 54.90));
-            camisetas.add(new Camiseta("Camiseta Lisa, Manga Longa", IMG_3, 37.80));
-            camisetas.add(new Camiseta("Regata, Estampada Floral", IMG_1, 24.99));
-            camisetas.add(new Camiseta("Camiseta Manga Curta, Xadrez", IMG_2, 32.50));
-            camisetas.add(new Camiseta("Camiseta Básica, Gola V", IMG_3, 21.75));
-            camisetas.add(new Camiseta("Camiseta Estampada, Animal Print", IMG_1,
+            camisetas.add(new Camiseta("Camiseta Marvel gola Polo", IMG_1, 45.90));
+            camisetas.add(new Camiseta("Camiseta Linkin Park manga curta", IMG_2, 24.75));
+            camisetas.add(new Camiseta("Camiseta Slipknot DryFit", IMG_3, 33.99));
+            camisetas.add(new Camiseta("Camiseta Marvel, geométrica", IMG_1, 29.50));
+            camisetas.add(new Camiseta("Camiseta Linkin Park gola Polo", IMG_2, 54.90));
+            camisetas.add(new Camiseta("Camiseta Slipknot manga longa", IMG_3, 37.80));
+            camisetas.add(new Camiseta("Camiseta Marvel regata", IMG_1, 24.99));
+            camisetas.add(new Camiseta("Camiseta Linkin Park manga curta", IMG_2, 32.50));
+            camisetas.add(new Camiseta("Camiseta Slipknot básica, gola V", IMG_3, 21.75));
+            camisetas.add(new Camiseta("Camiseta Marvel alternativa", IMG_1,
                     39.90));
-            camisetas.add(new Camiseta("Gola Polo, Lisa", IMG_2, 26.50));
-            camisetas.add(new Camiseta("Camiseta Manga Longa, Listrada", IMG_3, 43.99));
-            camisetas.add(new Camiseta("Camiseta Esportiva, DryFit", IMG_1, 35.90));
-            camisetas.add(new Camiseta("Camiseta Estampada, Floral", IMG_2, 28.50));
-            camisetas.add(new Camiseta("Camiseta Polo, Slim Fit", IMG_3, 49.90));
-            camisetas.add(new Camiseta("Camiseta Lisa, Decote V", IMG_1, 23.75));
-            camisetas.add(new Camiseta("Regata, Estampada", IMG_2, 26.50));
-            camisetas.add(new Camiseta("Camiseta Gola V, Degradê", IMG_3, 38.25));
-            camisetas.add(new Camiseta("Camiseta Manga Longa, Xadrez", IMG_1, 49.80));
-            camisetas.add(new Camiseta("Camiseta Básica, Gola Redonda", IMG_2, 20.99));
-            camisetas.add(new Camiseta("Camiseta Estampada, Animal Print", IMG_3,
+            camisetas.add(new Camiseta("Camiseta Linkin Park gola Polo", IMG_2, 26.50));
+            camisetas.add(new Camiseta("Camiseta Slipknot Manga Longa", IMG_3, 43.99));
+            camisetas.add(new Camiseta("Camiseta Marvel, DryFit", IMG_1, 35.90));
+            camisetas.add(new Camiseta("Camiseta Linkin Park estampada", IMG_2, 28.50));
+            camisetas.add(new Camiseta("Camiseta Slipknot Polo, Slim Fit", IMG_3, 49.90));
+            camisetas.add(new Camiseta("Camiseta Marvel, decote V", IMG_1, 23.75));
+            camisetas.add(new Camiseta("Camiseta Linkin Park regata", IMG_2, 26.50));
+            camisetas.add(new Camiseta("Camiseta Slipknot gola V", IMG_3, 38.25));
+            camisetas.add(new Camiseta("Camiseta Marvel Manga Longa", IMG_1, 49.80));
+            camisetas.add(new Camiseta("Camiseta Linkin Park básica, gola redonda", IMG_2, 20.99));
+            camisetas.add(new Camiseta("Camiseta Slipknot estampada", IMG_3,
                     36.50));
-            camisetas.add(new Camiseta("Gola Polo, Listrada Colorida", IMG_1, 43.90));
-            camisetas.add(new Camiseta("Camiseta Manga Curta, Lisa", IMG_2, 22.75));
-            camisetas.add(new Camiseta("Camiseta Esportiva, DryFit", IMG_3, 31.99));
+            camisetas.add(new Camiseta("Camiseta Marvel gola Polo", IMG_1, 43.90));
+            camisetas.add(new Camiseta("Camiseta Linkin Park manga curta", IMG_2, 22.75));
+            camisetas.add(new Camiseta("Camiseta Slipknot DryFit", IMG_3, 31.99));
             camisetas.add(new Camiseta("Camiseta Estampada, Geométrica", IMG_1, 27.50));
-            camisetas.add(new Camiseta("Camiseta Polo, Regular Fit", IMG_2, 49.90));
-            camisetas.add(new Camiseta("Camiseta Lisa, Manga Longa", IMG_3, 35.80));
-            camisetas.add(new Camiseta("Regata, Estampada Floral", IMG_1, 22.99));
-            camisetas.add(new Camiseta("Camiseta Manga Curta, Xadrez", IMG_2, 30.50));
-            camisetas.add(new Camiseta("Camiseta Básica, Gola V", IMG_3, 19.75));
-            camisetas.add(new Camiseta("Camiseta Estampada, Animal Print", IMG_1,
+            camisetas.add(new Camiseta("Camiseta Linkin Park gola Polo", IMG_2, 49.90));
+            camisetas.add(new Camiseta("Camiseta Slipknot manga longa", IMG_3, 35.80));
+            camisetas.add(new Camiseta("Camiseta Marvel Regata", IMG_1, 22.99));
+            camisetas.add(new Camiseta("Camiseta Linkin Park manga curta", IMG_2, 30.50));
+            camisetas.add(new Camiseta("Camiseta Slipknot básica, gola V", IMG_3, 19.75));
+            camisetas.add(new Camiseta("Camiseta Marvel estampada", IMG_1,
                     37.90));
-            camisetas.add(new Camiseta("Gola Polo, Lisa", IMG_2, 24.50));
+            camisetas.add(new Camiseta("Camiseta Linkin Park gola Polo", IMG_2, 24.50));
 
             for (Camiseta c : camisetas) {
                 camisetaRepo.save(c);

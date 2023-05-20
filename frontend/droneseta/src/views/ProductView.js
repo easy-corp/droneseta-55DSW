@@ -40,8 +40,6 @@ function ProductView() {
             }
         }
 
-        console.log(tamanhos);
-
         return tamanhos;
     }
 
