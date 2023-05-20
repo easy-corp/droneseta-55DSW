@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.easycorp.droneseta.controller.exceptions.UsuarioInvalidoException;
 import br.com.easycorp.droneseta.controller.exceptions.UsuarioNotFoundException;
 import br.com.easycorp.droneseta.controller.services.AuthService;
+import br.com.easycorp.droneseta.model.Endereco;
 import br.com.easycorp.droneseta.model.Usuario;
+import br.com.easycorp.droneseta.repositories.EnderecoRepository;
 import br.com.easycorp.droneseta.repositories.UsuarioRepository;
 import jakarta.servlet.http.HttpSession;
 
@@ -27,9 +29,11 @@ public class UsuarioController {
     private AuthService authService;
 
     private UsuarioRepository repository;
+    private EnderecoRepository enderecoRepo;
 
-    UsuarioController(UsuarioRepository repository) {
+    UsuarioController(UsuarioRepository repository, EnderecoRepository enderecoRepo) {
         this.repository = repository;
+        this.enderecoRepo = enderecoRepo;
     }
 
     @GetMapping("/usuarios")
@@ -48,14 +52,19 @@ public class UsuarioController {
     }
 
     @GetMapping("/usuarios/view_session_user")
-    Usuario viewSession(HttpSession session){
+    Usuario viewSession(HttpSession session) {
         return (Usuario) session.getAttribute("usuario");
     }
 
     @PostMapping("/usuarios")
     Usuario newUser(@RequestBody Usuario novoUsuario) throws NoSuchAlgorithmException {
         novoUsuario.setPassword(authService.criptocrafaSenhaUsuario(novoUsuario.getPassword()));
-        return repository.save(novoUsuario);
+        Usuario usuario = repository.save(novoUsuario);
+        for(Endereco e : usuario.getEnderecos()){
+            e.setUsuario(usuario);
+            enderecoRepo.save(e);
+        }
+        return usuario;
     }
 
     @GetMapping("/usuarios/{id}")
@@ -70,7 +79,7 @@ public class UsuarioController {
                     usuario.setCartaoCredito(novoUsuario.getCartaoCredito());
                     usuario.setNome(novoUsuario.getNome());
                     usuario.setDataNascimento(novoUsuario.getDataNascimento());
-                    if(!novoUsuario.getPassword().equals("")){
+                    if (!novoUsuario.getPassword().equals("")) {
                         try {
                             usuario.setPassword(authService.criptocrafaSenhaUsuario(novoUsuario.getPassword()));
                         } catch (NoSuchAlgorithmException e) {

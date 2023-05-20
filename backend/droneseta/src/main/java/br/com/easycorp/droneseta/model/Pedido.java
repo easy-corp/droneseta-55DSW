@@ -3,7 +3,7 @@ package br.com.easycorp.droneseta.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -21,7 +21,7 @@ public class Pedido {
     private int id;
 
     @ManyToOne
-    @JsonIgnore
+    @JsonIgnoreProperties(value = "pedidos")
     private Usuario usuario;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.DETACH)
