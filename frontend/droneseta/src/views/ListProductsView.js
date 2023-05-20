@@ -5,6 +5,7 @@ import MyHeader from "../components/MyHeader";
 import { useEffect, useState } from "react";
 import MyInput from "../components/MyInput";
 import MyButton from "../components/MyButton";
+import MyAlert from "../components/MyAlert";
 
 function ListProductsView() {
     const [editMenu, setEditMenu] = useState(false);
@@ -13,6 +14,8 @@ function ListProductsView() {
     const [editImg, setEditImg] = useState("");
     const [editValor, setEditValor] = useState("");
     const [editQtd, setEditQtd] = useState([]);
+    const [editProduto, setEditProduto] = useState(null);
+    const [erro, setErro] = useState(false);
     
     const ctxProduct = useProductCtx();
 
@@ -29,16 +32,15 @@ function ListProductsView() {
     }
 
     function handlerEditQtd(event) {
-        // Buscamos pelo tamanho em questão no array
-        let tamanhoIndex = editQtd.findIndex((value) => value.tamanho === event.target.id);
-
-        // Se esse tamanho nao estiver no array, adiciona ele
-        // Caso contrario, devemos atualizar o array
-        if (tamanhoIndex < 0) {
-            setEditQtd(() => [...editQtd, { tamanho: event.target.id, qtd: event.target.value }]);
-        } else {
-            setEditQtd(() => [...editQtd.slice(0, tamanhoIndex), { tamanho: event.target.id, qtd: event.target.value }, ...editQtd.slice(tamanhoIndex + 1)]);
+        // Retira os tamanhos referentes a qtd clicada
+        let novaQtd = editQtd.filter((opt) => { return opt.tamanho != event.target.id })
+        
+        // Adiciona i vezes aquela quantidade
+        for(let i = 0; i < event.target.value; i++) {
+            novaQtd = [...novaQtd, { tamanho: event.target.id}];
         }
+        
+        setEditQtd(novaQtd);
     }
 
 
@@ -47,11 +49,11 @@ function ListProductsView() {
         setEditMenu(true);
         
         // ID e Foto nao podem ser alterados
-        setEditId(produto.id);
+        setEditQtd([]);
+        setEditProduto(produto);
         setEditImg(produto.foto);
         setEditDesc(produto.descricao);
         setEditValor(produto.preco);
-        setEditQtd(produto.estoque);
 
         // Preenche os campos na tela com os dados atuais do produto
         // Apos pequeno atraso para garantir que o componente ja esteja na tela
@@ -61,12 +63,6 @@ function ListProductsView() {
 
             inpEditDesc.value = produto.descricao;
             inpEditValor.value = produto.preco;
-
-            produto.estoque.forEach(element => {
-                let inpEditQtd = document.getElementById(element.tamanho);            
-
-                inpEditQtd.value = ctxProduct.getProductSizeQtd(produto, element.tamanho);
-            });
         }, 10);        
     }
 
@@ -77,11 +73,18 @@ function ListProductsView() {
 
     // Para editar o produto
     function editProduct() {
+        // Se os dados estiverem incompletos
+        if (!editDesc || !editImg || !editValor || !editQtd) {
+            setErro(true);
+
+            return;
+        }
+
         const produto = {
             descricao: editDesc,
-            foto: editImg,
+            foto: "",
             preco: editValor,
-            tamanho: editQtd,
+            estoque: [ ...editProduto.estoque, ...editQtd],
         }
 
         ctxProduct.updateProduto(editId, produto);
@@ -96,6 +99,7 @@ function ListProductsView() {
     return(
         <div>
             <MyHeader />
+            {erro && <MyAlert text="Confira os dados para poder realizar o cadastro" tipo="alerta" />}
             { editMenu && <div>
                 <div id="divBackground"> </div>
                 <div id="divEditMenu">
@@ -114,6 +118,7 @@ function ListProductsView() {
                         size="small"
                         handler={ handlerEditValor }
                     />
+                    <h3>Adicionar Estoque:</h3>
                     <div>
                         <h3>PP</h3>
                         <MyInput

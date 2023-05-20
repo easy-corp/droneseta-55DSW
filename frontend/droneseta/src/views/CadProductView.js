@@ -5,6 +5,7 @@ import MyInput from "../components/MyInput";
 import MyButton from "../components/MyButton";
 import { useState } from "react";
 import { useProductCtx } from "../utils/products";
+import MyAlert from "../components/MyAlert";
 
 function CadProductView() {
     // Os dados do formulario
@@ -12,6 +13,7 @@ function CadProductView() {
     const [value, setValue] = useState("");
     const [img, setImg] = useState(null);
     const [qtd, setQtd] = useState([]);
+    const [erro, setErro] = useState(false);
     
     const ctxProduct = useProductCtx();
 
@@ -37,11 +39,26 @@ function CadProductView() {
     }
 
     function qtdHandler(event) {
-        setQtd(() => [...qtd, { tamanho: event.target.id}]);
+        // Retira os tamanhos referentes a qtd clicada
+        let novaQtd = qtd.filter((opt) => { return opt.tamanho != event.target.id })
+        
+        // Adiciona i vezes aquela quantidade
+        for(let i = 0; i < event.target.value; i++) {
+            novaQtd = [...novaQtd, { tamanho: event.target.id}];
+        }
+        
+        setQtd(novaQtd);
     }
 
     // Para cadastrar um novo produto
     function handlerCadProd() {
+        // Se os dados estiverem incompletos
+        if (!desc || !value || !img || !qtd) {
+            setErro(true);
+
+            return;
+        }
+
         const produto = {
             descricao: desc,
             preco: value,
@@ -55,6 +72,7 @@ function CadProductView() {
     return (
         <div>
             <MyHeader />
+            {erro && <MyAlert text="Confira os dados para poder realizar o cadastro" tipo="alerta" />}
             <div id="divMainCadProduto"> 
                 <h1>Cadastrar Produto</h1>
                 <div id="divCadProduto">

@@ -15,12 +15,15 @@ function RegisterView() {
     const [date, setDate] = useState("");
     const [cpf, setCpf] = useState("");
     const [cartao, setCartao] = useState("");
+    const [enderecoResid, setEnderecoResid] = useState("");
+    const [enderecoCom, setEnderecoCom] = useState("");
     const [email, setEmail] = useState("");
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [confPass, setConfPass] = useState("");
+    const [erro, setErro] = useState(false);
+    const [erroMsg, setErroMsg] = useState("");
 
-    const [correctPass, setCorrectPass] = useState(true);     // Para validar se as senhas coincidem
     const navigate = useNavigate();
 
     function nameHandler(event) {
@@ -39,6 +42,18 @@ function RegisterView() {
         setCpf(event.target.value);
     }
 
+    function cardHandler(event) {
+        setCartao(event.target.value);
+    }
+    
+    function enderecoResidHandler(event) {
+        setEnderecoResid(event.target.value);
+    }
+
+    function enderecoComHandler(event) {
+        setEnderecoCom(event.target.value);
+    }
+
     function emailHandler(event) {
         setEmail(event.target.value);
     }
@@ -53,10 +68,6 @@ function RegisterView() {
 
     function confPassHandler(event) {
         setConfPass(event.target.value);
-    }
-
-    function cardHandler(event) {
-        setCartao(event.target.value);
     }
 
     // Esconder ou mostrar a senha
@@ -76,46 +87,60 @@ function RegisterView() {
 
     // Realiza o cadastro do usuário
     async function cadastrarUsuario() {
-        if (confirmaSenha()) {
-            const usuario = {
-                tipo: "USER",
-                nome: name + " " + lastName,
-                dataNascimento: new Date(date).toISOString(),
-                email: email,
-                cpf: cpf,
-                cartaoCredito: cartao,
-                username: login,
-                password: password
-            }
-    
-            console.log(usuario);
+        // Se os dados estiverem incompletos
+        if (!name || !lastName || !date || !email || !cpf || !cartao || !login || !password || !enderecoResid || !enderecoCom) {
+            setErro(true);
+            setErroMsg("Preencha todos os dados para realizar o login");
 
-            await axios.post(api + "/usuarios", usuario)
-                .then(response => {
-                    // Retorna a tela de login
-                    navigate("/login");
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-        }
-    }
-
-    // Para verificar se as senhas estão iguais 
-    function confirmaSenha() {
-        if (password != confPass || password === "" || confPass === "") {
-            setCorrectPass(false);
-            return false;
+            return;
         }
 
-        return true
+        // Se as senhas nao coincidirem
+        if (password != confPass) {
+            setErro(true);
+            setErroMsg("As senhas não coincidem");
+
+            return;
+        }
+
+        const usuario = {
+            tipo: "USER",
+            nome: name + " " + lastName,
+            dataNascimento: new Date(date).toISOString(),
+            email: email,
+            cpf: cpf,
+            cartaoCredito: cartao,
+            username: login,
+            password: password,
+            enderecos: [
+                { 
+                    tipoEndereco: "RESIDENCIAL",
+                    descricao: enderecoResid 
+                },
+                {
+                    tipoEndereco: "COBRANCA",
+                    descricao: enderecoCom   
+                }
+            ]
+        }
+
+        console.log(usuario);
+
+        await axios.post(api + "/usuarios", usuario)
+            .then(response => {
+                // Retorna a tela de login
+                navigate("/login");
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return(
         <div>
             <MyHeader />
+            {erro && <MyAlert text={ erroMsg } tipo="alerta" />}
             <div id="divMainRegister">
-                {!correctPass && <MyAlert text="Verifique as senhas fornecida" tipo="erro" /> }
                 <h1>Criar Conta</h1>
                 <div id="divRegister">
                     <div className="rowInpRegister">
@@ -155,6 +180,24 @@ function RegisterView() {
                             inpId="inpCartao"
                             size="large"
                             handler={ cardHandler }
+                        />
+                    </div>
+                    <div className="rowInpRegister">
+                        <MyInput 
+                            type="text"
+                            holder="Endereço Residencial"
+                            size="extraLarge"
+                            inpId="inpEnderecoResid"
+                            handler={ enderecoResidHandler }
+                        />
+                    </div>
+                    <div className="rowInpRegister">
+                        <MyInput 
+                            type="text"
+                            holder="Endereço Comercial"
+                            size="extraLarge"
+                            inpId="inpEnderecoCom"
+                            handler={ enderecoComHandler }
                         />
                     </div>
                     <div className="rowInpRegister">
