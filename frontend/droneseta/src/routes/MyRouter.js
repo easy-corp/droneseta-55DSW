@@ -13,6 +13,7 @@ import CadProductView from "../views/CadProductView";
 import ListProductsView from "../views/ListProductsView";
 import RelatoryView from "../views/RelatoryView";
 import RelatoryProvider from "../utils/relatory";
+import ListCustomersView from "../views/ListCustomersView";
 
 // Esse componente sera o responsavel por direcionar as diferentes telas do projeto
 function MyRouter() {
@@ -73,6 +74,12 @@ function MyRouter() {
                                 <Route path="/listProducts" element={
                                     <AuthRoute>
                                         <ListProductsView />
+                                    </AuthRoute>
+                                }></Route>
+                                {/* Rota para consultar usuarios cadastrads */}
+                                <Route path="/listCustomers" element={
+                                    <AuthRoute>
+                                        <ListCustomersView />
                                     </AuthRoute>
                                 }></Route>
                                 {/* Rota para consultar relatorio, recebe o tipo de relatorio como parametro */}

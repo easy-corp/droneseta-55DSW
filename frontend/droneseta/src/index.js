@@ -28,6 +28,7 @@ import { faChartPie } from '@fortawesome/free-solid-svg-icons';
 import { faImages } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faDoorOpen);
 library.add(faMagnifyingGlass);
@@ -48,6 +49,7 @@ library.add(faChartPie);
 library.add(faImages);
 library.add(faPenToSquare);
 library.add(faCircleXmark);
+library.add(faHouse);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

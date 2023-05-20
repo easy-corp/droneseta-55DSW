@@ -24,6 +24,10 @@ function MyHeader() {
         navigate("/login");
     }
 
+    function icHomeHandler() {
+        navigate("/panel");
+    }
+
     return (
         <header className="divHeader">
             <div id="colImg" onClick={logoHandler}>
@@ -32,7 +36,8 @@ function MyHeader() {
             <MySearchBar />
             <div id="colIcons">
                 { ctxProduct.cartProducts.length > 0 && <div id="cartItens"> { ctxProduct.cartProducts.length } </div> }
-                <FontAwesomeIcon icon="fa-solid fa-cart-shopping" className="IconHeader" onClick={icCartHandler} />
+                { auth.getUserTipo() !== "ADMIN" && <FontAwesomeIcon icon="fa-solid fa-cart-shopping" className="IconHeader" onClick={icCartHandler} /> }
+                { auth.getUserTipo() === "ADMIN" && <FontAwesomeIcon icon="fa-solid fa-house" className="IconHeader" onClick={icHomeHandler} /> }
                 <FontAwesomeIcon icon="fa-solid fa-user" className="IconHeader" onClick={icUserHandler} />
             </div>
             <div id="divHeaderBottom"></div>
