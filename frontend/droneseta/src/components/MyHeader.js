@@ -20,7 +20,10 @@ function MyHeader() {
     }
 
     function icUserHandler() {
+        // Limpa o carrinho e desloga o usuario
+        ctxProduct.clearCart();
         auth.sair();
+        
         navigate("/login");
     }
 
@@ -35,7 +38,7 @@ function MyHeader() {
             </div>
             <MySearchBar />
             <div id="colIcons">
-                { ctxProduct.cartProducts.length > 0 && <div id="cartItens"> { ctxProduct.cartProducts.length } </div> }
+                { (ctxProduct.cartProducts.length > 0 && auth.getUserTipo() !== "ADMIN") && <div id="cartItens"> { ctxProduct.cartProducts.length } </div> }
                 { auth.getUserTipo() !== "ADMIN" && <FontAwesomeIcon icon="fa-solid fa-cart-shopping" className="IconHeader" onClick={icCartHandler} /> }
                 { auth.getUserTipo() === "ADMIN" && <FontAwesomeIcon icon="fa-solid fa-house" className="IconHeader" onClick={icHomeHandler} /> }
                 <FontAwesomeIcon icon="fa-solid fa-user" className="IconHeader" onClick={icUserHandler} />

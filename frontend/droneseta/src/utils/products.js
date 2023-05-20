@@ -17,23 +17,23 @@ function ProductProvider({ children }) {
     // Para recuperar os produtos
     async function getProducts() {
         axios.get(api + "/camisetas")
-        .then(response => {
-            setProducts(response.data);
-        })
-        .catch(error => {
-            console.log(error);
-        })        
+            .then(response => {
+                setProducts(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            })        
     }
 
     // Para recupera um produto especifico
     async function getProduct(id) {
         axios.get(api + "/camisetas/" + id)
-        .then(response => {
-            setProduct(response.data);
-        })
-        .catch(error => {
-            console.log(error);
-        })   
+            .then(response => {
+                setProduct(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            })   
     }
 
     // Para cadastrar um novo produto
