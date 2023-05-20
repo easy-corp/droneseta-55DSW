@@ -8,7 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Transient;
 
 @Entity
@@ -17,7 +17,7 @@ public class OrdemEntrega {
       @Id
       @GeneratedValue
       private int id;
-      @OneToMany(fetch = FetchType.EAGER)
+      @ManyToMany(fetch = FetchType.EAGER)
       private List<Pedido> pedidos = new ArrayList<>();
       private Date dataSaida;
       private Date dataEntrega;

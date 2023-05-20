@@ -72,7 +72,7 @@ public class PedidoController {
                 ordemEntrega.getPedidos().add(pedido);
                 ordemEntrega.setDataSaida(new Date());
                 ordemEntrega.setPrevisaoDeEntrega(qtdEntregasAtual);
-                ordens.add(ordemEntrega);
+                ordens.add(ordemRepo.save(ordemEntrega));
             }
         }
         return ordens;
