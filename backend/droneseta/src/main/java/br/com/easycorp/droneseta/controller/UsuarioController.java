@@ -70,10 +70,12 @@ public class UsuarioController {
                     usuario.setCartaoCredito(novoUsuario.getCartaoCredito());
                     usuario.setNome(novoUsuario.getNome());
                     usuario.setDataNascimento(novoUsuario.getDataNascimento());
-                    try {
-                        usuario.setPassword(authService.criptocrafaSenhaUsuario(novoUsuario.getPassword()));
-                    } catch (NoSuchAlgorithmException e) {
-                        e.printStackTrace();
+                    if(!usuario.getPassword().equals("")){
+                        try {
+                            usuario.setPassword(authService.criptocrafaSenhaUsuario(novoUsuario.getPassword()));
+                        } catch (NoSuchAlgorithmException e) {
+                            e.printStackTrace();
+                        }
                     }
                     usuario.setCpf(novoUsuario.getCpf());
                     usuario.setEmail(novoUsuario.getEmail());
